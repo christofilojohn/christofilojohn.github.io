@@ -1,17 +1,18 @@
 // Function to load the navbar
 document.addEventListener("DOMContentLoaded", function() {
+    // set gallery to first slide on page load
     currentSlide(1);
-    var navbarPlaceholder = document.getElementById('navbar-placeholder');
-    if (navbarPlaceholder) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'navbar.html', true);
-        xhr.onreadystatechange = function() {
-            if (this.readyState !== 4) return;
-            if (this.status !== 200) return; // Handle error
-            navbarPlaceholder.innerHTML = this.responseText;
-        };
-        xhr.send();
-    }
+    // var navbarPlaceholder = document.getElementById('navbar-placeholder');
+    // if (navbarPlaceholder) {
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('GET', 'navbar.html', true);
+    //     xhr.onreadystatechange = function() {
+    //         if (this.readyState !== 4) return;
+    //         if (this.status !== 200) return; // Handle error
+    //         navbarPlaceholder.innerHTML = this.responseText;
+    //     };
+    //     xhr.send();
+    // }
 });
 
 

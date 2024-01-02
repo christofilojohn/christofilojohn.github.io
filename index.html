@@ -6,13 +6,26 @@
     <title>John's CV</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-
 </head>
 <body>
     <header>
         <!-- Navbar will be loaded here -->
-        <div id="navbar-placeholder"></div>
+        <nav id="navbar">
+            <div class="nav-brand"></div>
+            <div class="nav-items" id="navItems">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="instagram-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/john-christofilogiannis-baa407248/" target="_blank" class="linkedin-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.github.com/christofilojohn" target="_blank" class="social-icon github-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </nav>
     </header>
 
     <main>
@@ -67,9 +80,6 @@
                 </ul>
             </section>
         </div>
-
-
-
     </div>
 
         <section id="experience" class="box">
@@ -180,8 +190,6 @@
                         <span class="dot" onclick="currentSlide(4)"></span>
                     </div>
                 </div>
-            
-            
 
         </section>
         
@@ -189,6 +197,6 @@
     <footer>
         <p>&copy; January 2024 </p>
     </footer>
-    <script src="navbar.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
