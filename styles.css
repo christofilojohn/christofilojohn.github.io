@@ -11,6 +11,18 @@ body {
     line-height: 1.6;
 }
 
+#summary {
+    background-color: #d3d3d3; /* Light gray background color */
+    border-radius: 15px;
+}
+
+#summary .profile-header {
+    /* Ensure there's no excessive padding or margin */
+    padding: 20px; /* Adjust as needed */
+    margin: 0;
+    /* Other styles... */
+}
+
 header {
     background: rgba(51, 51, 51, 0.9); /* Transparency effect */
     color: #fff;
