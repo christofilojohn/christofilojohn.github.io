@@ -1,21 +1,3 @@
-// Function to load the navbar
-document.addEventListener("DOMContentLoaded", function() {
-    // set gallery to first slide on page load
-    currentSlide(1);
-    // var navbarPlaceholder = document.getElementById('navbar-placeholder');
-    // if (navbarPlaceholder) {
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('GET', 'navbar.html', true);
-    //     xhr.onreadystatechange = function() {
-    //         if (this.readyState !== 4) return;
-    //         if (this.status !== 200) return; // Handle error
-    //         navbarPlaceholder.innerHTML = this.responseText;
-    //     };
-    //     xhr.send();
-    // }
-});
-
-
 function currentSlide(n) {
     var i;
     var slides = document.getElementsByClassName("image-container");
@@ -35,3 +17,52 @@ function currentSlide(n) {
     dots[n - 1].className += " active";
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    currentSlide(1);
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    let currentSlideIndex = 1; // Start with the first slide
+    const totalSlides = document.querySelectorAll('.image-container').length;
+
+    function currentSlide(n) {
+        // Existing logic to show the slide based on index n
+        // Update the currentSlideIndex after showing the slide
+        currentSlideIndex = n;
+        // ... rest of your currentSlide function ...
+    }
+
+    function handleGesture() {
+        if (touchendX + 100 < touchstartX) {
+            nextSlide();
+        }
+        
+        if (touchendX - 100 > touchstartX) {
+            previousSlide();
+        }
+    }
+
+    function nextSlide() {
+        let nextIndex = currentSlideIndex + 1;
+        if (nextIndex > totalSlides) nextIndex = 1; // Loop back to the first slide
+        currentSlide(nextIndex);
+    }
+
+    function previousSlide() {
+        let prevIndex = currentSlideIndex - 1;
+        if (prevIndex < 1) prevIndex = totalSlides; // Loop back to the last slide
+        currentSlide(prevIndex);
+    }
+
+    const gallery = document.querySelector('.image-gallery');
+    gallery.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+    });
+
+    gallery.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleGesture();
+    });
+
+    currentSlide(currentSlideIndex); // Initialize the first slide
+});
