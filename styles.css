@@ -1,380 +1,238 @@
-/* Reset some basic elements */
-body, h1, h2, p, ul {
+/* Main sections */
+body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    list-style: none; /* Removes default bullet points */
-}
-
-/* Basic styling */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-}
-
-#summary {
-    background-color: #d3d3d3; /* Light gray background color */
-    border-radius: 15px;
-}
-
-#summary .profile-header {
-    /* Ensure there's no excessive padding or margin */
-    padding: 20px; /* Adjust as needed */
-    margin: 0;
-    /* Other styles... */
-}
-
-header {
-    background: rgba(51, 51, 51, 0.9); /* Transparency effect */
-    color: #fff;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    z-index: 1000; /* Ensures the header stays above other content */
-}
-
-nav#navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.nav-brand {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.nav-items a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.nav-items a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
-    border-radius: 5px; /* Rounded corners for hover effect */
+    background: #f0f2f5;
+    color: #333;
 }
 
 main {
-    padding: 20px;
-    padding-top: 70px; /* Add padding to account for fixed header */
+    padding-top: 130px; /* Adds padding to the top of main content to avoid hiding under the fixed header */
 }
 
 section {
-    margin-bottom: 20px;
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.custom-bullets {
+    list-style-type: none; /* Removes default bullets */
+    padding-left: 20px;
+}
+
+.custom-bullets li::before {
+    content: '';
+    display: inline-block;
+    height: 10px; /* Size of the bullet */
+    width: 10px; /* Size of the bullet */
+    background-color: #095079; /* Bullet color */
+    border-radius: 50%; /* Makes the bullet circular */
+    margin-right: 10px; /* Space between bullet and text */
+}
+
+.custom-bullets li a {
+    text-decoration: none; /* Removes the underline from links */
+    color: #0e5eab; /* Sets the default text color of the links */
+    transition: color 0.3s, background-color 0.3s; /* Smooth transition for hover effects */
+}
+
+.custom-bullets li a:hover {
+    color: #ffffff; /* Changes text color on hover */
+    background-color: rgba(52, 152, 219, 0.62); /* Changes background color on hover */
+    /*padding: 2px 5px; !* Optional: Adds padding to make the hover effect more noticeable *!*/
+    border-radius: 3px; /* Optional: Rounds the corners of the background on hover */
+}
+
+
+.custom-checkmarks {
+    list-style-type: none; /* Removes default bullets */
+    padding-left: 20px; /* Adjust padding as needed */
+}
+
+.custom-checkmarks li::before {
+    content: '✔'; /* You can use any Unicode character here */
+    color: #2c3e50; /* Custom color for bullet */
+    display: inline-block;
+    width: 20px; /* Adjust width as needed */
+    margin-right: 10px; /* Space between bullet and text */
+}
+
+
+
+header {
+    width: 94%;
+    opacity: 0.9;
+    max-width: 1000px;
+    position: fixed;   /* Keeps the header at the top */
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    z-index: 1000;     /* Ensures the header stays on top of other content */
+    padding: 10px 0;
+    margin: 4px 20px 3% 3%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.header-button {
+     display: inline-flex; /* Aligns the icon and text horizontally */
+     align-items: center; /* Vertical alignment */
+     padding: 10px 15px;
+     margin: 5px; /* Spacing between buttons */
+     border: 2px solid #ccc; /* Lighter border for a softer look */
+     border-radius: 5px;
+     text-decoration: none; /* Removes underline from links */
+     color: #333; /* Dark text color for contrast */
+     font-size: 14px; /* Text size */
+     background: #e6e6e6; /* Light grey background */
+     transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
+ }
+
+.button-icon {
+    width: 20px; /* Icon size */
+    height: 20px; /* Icon size */
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.header-button:hover {
+    background-color: #d4d4d4; /* Slightly darker grey on hover for better user interaction */
+    border-color: #aaa; /* Darker border on hover */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header p {
+    font-size: 16px;
+    margin: 5px 0 0;
+}
+
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+
+#imageSection {
+    text-align: center; /* Centers the image horizontally */
+    /*margin-top: 300px;*/
+    max-width: 1000px;
+    /*padding: 0 0 0 0; !* Adds padding above and below the image *!*/
+    background-color: #ffffff; /* Sets the background color to white */
 }
 
 footer {
-    background: #333;
-    color: #fff;
+    margin-top: 300px;
+    background-color: #34495e;
+    color: white;
     text-align: center;
     padding: 10px 0;
-    position: relative;
-    z-index: 1000; /* Ensures the footer stays above other content */
-}
-
-
-
-/* Projects list styling */
-.projects-list {
-    list-style: none; /* Removes default bullet points */
-    padding: 0;
-}
-
-.projects-list li {
-    margin-bottom: 20px; /* Space between projects */
-    padding: 10px;
-    border: 1px solid #ccc; /* A light border around each project */
-    border-radius: 8px; /* Optional: rounds the corners of the border */
-}
-
-.project-image {
-    width: 100%; /* Responsive image width */
-    max-width: 300px; /* Maximum size of the image */
-    height: auto; /* Maintain aspect ratio */
-    margin: 10px 0; /* Space above and below the image */
-}
-
-.project-info {
-    margin: 10px 0;
-}
-
-.project-date {
-    font-weight: bold;
-}
-
-.project-title {
-    margin: 5px 0;
-}
-
-.project-description {
-    margin: 5px 0 10px;
-}
-
-.project-link {
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 0.9em;
-}
-
-.project-link:hover {
-    background-color: #0056b3;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-    /* Existing styles... */
-    
-    /* Adjust project image styles for mobile */
-    .project-image {
-        width: 100%;
-    }
-}
-
-/* End of CSS or not */
-
-/* Responsive image class */
-.responsive-img {
-    max-width: 100%;
-    height: auto;
-    display: block; /* ensures it takes up the full width of its container */
-    margin-bottom: 10px; /* space below the image */
-}
-
-/* Row for holding columns */
-.row {
-    margin-left: 5%;
-    margin-right: 5%;
-    display: flex;
-    justify-content: center; /* Center the columns */
-    flex-wrap: wrap; /* Allow the columns to wrap on smaller screens */
-    gap: 20px; /* Space between columns */
-}
-
-/* Column class for side-by-side content */
-.column-3 {
-    flex: 1; /* Each column takes equal width */
-    max-width: 30%; /* Maximum width of each column */
-}
-
-/* Column class for side-by-side content */
-.column {
-    flex: 1; /* Each column takes equal width */
-    max-width: 100%; /* Maximum width of each column */
-}
-
-/* Bullet points with custom styling */
-.styled-bullets {
-    list-style: none; /* removes default list style */
-    padding-left: 0; /* aligns bullets with the rest of the content */
-}
-.styled-bullets li:before {
-    content: '•'; /* custom bullet symbol */
-    color: #007bff; /* bullet color */
-    font-weight: bold; /* makes the bullet bold */
-    display: inline-block; 
-    width: 1em; /* space before bullet */
-    margin-left: -1em; /* aligns bullet within the flow of the text */
-}
-
-.centered-img {
-    display: block; /* Allows margin to be applied */
-    margin-left: auto; /* Auto margin on the left */
-    margin-right: auto; /* Auto margin on the right */
-    width: 50%; /* Adjust width as needed */
-}
-
-.profile-header {
-    display: flex; /* Enables Flexbox */
-    align-items: center; /* Vertically centers items in the container */
-    gap: 20px; /* Space between the image and the text */
-    margin-bottom: 20px; /* Space below the header */
-}
-
-.profile-pic {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px; /* Maintain aspect ratio */
-    border-radius: 50%; /* Circular shape */
-    object-fit: cover; /* Ensures the image covers the area without stretching */
-}
-
-.styled-bullets a {
-    font-weight: normal; /* Removes bold styling */
-    color: #007bff; /* Link color, can be adjusted */
-    text-decoration: none; /* Removes underline */
-}
-
-.styled-bullets a:hover {
-    text-decoration: underline; /* Adds underline on hover for better UX */
-}
-
-.column-3 a ,.column a{
-    font-weight: normal; /* Removes bold styling */
-    color: #007bff; /* Link color, can be adjusted */
-    text-decoration: none; /* Removes underline */
-}
-
-.column-3 a:hover, .column a:hover {
-    text-decoration: underline; /* Adds underline on hover for better UX */
-}
-
-.image-gallery {
-    position: relative;
-    width: 90%; /* Adjust as per your requirement */
-    height: 300px; /* Adjust as per your requirement */
-    background-color: black; /* Black background for the gallery */
-    margin-bottom: 20px; /* Space for the dots */
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.image-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none; /* Hide initially */
-    overflow: hidden; /* Hide overflow */
-    text-align: center; /* Horizontal centering for inline elements */
-}
-
-.image-container img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
-}
-
-.gallery-dots {
-    position: absolute;
-    bottom: -20px; /* Positioning dots below the container */
-    left: 50%;
-    transform: translateX(-50%); /* Centering dots */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-/* Ensure this selector is correct */
-.show-image {
-    display: block;
-}
-
-
-.active, .dot:hover {
-    opacity: 0.6;
-}
-
-/*... Default to show the first image 
-.image-slide:first-child {
-    display: block;
-}
-
-.image-slide img {
-    width: 80%; /* Set image width to 80% of its container 
-    height: auto; /* Maintain aspect ratio 
-    display: block; /* Display as block 
-    margin: 0 auto; /* Center the image within its container 
-}...*/
-
-
-/* ... other styles ... */
-
-
-@media (max-width: 768px) {
-    
-    .profile-header {
-        flex-direction: column; /* Stack image and text vertically on smaller screens */
-        align-items: center; /* Center-align items */
-        text-align: center; /* Center-align text */
-    }
-
-    .profile-pic {
-        width: 80px; /* Smaller image size */
-        height: 80px; /* Maintain aspect ratio */
-        margin-bottom: 5px; /* Space below image */
-    }
-    .row {
-        flex-direction: column;
-    }
-    .column-3 {
-        max-width: 100%; /* Each column takes full width on smaller screens */
-    }
-    .nav-items {
-        flex-direction: row; /* Align items in a row on small screens */
-    }
-
-    .nav-items a {
-        font-size: smaller; /* Adjust font size for smaller screens */
-    }
-
-    .image-gallery {
-        position: relative;
-        width: 90%; /* Adjust as per your requirement */
-        height: 280px; /* Adjust as per your requirement */
-    }
-
-}
-
-
-@media (max-width: 450px) {
-    #c3 {
-        margin-left: -35px;
-    }
-
-    .image-gallery {
-        position: relative;
-        width: 90%; /* Adjust as per your requirement */
-        height: 170px; /* Adjust as per your requirement */
-    }
-}
-
-@media (min-width: 1200px) {
-    .row {
-        max-width: 64%; /* Adjust column width for larger screens */
-        margin-left: 18%;
-        margin-right: auto;
-    }
-    #projects {
-        width: 64%;
+@media (min-width: 1000px) { /* Applies styles when the screen width is 1000px or larger */
+    section {
+        width: 1000px; /* Fixed width for larger screens */
         margin-left: auto;
         margin-right: auto;
     }
-
-    #summary {
-        width: 64%;
-        margin-left: 18%;
+    header {
+        /*margin-left: 0;*/
+        margin-left: auto;
         margin-right: auto;
-        /* Other styles... */
+        margin-top: 4px;
+        padding: 20px 20px;
+        left: 50%;            /* Moves the center of the header to the center of the viewport */
+        transform: translateX(-50%); /* Corrects the position, centering it exactly */
+        width: 1000px;          /* Allows the header to shrink to fit its content */
     }
-    #c3 {
-        margin-left: -35px;
+    header h1 {
+        margin: 0;
+        font-size: 36px;
     }
+    main {
+        padding-top: 170px; /* Adds padding to the top of main content to avoid hiding under the fixed header */
+    }
+
 }
 
-/* ... Additional styles ... */
-.styled-bullets {
-    list-style: none; /* Hides default bullets */
-    padding-left: 0; /* Aligns items with the rest of the content */
-    color: black;
+/* Images */
+
+.whiteBackgroundImage {
+    height: auto; /* Maintains the aspect ratio of the image */
+    display: block;
+    margin: 0 auto;
+    align-self: center;
+}
+
+#encryption_image {
+    max-width: 25%;
+}
+
+#fl_image {
+    max-width: 30%;
+}
+
+#server-client {
+    max-width: 75%;
+}
+
+.favicon {
+    vertical-align: middle; /* Aligns the icon with the middle of adjacent text or buttons */
+    margin-right: 5px; /* Adds a small space between the icon and the text or button */
+    width: 16px; /* Sets a specific width for the favicon */
+    height: 16px; /* Sets a specific height for the favicon */
+}
+
+/* Buttons */
+
+.download-button {
+    text-decoration: none;
+    width: 72%;
+    padding: 10px 4%;
+    margin: 20px auto 20px 10%;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    transition: filter 0.3s; /* Smooth transition for hover effect */
+}
+
+
+.download-button:hover {
+    filter: brightness(85%);
+}
+
+#pdf {
+    background-color: #e74c3c;
+}
+
+#code_download {
+    background-color: #6e5494;
+}
+
+#video_download {
+    background-color: #128184;
+}
+
+/* Code */
+
+code {
+    display: block;
+    background: #ecf0f1;
+    padding: 10px;
+    margin-top: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 4px;
 }
