@@ -163,8 +163,14 @@ footer {
     main {
         padding-top: 170px; /* Adds padding to the top of main content to avoid hiding under the fixed header */
     }
-
 }
+
+@media (max-width: 999px) {
+    main {
+        padding-top: 190px; /* Increased padding-top for mobile screens */
+    }
+}
+
 
 /* Images */
 
