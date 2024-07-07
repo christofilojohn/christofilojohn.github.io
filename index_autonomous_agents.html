@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F.L.Ex - Project Report</title>
+    <link rel="stylesheet" href="styles_autonomous_agents.css">
+<!--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+    <h1>F.L.Ex: Federated Learning EXchange  </h1>
+    <p>Autonomous Agents Project</p>
+    <p>Ioannis Christofilogiannis</p>
+    <a href="https://christofilojohn.github.io" class="header-button">
+        <img src="images/resume.png" alt="Icon rcv" class="button-icon">
+        <span>CV</span>
+    </a>
+    <a href="https://github.com/christofilojohn" class="header-button">
+        <img src="images/github.png" alt="Icon 2" class="button-icon">
+        <span>GitHub</span>
+    </a>
+</header>
+<main>
+    <section id="imageSection">
+        <img src="images/dalle_fl.png" alt="Federated learning illustration" class="whiteBackgroundImage" id="fl_image">
+    </section>
+
+    <section class="introduction">
+        <h2>Project Overview</h2>
+        <p>A federated learning framework that utilizes both C++ and Python to enhance machine learning model training efficiency.</p>
+    </section>
+
+    <section class="introduction">
+        <h2>Goal</h2>
+        <p> Train Machine Learning models on-device and securely share their parameters with similar models from other
+            devices to attain better performance, without needing to share sensitive user data.</p>
+    </section>
+
+    <section class="downloads">
+        <h2>Project Resources</h2>
+
+        <a href="report.pdf" class="download-button" id="pdf" download> <img src="images/pdf_dl.ico" alt="Download Icon" class="favicon"> Download Report</a>
+        <a href="code.zip" class="download-button" id="code_download" download> <img src="images/code_dl.ico" alt="Download Icon" class="favicon"> Download Code</a>
+        <a href="presentation.pdf" class="download-button" id="video_download" download> <img src="images/video.ico" alt="Download Icon" class="favicon"> Download Presentation</a>
+    </section>
+
+    <section class="installation">
+        <h2> Installation Instructions</h2>
+        <p>
+            Tested on Python 3.11.7, on Ubuntu 22.04 x64 through WSL and on macOS arm64 on this IP and port number combination.
+        </p>
+        <code>pip3 install -r requirements.txt</code>
+        <code>python3 setup.py build_ext --inplace</code>
+        <code>python3 server.py --p 8080 --c 3 --i 0</code>
+        <code>python3 client.py --ip 127.0.0.1 --p 8080</code>
+    </section>
+
+    <section class="integration">
+        <h2>Integration of Python and C++ using Cython</h2>
+        <p> Python socket programming is known for unreliability, less control by the programmer and worse performance.
+            C++ is better suited in order to better control the connection and data transfer process, while
+            a language like Python is better suited for training Machine Learning models.
+            We use the Cython library that enables Python to interface with C++ with intermediate methods using wrappers.
+        </p>
+    </section>
+
+
+    <section class="operation">
+        <h2>Operation</h2>
+        <p>A diagram that shows the process.</p>
+        <img src="images/Server-client.jpg" alt="Server client diagram" class="whiteBackgroundImage" id="server-client">
+    </section>
+
+
+    <section class="security">
+        <h2>Security Measures</h2>
+        <p> All the data shared between the server and the clients is end-to-end encrypted. This is important in order to protect the data
+            from malicious clients or outside attacks. Both symmetric (AES) and asymmetric (RSA) encryption is used accordingly.</p>
+        <img src="images/encryption.png" alt="Encryption illustration" class="whiteBackgroundImage" id="encryption_image">
+
+    </section>
+
+    <section class="future-work">
+        <h2>Future Work</h2>
+        <ul class="custom-checkmarks">
+            <li>Add more robust feature selection capabilities to our implementation</li>
+            <li>Test different ML models</li>
+            <li>Check different aggregation algorithms</li>
+            <li>Test more and different performance metrics and thresholds</li>
+            <li>Dockerize the implementation</li>
+        </ul>
+    </section>
+
+    <section class="sources">
+        <h2>Sources</h2>
+        <ul class="custom-bullets">
+            <li><a href = "https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/" >GeeksForGeeks TCP server-client implementation </a></li>
+            <li><a href = "https://www.geeksforgeeks.org/socket-programming-in-cpp/" >GeeksForGeeks c++ socket programming </a></li>
+            <li><a href = "https://www.geeksforgeeks.org/std-barrier-in-cpp-20/" >GeeksForGeeks c++ barrier </a></li>
+            <li><a href = "https://www.geeksforgeeks.org/socket-programming-in-cc-handling-multiple-clients-on-server-without-multi-threading/" >GeeksForGeeks socket programming handling multiple clients</a></li>
+            <li><a href = "https://www.geeksforgeeks.org/cpp-multithreading-condition-variables/" >GeeksForGeeks condition variables</a></li>
+            <li><a href = "https://www.youtube.com/watch?v=Pg_4Jz8ZIH4&t=177s" >Jacob Sorber Multithreaded server in C++</a></li>
+            <li><a href = "https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html" >Scikit learn GaussianNB</a></li>
+            <li><a href = "https://cython.readthedocs.io/en/latest/src/userguide/index.html" >Cython documentation - user guide</a></li>
+            <li><a href = "https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/" >Python Cryptography RSA (Assymetric Encryption)</a></li>
+            <li><a href = "https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/" >Python Cryptography AES (Symmetric Encryption)</a></li>
+            <br>
+            This project is part of my diploma thesis, supervised by Professor Ioannidis.
+        </ul>
+    </section>
+
+
+    <!--<footer>-->
+    <!--    <p>Autonomous Agents 2024 - Ioannis Christofilogiannis project</p>-->
+    <!--</footer>-->
+</main>
+</body>
+</html>

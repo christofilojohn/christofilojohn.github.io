@@ -3,118 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F.L.Ex - Project Report</title>
+    <title>John's CV</title>
     <link rel="stylesheet" href="styles.css">
-<!--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-<header>
-    <h1>F.L.Ex: Federated Learning EXchange  </h1>
-    <p>Autonomous Agents Project</p>
-    <p>Ioannis Christofilogiannis</p>
-    <a href="https://christofilojohn.github.io" class="header-button">
-        <img src="images/resume.png" alt="Icon rcv" class="button-icon">
-        <span>CV</span>
-    </a>
-    <a href="https://github.com/christofilojohn" class="header-button">
-        <img src="images/github.png" alt="Icon 2" class="button-icon">
-        <span>GitHub</span>
-    </a>
-</header>
-<main>
-    <section id="imageSection">
-        <img src="images/dalle_fl.png" alt="Federated learning illustration" class="whiteBackgroundImage" id="fl_image">
-    </section>
+    <header>
+        <!-- Navbar will be loaded here -->
+        <nav id="navbar">
+            <div class="nav-brand"></div>
+            <div class="nav-items" id="navItems">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="instagram-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/john-christofilogiannis-baa407248/" target="_blank" class="linkedin-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.github.com/christofilojohn" target="_blank" class="social-icon github-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
 
-    <section class="introduction">
-        <h2>Project Overview</h2>
-        <p>A federated learning framework that utilizes both C++ and Python to enhance machine learning model training efficiency.</p>
-    </section>
+    <main>
+        <section id="summary">
+            <div class="profile-header">
+                <img src="images/profile.jpeg" alt="John Christofilogiannis" class="profile-pic">
+                <div>
+                    <h1>John Christofilogiannis</h1>
+                    <p>5th Year Student in School of Electrical and Computer Engineering at TUC</p>
+                </div>
+            </div>
+        </section>
 
-    <section class="introduction">
-        <h2>Goal</h2>
-        <p> Train Machine Learning models on-device and securely share their parameters with similar models from other
-            devices to attain better performance, without needing to share sensitive user data.</p>
-    </section>
+        <div class="row">
+        <div class="column-3">
+            <section id="interests">
+                <h2 id="c3">Interests</h2>
+                <ul class="styled-bullets">
+                    <li>💻 Programming</li>
+                    <li>🎨 Sketching</li>
+                    <li>📚 Reading</li>
+                    <li>✈️ Traveling</li>
+                    <li>🤖 Artificial Intelligence</li>
+                    <li>🧠 Machine Learning</li>
+                    <li>🖌️ UI/UX</li>
+                    <li>🎮 Video games</li>
+                </ul>
+            </section>
+        </div>
 
-    <section class="downloads">
-        <h2>Project Resources</h2>
+        <div class="column-3">
+            <section id="skills">
+                <h2 id="c3">Skills</h2>
+                <ul class="styled-bullets">
+                    <li>💻 Programming Languages: Java, C, Python, VHDL, SQL</li>
+                    <li>🌐 Making Graphical User Interface Applications and Websites</li>
+                    <li>🖥️ Experience on Operating Systems like Windows, Linux , Mac OS</li>
+                    <li>🔌 Circuit Design Software Knowledge </li>
 
-        <a href="report.pdf" class="download-button" id="pdf" download> <img src="images/pdf_dl.ico" alt="Download Icon" class="favicon"> Download Report</a>
-        <a href="code.zip" class="download-button" id="code_download" download> <img src="images/code_dl.ico" alt="Download Icon" class="favicon"> Download Code</a>
-        <a href="presentation.pdf" class="download-button" id="video_download" download> <img src="images/video.ico" alt="Download Icon" class="favicon"> Download Presentation</a>
-    </section>
+                </ul>
+            </section>
+        </div>
 
-    <section class="installation">
-        <h2> Installation Instructions</h2>
-        <p>
-            Tested on Python 3.11.7, on Ubuntu 22.04 x64 through WSL and on macOS arm64 on this IP and port number combination.
-        </p>
-        <code>pip3 install -r requirements.txt</code>
-        <code>python3 setup.py build_ext --inplace</code>
-        <code>python3 server.py --p 8080 --c 3 --i 0</code>
-        <code>python3 client.py --ip 127.0.0.1 --p 8080</code>
-    </section>
+        <div class="column-3">
+            <section id="characteristics">
+                <h2 id="c3">Characteristics</h2>
+                <ul class="styled-bullets">
+                    <li>💡 Creative</li>
+                    <li>🚀 Innovative</li>
+                    <li>🧠 Complex problem solver</li>
+                    <li>👥 Team player</li>
+                </ul>
+            </section>
+        </div>
+    </div>
 
-    <section class="integration">
-        <h2>Integration of Python and C++ using Cython</h2>
-        <p> Python socket programming is known for unreliability, less control by the programmer and worse performance.
-            C++ is better suited in order to better control the connection and data transfer process, while
-            a language like Python is better suited for training Machine Learning models.
-            We use the Cython library that enables Python to interface with C++ with intermediate methods using wrappers.
-        </p>
-    </section>
+        <section id="experience" class="box">
+            <div class="row">
+                <div class="column">
+                <h2>Experience</h2>
+                </div>
+            </div>
 
-
-    <section class="operation">
-        <h2>Operation</h2>
-        <p>A diagram that shows the process.</p>
-        <img src="images/Server-client.jpg" alt="Server client diagram" class="whiteBackgroundImage" id="server-client">
-    </section>
-
-
-    <section class="security">
-        <h2>Security Measures</h2>
-        <p> All the data shared between the server and the clients is end-to-end encrypted. This is important in order to protect the data
-            from malicious clients or outside attacks. Both symmetric (AES) and asymmetric (RSA) encryption is used accordingly.</p>
-        <img src="images/encryption.png" alt="Encryption illustration" class="whiteBackgroundImage" id="encryption_image">
-
-    </section>
-
-    <section class="future-work">
-        <h2>Future Work</h2>
-        <ul class="custom-checkmarks">
-            <li>Add more robust feature selection capabilities to our implementation</li>
-            <li>Test different ML models</li>
-            <li>Check different aggregation algorithms</li>
-            <li>Test more and different performance metrics and thresholds</li>
-            <li>Dockerize the implementation</li>
-        </ul>
-    </section>
-
-    <section class="sources">
-        <h2>Sources</h2>
-        <ul class="custom-bullets">
-            <li><a href = "https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/" >GeeksForGeeks TCP server-client implementation </a></li>
-            <li><a href = "https://www.geeksforgeeks.org/socket-programming-in-cpp/" >GeeksForGeeks c++ socket programming </a></li>
-            <li><a href = "https://www.geeksforgeeks.org/std-barrier-in-cpp-20/" >GeeksForGeeks c++ barrier </a></li>
-            <li><a href = "https://www.geeksforgeeks.org/socket-programming-in-cc-handling-multiple-clients-on-server-without-multi-threading/" >GeeksForGeeks socket programming handling multiple clients</a></li>
-            <li><a href = "https://www.geeksforgeeks.org/cpp-multithreading-condition-variables/" >GeeksForGeeks condition variables</a></li>
-            <li><a href = "https://www.youtube.com/watch?v=Pg_4Jz8ZIH4&t=177s" >Jacob Sorber Multithreaded server in C++</a></li>
-            <li><a href = "https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html" >Scikit learn GaussianNB</a></li>
-            <li><a href = "https://cython.readthedocs.io/en/latest/src/userguide/index.html" >Cython documentation - user guide</a></li>
-            <li><a href = "https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/" >Python Cryptography RSA (Assymetric Encryption)</a></li>
-            <li><a href = "https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/" >Python Cryptography AES (Symmetric Encryption)</a></li>
+            <!-- Internship-->
+            <div class="row">
+                <div class="column">
+                    <strong> Internship in Edinburgh - Heriott Watt University BCML Lab</strong> <br> 07/2023 – 08/2023
+                    (<a href="https://bioml.eu.org/team/" target="https://bioml.eu.org/team/">visit website</a>)
+                    <ul class="styled-bullets">
+                        <li>Worked on a Machine Learning project based on anomally detection on fish gills</li>
+                        <li>Made <a href="https://qupath.github.io/" target="https://qupath.github.io/">Qupath</a> automation tools using Groovy</li> 
+                        <li>Made Python GUI using tkinter</li>                   
+                    </ul>
+                </div>
+            </div>
             <br>
-            This project is part of my diploma thesis, supervised by Professor Ioannidis.
-        </ul>
-    </section>
+            <!-- TUCer-->
+            <div class="row">
+                <div class="column">
+                    <strong> Software Developer at TUCer team </strong> <br> 01/2023 – 07/2023
+                    (<a href="https://www.tucer.tuc.gr/el/archiki" target="https://www.tucer.tuc.gr/el/archiki">visit website</a>)
+                    <ul class="styled-bullets">
+                        <li>Worked on autonomous driving algorithms using ROS ,
+                            Python and Arduino software</li>
+                        <li>Participated at 
+                            <a href="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html" target="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html">
+                            Shell Eco Marathon Autonomous
+                            Competition 2023</a>
+                            in Nogaro - France.
+                            </li>                    
+                        </ul>
+                </div>
+            </div>
+            <br>
+            </section>
+            <section id="education" class="box"></section>
+            <div class="row">
+                <div class="column">
+                <h2>Education</h2>
+                </div>
+            </div>
+            <!-- University-->
+            <div class="row">
+                <div class="column">
+                    <strong> 5th year undergraduate student <br> School of Electrical and Computer Engineering (ECE) Technical University of Crete (TUC)</strong> <br> 09/2019 – now
+                    (<a href="https://www.ece.tuc.gr/" target="https://www.ece.tuc.gr/">visit website</a>)
+                    <ul class="styled-bullets">
+                        <li>236 ECTS as of 12/2023</li>
+                        <li>Winning team in TUC CTF 2023 competition</li>                    </ul>
+                </div>
+            </div>
+            <br>
 
+            <!-- School-->
+            <div class="row">
+                <div class="column">
+                    <strong>Graduate of PIERCE American College of Greece</strong> <br> 2019
+                    (<a href="http://www.pierce.gr" target="http://www.pierce.gr">visit website</a>)
+                    <ul class="styled-bullets">
+                        <li>Elected Member of the PIERCE Student Board for 3 years (2016-2019)</li>
+                        <li>Distinctions in mathematics Student Competitions: Kangaroo, Hellenic Mathematic Society (Thales)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="column">
+                <ul class="styled-bullets">
+                    <strong><br>Notable Grades:</strong>
+                    <li>Computer Security (C,Unix exercises): 10</li>
+                    <li>Data and File Structures (with Java labs): 9.5</li>
+                    <li>Computer Organization (Creation of a MIPS-like processor in VHDL): 10 </li>
+                    <li>Object Oriented Programming (Java): 9</li>
+                    <li>Computation Theory (Bison compiler and flex analyzer project): 9 </li>
+                    <li>Reinforcement Learning (Q-learning and deep Q-learning video recommendations project): 9</li>
+                    <li>Operating Systems (C, Unix Knowledge): 8</li>
+                    <li>Introduction to Programming and Informatics (C): 8.5</li>
+                    <li>Digital Computers (MIPS Assembly): 8</li>
+                    <li>Software Development Tools & System Programming: 8.5</li>
+                </ul>
+                </div>
+            </div>
 
-    <!--<footer>-->
-    <!--    <p>Autonomous Agents 2024 - Ioannis Christofilogiannis project</p>-->
-    <!--</footer>-->
-</main>
+            
+                <div class="image-gallery">
+                    <div class="image-container">
+                        <img src="images/edinburgh.jpg" alt="First Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="images/edinburgh2.jpg" alt="First Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="images/tucer1.jpg" alt="Second Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="images/tucer2.jpg" alt="Second Image">
+                    </div>
+                    <div class="gallery-dots">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                    </div>
+                </div>
+
+        </section>
+        
+    </main>
+    <footer>
+        <p>&copy; January 2024 </p>
+    </footer>
+    <script src="scripts.js"></script>
 </body>
 </html>
