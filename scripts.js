@@ -1,125 +1,110 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const slides = document.querySelectorAll('.image-container');
-    let touchstartX = 0;
-    let touchendX = 0;
-    let currentSlideIndex = 0;
-    
-    const gallery = document.querySelector('.image-gallery');
-    gallery.addEventListener('touchstart', e => {
-        touchstartX = e.changedTouches[0].screenX;
-    });
-    
-    gallery.addEventListener('touchend', e => {
-        touchendX = e.changedTouches[0].screenX;
-        handleGesture();
-    });
-    
-    function handleGesture() {
-        const totalSlides = slides.length;
-        if (touchendX + 100 < touchstartX) {
-            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
-        } else if (touchendX - 100 > touchstartX) {
-            currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+    // Image gallery functionality (for main page)
+    const imageGallery = document.querySelector('.image-gallery');
+    if (imageGallery) {
+        const slides = imageGallery.querySelectorAll('.image-container');
+        let currentSlideIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? 'block' : 'none';
+            });
         }
-        showSlide(currentSlideIndex);
-    }
-    
-    // Function to show a specific slide
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.style.display = i === index ? 'block' : 'none';
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        // Initialize the gallery
+        showSlide(0);
+
+        // Add event listeners for gallery navigation
+        imageGallery.addEventListener('click', function(e) {
+            if (e.target.classList.contains('dot')) {
+                currentSlideIndex = Array.from(e.target.parentNode.children).indexOf(e.target);
+                showSlide(currentSlideIndex);
+            }
+        });
+
+        // Touch events for swiping
+        let touchstartX = 0;
+        imageGallery.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        imageGallery.addEventListener('touchend', e => {
+            const touchendX = e.changedTouches[0].screenX;
+            if (touchendX < touchstartX) nextSlide();
+            if (touchendX > touchstartX) prevSlide();
         });
     }
 
-    // Initially show the first slide
-    showSlide(0);
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const gallery = document.querySelector('.art-gallery');
+    // Art gallery fullscreen functionality
+    const artGallery = document.querySelector('.art-gallery');
     const fullscreenGallery = document.getElementById('fullscreen-gallery');
-    const fullscreenImage = document.getElementById('fullscreen-image');
-    const fullscreenTitle = document.getElementById('fullscreen-title');
-    const fullscreenDescription = document.getElementById('fullscreen-description');
-    const prevButton = document.getElementById('prev-button');
-    const nextButton = document.getElementById('next-button');
-    const closeButton = document.getElementById('close-button');
 
-    let currentIndex = 0;
-    const artItems = Array.from(document.querySelectorAll('.art-item'));
+    if (artGallery && fullscreenGallery) {
+        const fullscreenImage = document.getElementById('fullscreen-image');
+        const fullscreenTitle = document.getElementById('fullscreen-title');
+        const fullscreenDescription = document.getElementById('fullscreen-description');
+        const artItems = Array.from(artGallery.querySelectorAll('.art-item'));
+        let currentArtIndex = 0;
 
-    function showFullscreen(index) {
-        const item = artItems[index];
-        const fullSizeImageSrc = item.dataset.src;
-        const title = item.querySelector('h3').textContent;
-        const description = item.querySelector('p').textContent;
+        function setMaxImageSize() {
+            const maxWidth = Math.min(window.innerWidth * 0.9, 1200); // Max width of 1200px or 90% of viewport width
+            const maxHeight = window.innerHeight * 0.8; // 80% of viewport height
+            fullscreenImage.style.maxWidth = `${maxWidth}px`;
+            fullscreenImage.style.maxHeight = `${maxHeight}px`;
+        }
 
-        fullscreenImage.src = fullSizeImageSrc;
-        fullscreenImage.alt = title;
-        fullscreenTitle.textContent = title;
-        fullscreenDescription.textContent = description;
-        fullscreenGallery.style.display = 'flex';
-        currentIndex = index;
+        function showFullscreen(index) {
+            const item = artItems[index];
+            fullscreenImage.src = item.dataset.src;
+            fullscreenImage.alt = item.querySelector('h3').textContent;
+            fullscreenTitle.textContent = item.querySelector('h3').textContent;
+            fullscreenDescription.textContent = item.querySelector('p').textContent;
+            fullscreenGallery.style.display = 'flex';
+            currentArtIndex = index;
+            setMaxImageSize();
+        }
 
-        fullscreenImage.onload = function() {
-            console.log("Image loaded successfully");
-        };
-        fullscreenImage.onerror = function() {
-            console.error("Failed to load image:", fullSizeImageSrc);
-            fullscreenImage.alt = "Failed to load image";
-        };
-    }
+        function hideFullscreen() {
+            fullscreenGallery.style.display = 'none';
+        }
 
-    function hideFullscreen() {
-        fullscreenGallery.style.display = 'none';
-    }
-
-    function showNext() {
-        currentIndex = (currentIndex + 1) % artItems.length;
-        showFullscreen(currentIndex);
-    }
-
-    function showPrev() {
-        currentIndex = (currentIndex - 1 + artItems.length) % artItems.length;
-        showFullscreen(currentIndex);
-    }
-
-    gallery.addEventListener('click', function(e) {
-        if (e.target.tagName === 'IMG') {
-            const artItem = e.target.closest('.art-item');
-            if (artItem) {
-                const index = artItems.indexOf(artItem);
-                showFullscreen(index);
+        artGallery.addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG') {
+                const artItem = e.target.closest('.art-item');
+                if (artItem) showFullscreen(artItems.indexOf(artItem));
             }
-        }
-    });
+        });
 
-    closeButton.addEventListener('click', hideFullscreen);
-    nextButton.addEventListener('click', showNext);
-    prevButton.addEventListener('click', showPrev);
+        document.getElementById('close-button').addEventListener('click', hideFullscreen);
+        document.getElementById('next-button').addEventListener('click', () => showFullscreen((currentArtIndex + 1) % artItems.length));
+        document.getElementById('prev-button').addEventListener('click', () => showFullscreen((currentArtIndex - 1 + artItems.length) % artItems.length));
 
-    let touchstartX = 0;
-    let touchendX = 0;
+        let touchstartX = 0;
+        fullscreenGallery.addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
+        fullscreenGallery.addEventListener('touchend', e => {
+            const touchendX = e.changedTouches[0].screenX;
+            if (touchendX < touchstartX) showFullscreen((currentArtIndex + 1) % artItems.length);
+            if (touchendX > touchstartX) showFullscreen((currentArtIndex - 1 + artItems.length) % artItems.length);
+        });
 
-    fullscreenGallery.addEventListener('touchstart', e => {
-        touchstartX = e.changedTouches[0].screenX;
-    });
+        document.addEventListener('keydown', function(e) {
+            if (fullscreenGallery.style.display === 'flex') {
+                if (e.key === 'ArrowRight') showFullscreen((currentArtIndex + 1) % artItems.length);
+                if (e.key === 'ArrowLeft') showFullscreen((currentArtIndex - 1 + artItems.length) % artItems.length);
+                if (e.key === 'Escape') hideFullscreen();
+            }
+        });
+        window.addEventListener('resize', setMaxImageSize);
 
-    fullscreenGallery.addEventListener('touchend', e => {
-        touchendX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        if (touchendX < touchstartX) showNext();
-        if (touchendX > touchstartX) showPrev();
     }
-
-    document.addEventListener('keydown', function(e) {
-        if (fullscreenGallery.style.display === 'flex') {
-            if (e.key === 'ArrowRight') showNext();
-            if (e.key === 'ArrowLeft') showPrev();
-            if (e.key === 'Escape') hideFullscreen();
-        }
-    });
 });

@@ -128,7 +128,7 @@ footer {
 /* Responsive design */
 @media (max-width: 768px) {
     /* Existing styles... */
-    
+
     /* Adjust project image styles for mobile */
     .project-image {
         width: 100%;
@@ -176,7 +176,7 @@ footer {
     content: '•'; /* custom bullet symbol */
     color: #007bff; /* bullet color */
     font-weight: bold; /* makes the bullet bold */
-    display: inline-block; 
+    display: inline-block;
     width: 1em; /* space before bullet */
     margin-left: -1em; /* aligns bullet within the flow of the text */
 }
@@ -302,7 +302,7 @@ footer {
 
 
 @media (max-width: 768px) {
-    
+
     .profile-header {
         flex-direction: column; /* Stack image and text vertically on smaller screens */
         align-items: center; /* Center-align items */
@@ -385,7 +385,6 @@ footer {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .fullscreen-gallery {
     display: none;
     position: fixed;
@@ -409,7 +408,7 @@ footer {
 
 .fullscreen-image-container {
     max-width: 100%;
-    max-height: 80vh;
+    max-height: calc(100vh - 100px); /* Adjust this value as needed */
     display: flex;
     justify-content: center;
     align-items: center;
