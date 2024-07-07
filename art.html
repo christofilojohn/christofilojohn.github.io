@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John's CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- Navbar will be loaded here -->
+        <nav id="navbar">
+            <div class="nav-brand"></div>
+            <div class="nav-items" id="navItems">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="art.html">Art</a>
+                <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="instagram-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/john-christofilogiannis-baa407248/" target="_blank" class="linkedin-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.github.com/christofilojohn" target="_blank" class="social-icon github-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="art" class="box">
+            <div class="row">
+                <div class="column">
+                    <h2>My Artwork</h2>
+                    <p>Drawn on my iPad using ProCreate. </p>
+                </div>
+            </div>
+
+            <div class="art-gallery">
+                <div class="art-item" data-src="art/Portrait_player.png">
+                    <img src="art/Portrait_player.png" alt="Artwork 1">
+                    <div class="art-description">
+                        <h3>The hero</h3>
+                        <p>A portrait of my Unity project character.</p>
+                    </div>
+                </div>
+                <div class="art-item" data-src="art/Portrait_NPC_peasant.png">
+                    <img src="art/Portrait_NPC_peasant.png" alt="Artwork 1">
+                    <div class="art-description">
+                        <h3>The NPC</h3>
+                        <p>A portrait of my Unity project character.</p>
+                    </div>
+                </div>
+                <div class="art-item" data-src="art/einstein_rick.jpg">
+                    <img src="art/einstein_rick.jpg" alt="Artwork 1">
+                    <div class="art-description">
+                        <h3>Einstein Rick</h3>
+                        <p>Based on Rick from Rick and Morty.</p>
+                    </div>
+                </div>
+                <div class="art-item" data-src="art/steve_jobs.jpg">
+                    <img src="art/steve_jobs.jpg" alt="Artwork 2">
+                    <div class="art-description">
+                        <h3>Steve Jobs</h3>
+                        <p>A cartoonish portrait of Steve Jobs.</p>
+                    </div>
+                </div>
+                <div class="art-item" data-src="art/walter_white.png">
+                    <img src="art/walter_white.png" alt="Artwork 3">
+                    <div class="art-description">
+                        <h3>Walter White</h3>
+                        <p>A cartoonish portrait of Walter White (from Breaking Bad).</p>
+                    </div>
+                </div>
+                <div class="art-item" data-src="art/cuphead.jpg">
+                    <img src="art/cuphead.jpg" alt="Artwork 3">
+                    <div class="art-description">
+                        <h3>Cupheads</h3>
+                        <p>From the game Cuphead.</p>
+                    </div>
+                </div>
+                <div class="art-item" data-src="art/dalle_casa_de_papel.jpg">
+                    <img src="art/dalle_casa_de_papel.jpg" alt="Artwork 3">
+                    <div class="art-description">
+                        <h3>Dalle</h3>
+                        <p>A cartoonish portrait of Dalle in La Casa de Papel Clothing.</p>
+                    </div>
+                </div>
+                <div class="art-item" data-src="art/kratos.jpg">
+                    <img src="art/kratos.jpg" alt="Artwork 3">
+                    <div class="art-description">
+                        <h3>Kratos</h3>
+                        <p>A cartoonish portrait of Kratos (from God of War).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Existing footer... -->
+    </main>
+    <footer>
+        <p>&copy; January 2024 </p>
+    </footer>
+    <script src="scripts.js"></script>
+    <div id="fullscreen-gallery" class="fullscreen-gallery">
+        <div class="fullscreen-content">
+            <div class="fullscreen-image-container">
+                <img src="" alt="Fullscreen Image" id="fullscreen-image">
+            </div>
+            <div class="fullscreen-description">
+                <h3 id="fullscreen-title"></h3>
+                <p id="fullscreen-description"></p>
+            </div>
+        </div>
+        <button id="prev-button" class="gallery-button">&lt;</button>
+        <button id="next-button" class="gallery-button">&gt;</button>
+        <button id="close-button" class="gallery-button">×</button>
+    </div>
+</body>
+</html>
