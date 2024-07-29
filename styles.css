@@ -74,56 +74,195 @@ footer {
     z-index: 1000; /* Ensures the footer stays above other content */
 }
 
-
-
-/* Projects list styling */
-.projects-list {
-    list-style: none; /* Removes default bullet points */
-    padding: 0;
+#projects {
+  padding: 2rem;
 }
 
-.projects-list li {
-    margin-bottom: 20px; /* Space between projects */
-    padding: 10px;
-    border: 1px solid #ccc; /* A light border around each project */
-    border-radius: 8px; /* Optional: rounds the corners of the border */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  background-color: rgba(229, 229, 229, 0.47);
 }
 
 .project-image {
-    width: 100%; /* Responsive image width */
-    max-width: 300px; /* Maximum size of the image */
-    height: auto; /* Maintain aspect ratio */
-    margin: 10px 0; /* Space above and below the image */
+  height: 200px;
+  overflow: hidden;
+  background-color: #565656; /* Add this line to set a black background */
+  display: flex; /* Add this line */
+  align-items: center; /* Add this line */
+  justify-content: center; /* Add this line */
 }
 
-.project-info {
-    margin: 10px 0;
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Change this from 'cover' to 'contain' */
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.primary-tag,
+.secondary-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 50px;
+}
+
+.primary-tag {
+  color: #fff;
+  font-weight: bold;
+}
+
+.secondary-tag {
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 .project-date {
-    font-weight: bold;
+  font-size: 0.9rem;
+  color: #666;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.project-title {
-    margin: 5px 0;
+.project-card h2 {
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+  color: #333;
 }
 
-.project-description {
-    margin: 5px 0 10px;
+.project-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
 }
 
 .project-link {
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 0.9em;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+.project-link-github {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #6e5494;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
 .project-link:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
+
+.project-link-github:hover {
+  background-color: #463057;
+}
+
+/* Category-specific colors */
+.game-dev .primary-tag {
+  background-color: #FF6B6B;
+}
+
+.machine-learning .primary-tag {
+  background-color: #4ECDC4;
+}
+
+.image-processing .primary-tag {
+  background-color: #45B7D1;
+}
+
+.security .primary-tag {
+  background-color: #FF8C42;
+}
+
+.hardware .primary-tag {
+  background-color: #98C379;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*!* Projects list styling *!*/
+/*.projects-list {*/
+/*    list-style: none; !* Removes default bullet points *!*/
+/*    padding: 0;*/
+/*}*/
+
+/*.projects-list li {*/
+/*    margin-bottom: 20px; !* Space between projects *!*/
+/*    padding: 10px;*/
+/*    border: 1px solid #ccc; !* A light border around each project *!*/
+/*    border-radius: 8px; !* Optional: rounds the corners of the border *!*/
+/*}*/
+
+/*.project-image {*/
+/*    width: 100%; !* Responsive image width *!*/
+/*    max-width: 300px; !* Maximum size of the image *!*/
+/*    height: auto; !* Maintain aspect ratio *!*/
+/*    margin: 10px 0; !* Space above and below the image *!*/
+/*}*/
+
+/*.project-info {*/
+/*    margin: 10px 0;*/
+/*}*/
+
+/*.project-date {*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.project-title {*/
+/*    margin: 5px 0;*/
+/*}*/
+
+/*.project-description {*/
+/*    margin: 5px 0 10px;*/
+/*}*/
+
+/*.project-link {*/
+/*    background-color: #007bff;*/
+/*    color: white;*/
+/*    padding: 5px 10px;*/
+/*    text-decoration: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 0.9em;*/
+/*}*/
+
+/*.project-link:hover {*/
+/*    background-color: #0056b3;*/
+/*}*/
 
 /* Responsive design */
 @media (max-width: 768px) {
