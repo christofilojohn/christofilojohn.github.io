@@ -264,215 +264,136 @@ footer {
 /*    background-color: #0056b3;*/
 /*}*/
 
-/* Responsive design */
-@media (max-width: 768px) {
-    /* Existing styles... */
 
-    /* Adjust project image styles for mobile */
-    .project-image {
-        width: 100%;
-    }
+/* New and updated styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
 }
 
-/* End of CSS or not */
-
-/* Responsive image class */
-.responsive-img {
-    max-width: 100%;
-    height: auto;
-    display: block; /* ensures it takes up the full width of its container */
-    margin-bottom: 10px; /* space below the image */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Row for holding columns */
-.row {
-    margin-left: 5%;
-    margin-right: 5%;
-    display: flex;
-    justify-content: center; /* Center the columns */
-    flex-wrap: wrap; /* Allow the columns to wrap on smaller screens */
-    gap: 20px; /* Space between columns */
+/* Card styles */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Column class for side-by-side content */
-.column-3 {
-    flex: 1; /* Each column takes equal width */
-    max-width: 30%; /* Maximum width of each column */
+.card h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #2c3e50;
 }
 
-/* Column class for side-by-side content */
-.column {
-    flex: 1; /* Each column takes equal width */
-    max-width: 100%; /* Maximum width of each column */
-}
-
-/* Bullet points with custom styling */
-.styled-bullets {
-    list-style: none; /* removes default list style */
-    padding-left: 0; /* aligns bullets with the rest of the content */
-}
-.styled-bullets li:before {
-    content: '•'; /* custom bullet symbol */
-    color: #007bff; /* bullet color */
-    font-weight: bold; /* makes the bullet bold */
-    display: inline-block;
-    width: 1em; /* space before bullet */
-    margin-left: -1em; /* aligns bullet within the flow of the text */
-}
-
-.centered-img {
-    display: block; /* Allows margin to be applied */
-    margin-left: auto; /* Auto margin on the left */
-    margin-right: auto; /* Auto margin on the right */
-    width: 50%; /* Adjust width as needed */
-}
-
+/* Profile header styles */
 .profile-header {
-    display: flex; /* Enables Flexbox */
-    align-items: center; /* Vertically centers items in the container */
-    gap: 20px; /* Space between the image and the text */
-    margin-bottom: 20px; /* Space below the header */
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .profile-pic {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px; /* Maintain aspect ratio */
-    border-radius: 50%; /* Circular shape */
-    object-fit: cover; /* Ensures the image covers the area without stretching */
-}
-
-.styled-bullets a {
-    font-weight: normal; /* Removes bold styling */
-    color: #007bff; /* Link color, can be adjusted */
-    text-decoration: none; /* Removes underline */
-}
-
-.styled-bullets a:hover {
-    text-decoration: underline; /* Adds underline on hover for better UX */
-}
-
-.column-3 a ,.column a{
-    font-weight: normal; /* Removes bold styling */
-    color: #007bff; /* Link color, can be adjusted */
-    text-decoration: none; /* Removes underline */
-}
-
-.column-3 a:hover, .column a:hover {
-    text-decoration: underline; /* Adds underline on hover for better UX */
-}
-
-.image-gallery {
-    position: relative;
-    width: 90%; /* Adjust as per your requirement */
-    height: 300px; /* Adjust as per your requirement */
-    background-color: black; /* Black background for the gallery */
-    margin-bottom: 20px; /* Space for the dots */
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.image-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none; /* Hide initially */
-    overflow: hidden; /* Hide overflow */
-    text-align: center; /* Horizontal centering for inline elements */
-}
-
-.image-container img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
-}
-
-.gallery-dots {
-    position: absolute;
-    bottom: -20px; /* Positioning dots below the container */
-    left: 50%;
-    transform: translateX(-50%); /* Centering dots */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 5px;
-    background-color: #bbb;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* Grid layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+}
+
+.column-3 {
+    flex: 1;
+    padding: 10px;
+    min-width: 300px;
+}
+
+/* List styles */
+.styled-bullets {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.styled-bullets li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.styled-bullets li::before {
+    content: '•';
+    color: #3498db;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Experience and Education sections */
+.experience-item, .education-item {
+    margin-bottom: 20px;
+}
+
+.experience-item h3, .education-item h3 {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+}
+
+.experience-item p, .education-item p {
+    margin-bottom: 5px;
+}
+
+/* Button styles */
+.btn {
     display: inline-block;
-    transition: background-color 0.6s ease;
-}
-/* Ensure this selector is correct */
-.show-image {
-    display: block;
-}
-
-
-.active, .dot:hover {
-    opacity: 0.6;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-/*... Default to show the first image 
-.image-slide:first-child {
-    display: block;
+.btn:hover {
+    background-color: #2980b9;
 }
 
-.image-slide img {
-    width: 80%; /* Set image width to 80% of its container 
-    height: auto; /* Maintain aspect ratio 
-    display: block; /* Display as block 
-    margin: 0 auto; /* Center the image within its container 
-}...*/
-
-
-/* ... other styles ... */
-
-
+/* Responsive design */
 @media (max-width: 768px) {
-
     .profile-header {
-        flex-direction: column; /* Stack image and text vertically on smaller screens */
-        align-items: center; /* Center-align items */
-        text-align: center; /* Center-align text */
+        flex-direction: column;
+        text-align: center;
     }
 
     .profile-pic {
-        width: 80px; /* Smaller image size */
-        height: 80px; /* Maintain aspect ratio */
-        margin-bottom: 5px; /* Space below image */
+        margin-right: 0;
+        margin-bottom: 20px;
     }
-    .row {
-        flex-direction: column;
-    }
+
     .column-3 {
-        max-width: 100%; /* Each column takes full width on smaller screens */
+        flex: 100%;
     }
-    .nav-items {
-        flex-direction: row; /* Align items in a row on small screens */
-    }
-
-    .nav-items a {
-        font-size: smaller; /* Adjust font size for smaller screens */
-    }
-
-    .image-gallery {
-        position: relative;
-        width: 90%; /* Adjust as per your requirement */
-        height: 280px; /* Adjust as per your requirement */
-    }
-
 }
 
 /* New styles for the Art section */
@@ -651,4 +572,68 @@ footer {
     list-style: none; /* Hides default bullets */
     padding-left: 0; /* Aligns items with the rest of the content */
     color: black;
+}
+
+/*Main page gallery */
+.image-gallery {
+    position: relative;
+    width: 90%; /* Adjust as per your requirement */
+    height: 300px; /* Adjust as per your requirement */
+    background-color: black; /* Black background for the gallery */
+    margin-bottom: 20px; /* Space for the dots */
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none; /* Hide initially */
+    overflow: hidden; /* Hide overflow */
+    text-align: center; /* Horizontal centering for inline elements */
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+.gallery-dots {
+    position: absolute;
+    bottom: -20px; /* Positioning dots below the container */
+    left: 50%;
+    transform: translateX(-50%); /* Centering dots */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+/* Ensure this selector is correct */
+.show-image {
+    display: block;
+}
+
+
+.active, .dot:hover {
+    opacity: 0.6;
 }

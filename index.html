@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John's CV</title>
+    <title>John Christofilogiannis - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <header>
-        <!-- Navbar will be loaded here -->
         <nav id="navbar">
             <div class="nav-brand"></div>
             <div class="nav-items" id="navItems">
@@ -29,175 +28,147 @@
         </nav>
     </header>
 
-    <main>
-        <section id="summary">
-            <div class="profile-header">
-                <img src="images/profile.jpeg" alt="John Christofilogiannis" class="profile-pic">
-                <div>
-                    <h1>John Christofilogiannis</h1>
-                    <p>5th Year Student in School of Electrical and Computer Engineering at TUC</p>
+    <main role="main">
+         <section id="summary" class="section">
+                <div class="profile-header card">
+                    <img src="images/profile.jpeg" alt="John Christofilogiannis" class="profile-pic">
+                    <div>
+                        <h1>John Christofilogiannis</h1>
+                        <p>5th Year Student in School of Electrical and Computer Engineering at TUC</p>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <div class="row">
-        <div class="column-3">
-            <section id="interests">
-                <h2 id="c3">Interests</h2>
-                <ul class="styled-bullets">
-                    <li>💻 Programming</li>
-                    <li>🎨 Sketching</li>
-                    <li>📚 Reading</li>
-                    <li>✈️ Traveling</li>
-                    <li>🤖 Artificial Intelligence</li>
-                    <li>🧠 Machine Learning</li>
-                    <li>🖌️ UI/UX</li>
-                    <li>🎮 Video games</li>
-                </ul>
             </section>
-        </div>
+        <div class="container">
 
-        <div class="column-3">
-            <section id="skills">
-                <h2 id="c3">Skills</h2>
-                <ul class="styled-bullets">
-                    <li>💻 Programming Languages: Java, C, Python, VHDL, SQL</li>
-                    <li>🌐 Making Graphical User Interface Applications and Websites</li>
-                    <li>🖥️ Experience on Operating Systems like Windows, Linux , Mac OS</li>
-                    <li>🔌 Circuit Design Software Knowledge </li>
 
-                </ul>
-            </section>
-        </div>
+<!--            <div class="row">-->
+<!--                <div class="column-3">-->
+                    <section id="interests" class="section card">
+                        <h2>Interests</h2>
+                        <ul class="styled-bullets">
+                            <li>💻 Programming</li>
+                            <li>🎨 Sketching</li>
+                            <li>📚 Reading</li>
+                            <li>✈️ Traveling</li>
+                            <li>🤖 Artificial Intelligence</li>
+                            <li>🧠 Machine Learning</li>
+                            <li>🖌️ UI/UX</li>
+                            <li>🎮 Video games</li>
+                        </ul>
+                    </section>
+<!--                </div>-->
 
-        <div class="column-3">
-            <section id="characteristics">
-                <h2 id="c3">Characteristics</h2>
-                <ul class="styled-bullets">
-                    <li>💡 Creative</li>
-                    <li>🚀 Innovative</li>
-                    <li>🧠 Complex problem solver</li>
-                    <li>👥 Team player</li>
-                </ul>
-            </section>
-        </div>
-    </div>
+<!--                <div class="column-3">-->
+                    <section id="skills" class="section card">
+                        <h2>Skills</h2>
+                        <ul class="styled-bullets">
+                            <li>💻 Programming Languages: Java, C, Python, VHDL, SQL</li>
+                            <li>🌐 Making Graphical User Interface Applications and Websites</li>
+                            <li>🖥️ Experience on Operating Systems like Windows, Linux, Mac OS</li>
+                            <li>🔌 Circuit Design Software Knowledge</li>
+                        </ul>
+                    </section>
+<!--                </div>-->
 
-        <section id="experience" class="box">
-            <div class="row">
-                <div class="column">
+<!--                <div class="column-3">-->
+                    <section id="characteristics" class="section card">
+                        <h2>Characteristics</h2>
+                        <ul class="styled-bullets">
+                            <li>💡 Creative</li>
+                            <li>🚀 Innovative</li>
+                            <li>🧠 Complex problem solver</li>
+                            <li>👥 Team player</li>
+                        </ul>
+                    </section>
+<!--                </div>-->
+<!--            </div>-->
+
+            <section id="experience" class="section box card">
                 <h2>Experience</h2>
-                </div>
-            </div>
-
-            <!-- Internship-->
-            <div class="row">
-                <div class="column">
-                    <strong> Internship in Edinburgh - Heriott Watt University BCML Lab</strong> <br> 07/2023 – 08/2023
-                    (<a href="https://bioml.eu.org/team/" target="https://bioml.eu.org/team/">visit website</a>)
+                <div class="experience-item">
+                    <h3>Internship in Edinburgh - Heriott Watt University BCML Lab</h3>
+                    <p>07/2023 -- 08/2023 (<a href="https://bioml.eu.org/team/" target="https://bioml.eu.org/team/">visit website</a>)</p>
                     <ul class="styled-bullets">
-                        <li>Worked on a Machine Learning project based on anomally detection on fish gills</li>
+                        <li>Worked on a Machine Learning project based on anomaly detection on fish gills</li>
                         <li>Made <a href="https://qupath.github.io/" target="https://qupath.github.io/">Qupath</a> automation tools using Groovy</li>
                         <li>Made Python GUI using tkinter</li>
                     </ul>
                 </div>
-            </div>
-            <br>
-            <!-- TUCer-->
-            <div class="row">
-                <div class="column">
-                    <strong> Software Developer at TUCer team </strong> <br> 01/2023 – 07/2023
-                    (<a href="https://www.tucer.tuc.gr/el/archiki" target="https://www.tucer.tuc.gr/el/archiki">visit website</a>)
+
+                <div class="experience-item">
+                    <h3>Software Developer at TUCer team</h3>
+                    <p>01/2023 -- 07/2023 (<a href="https://www.tucer.tuc.gr/el/archiki" target="https://www.tucer.tuc.gr/el/archiki">visit website</a>)</p>
                     <ul class="styled-bullets">
-                        <li>Worked on autonomous driving algorithms using ROS ,
-                            Python and Arduino software</li>
-                        <li>Participated at
-                            <a href="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html" target="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html">
-                            Shell Eco Marathon Autonomous
-                            Competition 2023</a>
-                            in Nogaro - France.
-                            </li>
-                        </ul>
+                        <li>Worked on autonomous driving algorithms using ROS, Python and Arduino software</li>
+                        <li>Participated at <a href="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html" target="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html">Shell Eco Marathon Autonomous Competition 2023</a> in Nogaro - France.</li>
+                    </ul>
                 </div>
-            </div>
-            <br>
             </section>
-            <section id="education" class="box"></section>
-            <div class="row">
-                <div class="column">
+
+            <section id="education" class="section box card">
                 <h2>Education</h2>
-                </div>
-            </div>
-            <!-- University-->
-            <div class="row">
-                <div class="column">
-                    <strong> 5th year undergraduate student <br> School of Electrical and Computer Engineering (ECE) Technical University of Crete (TUC)</strong> <br> 09/2019 – now
-                    (<a href="https://www.ece.tuc.gr/" target="https://www.ece.tuc.gr/">visit website</a>)
+                <div class="education-item">
+                    <h3>5th year undergraduate student<br>School of Electrical and Computer Engineering (ECE) Technical University of Crete (TUC)</h3>
+                    <p>09/2019 -- now (<a href="https://www.ece.tuc.gr/" target="https://www.ece.tuc.gr/">visit website</a>)</p>
                     <ul class="styled-bullets">
                         <li>236 ECTS as of 12/2023</li>
-                        <li>Winning team in TUC CTF 2023 competition</li>                    </ul>
+                        <li>Winning team in TUC CTF 2023 competition</li>
+                    </ul>
                 </div>
-            </div>
-            <br>
 
-            <!-- School-->
-            <div class="row">
-                <div class="column">
-                    <strong>Graduate of PIERCE American College of Greece</strong> <br> 2019
-                    (<a href="http://www.pierce.gr" target="http://www.pierce.gr">visit website</a>)
+                <div class="education-item">
+                    <h3>Graduate of PIERCE American College of Greece</h3>
+                    <p>2019 (<a href="http://www.pierce.gr" target="http://www.pierce.gr">visit website</a>)</p>
                     <ul class="styled-bullets">
                         <li>Elected Member of the PIERCE Student Board for 3 years (2016-2019)</li>
                         <li>Distinctions in mathematics Student Competitions: Kangaroo, Hellenic Mathematic Society (Thales)</li>
                     </ul>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="column">
+                <h3>Notable Grades:</h3>
                 <ul class="styled-bullets">
-                    <strong><br>Notable Grades:</strong>
                     <li>Computer Security (C,Unix exercises): 10</li>
                     <li>Data and File Structures (with Java labs): 9.5</li>
-                    <li>Computer Organization (Creation of a MIPS-like processor in VHDL): 10 </li>
+                    <li>Computer Organization (Creation of a MIPS-like processor in VHDL): 10</li>
                     <li>Object Oriented Programming (Java): 9</li>
-                    <li>Computation Theory (Bison compiler and flex analyzer project): 9 </li>
+                    <li>Computation Theory (Bison compiler and flex analyzer project): 9</li>
                     <li>Reinforcement Learning (Q-learning and deep Q-learning video recommendations project): 9</li>
                     <li>Operating Systems (C, Unix Knowledge): 8</li>
                     <li>Introduction to Programming and Informatics (C): 8.5</li>
                     <li>Digital Computers (MIPS Assembly): 8</li>
                     <li>Software Development Tools & System Programming: 8.5</li>
                 </ul>
+            </section>
+            <div class="container box card">
+                <h2>Photo Gallery</h2>
+            <div class="image-gallery">
+                <div class="image-container">
+                    <img src="images/edinburgh.jpg" alt="First Image">
+                </div>
+                <div class="image-container">
+                    <img src="images/edinburgh2.jpg" alt="First Image">
+                </div>
+                <div class="image-container">
+                    <img src="images/tucer1.jpg" alt="Second Image">
+                </div>
+                <div class="image-container">
+                    <img src="images/tucer2.jpg" alt="Second Image">
+                </div>
+                <div class="gallery-dots">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
                 </div>
             </div>
-
-
-                <div class="image-gallery">
-                    <div class="image-container">
-                        <img src="images/edinburgh.jpg" alt="First Image">
-                    </div>
-                    <div class="image-container">
-                        <img src="images/edinburgh2.jpg" alt="First Image">
-                    </div>
-                    <div class="image-container">
-                        <img src="images/tucer1.jpg" alt="Second Image">
-                    </div>
-                    <div class="image-container">
-                        <img src="images/tucer2.jpg" alt="Second Image">
-                    </div>
-                    <div class="gallery-dots">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                        <span class="dot" onclick="currentSlide(4)"></span>
-                    </div>
                 </div>
-
-        </section>
-
+        </div>
     </main>
+
     <footer>
-        <p>&copy; January 2024 </p>
+        <p>© January 2024</p>
     </footer>
+
     <script src="scripts.js"></script>
 </body>
 </html>
