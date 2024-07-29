@@ -196,7 +196,7 @@ footer {
   background-color: #4ECDC4;
 }
 
-.image-processing .primary-tag {
+.networks .primary-tag {
   background-color: #45B7D1;
 }
 
@@ -215,56 +215,6 @@ footer {
   }
 }
 
-/*!* Projects list styling *!*/
-/*.projects-list {*/
-/*    list-style: none; !* Removes default bullet points *!*/
-/*    padding: 0;*/
-/*}*/
-
-/*.projects-list li {*/
-/*    margin-bottom: 20px; !* Space between projects *!*/
-/*    padding: 10px;*/
-/*    border: 1px solid #ccc; !* A light border around each project *!*/
-/*    border-radius: 8px; !* Optional: rounds the corners of the border *!*/
-/*}*/
-
-/*.project-image {*/
-/*    width: 100%; !* Responsive image width *!*/
-/*    max-width: 300px; !* Maximum size of the image *!*/
-/*    height: auto; !* Maintain aspect ratio *!*/
-/*    margin: 10px 0; !* Space above and below the image *!*/
-/*}*/
-
-/*.project-info {*/
-/*    margin: 10px 0;*/
-/*}*/
-
-/*.project-date {*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*.project-title {*/
-/*    margin: 5px 0;*/
-/*}*/
-
-/*.project-description {*/
-/*    margin: 5px 0 10px;*/
-/*}*/
-
-/*.project-link {*/
-/*    background-color: #007bff;*/
-/*    color: white;*/
-/*    padding: 5px 10px;*/
-/*    text-decoration: none;*/
-/*    border-radius: 5px;*/
-/*    font-size: 0.9em;*/
-/*}*/
-
-/*.project-link:hover {*/
-/*    background-color: #0056b3;*/
-/*}*/
-
-
 /* New and updated styles */
 body {
     font-family: 'Roboto', sans-serif;
@@ -274,7 +224,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 880px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -306,14 +256,14 @@ body {
 }
 
 .profile-pic {
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     margin-right: 20px;
 }
 
 .profile-header h1 {
-    font-size: 2.5em;
+    font-size: 1.7em;
     margin-bottom: 10px;
 }
 
@@ -576,8 +526,9 @@ body {
 
 /*Main page gallery */
 .image-gallery {
+    border-radius: 10px;
     position: relative;
-    width: 90%; /* Adjust as per your requirement */
+    width: 100%; /* Adjust as per your requirement */
     height: 300px; /* Adjust as per your requirement */
     background-color: black; /* Black background for the gallery */
     margin-bottom: 20px; /* Space for the dots */
@@ -628,11 +579,10 @@ body {
     display: inline-block;
     transition: background-color 0.6s ease;
 }
-/* Ensure this selector is correct */
+
 .show-image {
     display: block;
 }
-
 
 .active, .dot:hover {
     opacity: 0.6;
