@@ -587,3 +587,49 @@ body {
 .active, .dot:hover {
     opacity: 0.6;
 }
+
+/* Styling links */
+.link {
+    color: #007bff; /* Slightly lighter blue color */
+    text-decoration: none; /* Removes the underline */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.link:hover {
+    color: #003fb3; /* Darker blue on hover */
+    text-decoration: underline; /* Underline appears on hover */
+}
+
+.experience-item p {
+    color: #7e7e7e;
+}
+.education-item p {
+    color: #7e7e7e;
+}
+
+.grades-table thead tr {
+    background-color: #144460;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.grades-table th, .grades-table td {
+    padding: 8px 10px; /* Reduced padding to make the table more compact */
+    border-bottom: 1px solid #dddddd;
+}
+
+.grades-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.grades-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 600px) {
+    .grades-table th:nth-child(2),
+    .grades-table td:nth-child(2) {
+        display: none;
+    }
+}
