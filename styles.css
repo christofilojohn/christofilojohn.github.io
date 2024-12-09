@@ -24,7 +24,8 @@ body {
 }
 
 header {
-    background: rgba(51, 51, 51, 0.9); /* Transparency effect */
+    /*background: rgba(51, 51, 51, 0.9); /* Transparency effect */
+    background: #2E4053;
     color: #fff;
     padding: 10px 0;
     position: fixed;
@@ -136,7 +137,7 @@ footer {
 
 .secondary-tag {
   background-color: #f0f0f0;
-  color: #333;
+  color: #2E4053;
 }
 
 .project-date {
@@ -161,7 +162,7 @@ footer {
 .project-link {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: #007bff;
+  background-color: #2E4053;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
@@ -220,7 +221,7 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #D5D8DC;
 }
 
 .container {
@@ -590,13 +591,13 @@ body {
 
 /* Styling links */
 .link {
-    color: #007bff; /* Slightly lighter blue color */
+    color: #2E4053; /* Slightly lighter blue color */
     text-decoration: none; /* Removes the underline */
     transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .link:hover {
-    color: #003fb3; /* Darker blue on hover */
+    color: #2E4053; /* Darker blue on hover */
     text-decoration: underline; /* Underline appears on hover */
 }
 
@@ -608,23 +609,25 @@ body {
 }
 
 .grades-table thead tr {
-    background-color: #144460;
-    color: #ffffff;
+    background-color: #F1C40F;
+    color: #2E4053;
     text-align: left;
     font-weight: bold;
 }
 
 .grades-table th, .grades-table td {
     padding: 8px 10px; /* Reduced padding to make the table more compact */
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #D5D8DC;
+    
 }
 
 .grades-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #D5D8DC;
+    
 }
 
 .grades-table tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: #D5D8DC;
 }
 
 @media (max-width: 600px) {
