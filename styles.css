@@ -636,3 +636,34 @@ body {
         display: none;
     }
 }
+
+/* Grades */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+    font-size: 0.85em;
+}
+
+.grade-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    background: white;
+}
+
+.grade-card .course {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.grade-card .details {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.grade-card .grade {
+    float: right;
+    font-weight: bold;
+    color: #007bff;
+}
