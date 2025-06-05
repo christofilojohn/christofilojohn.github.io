@@ -4,356 +4,2234 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Christofilogiannis - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Updated Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+/* Complete Portfolio Website CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Material Design 3 Color Scheme */
+    --md-primary: #1976D2;
+    --md-primary-variant: #1565C0;
+    --md-secondary: #FF6F00;
+    --md-secondary-variant: #F57C00;
+    --md-background: #FAFAFA;
+    --md-surface: #FFFFFF;
+    --md-error: #D32F2F;
+    --md-on-primary: #FFFFFF;
+    --md-on-secondary: #FFFFFF;
+    --md-on-background: #212121;
+    --md-on-surface: #212121;
+   
+    /* Glass effect colors */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+   
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+   
+    /* Border radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-round: 50%;
+   
+    /* Elevation */
+    --elevation-1: 0 2px 4px rgba(0,0,0,0.1);
+    --elevation-2: 0 4px 8px rgba(0,0,0,0.12);
+    --elevation-3: 0 8px 16px rgba(0,0,0,0.14);
+    --elevation-4: 0 16px 24px rgba(0,0,0,0.16);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--md-on-background);
+    background: var(--md-background);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background pattern - REMOVED BLUE EFFECT */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+header {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 10000 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--elevation-2);
+    height: 80px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+    z-index: 10001 !important;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--md-primary);
+    letter-spacing: 0.5px;
+    z-index: 10002 !important;
+    position: relative;
+}
+
+.nav-items {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap !important;
+    z-index: 10002 !important;
+    position: relative;
+    background: transparent !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+/* Regular navigation links */
+.nav-items a:not(.social-icon) {
+    color: var(--md-on-background);
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 10003 !important;
+}
+
+/* Ripple effect for nav links */
+.nav-items a:not(.social-icon)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(25, 118, 210, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.nav-items a:not(.social-icon):hover::before {
+    width: 100px;
+    height: 100px;
+}
+
+.nav-items a:not(.social-icon):hover {
+    background: rgba(25, 118, 210, 0.08);
+    color: var(--md-primary);
+}
+
+/* Social media icons in navigation */
+.social-icon {
+    font-size: 1.2rem;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    flex-basis: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 10003 !important;
+    
+    /* Force visibility and prevent expansion */
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    background: transparent !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.social-icon i {
+    display: block !important;
+    line-height: 1;
+    font-size: 1.2rem !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+    text-align: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    overflow: visible !important;
+}
+
+/* Platform-specific colors */
+.fa-instagram { color: #E4405F !important; }
+.fa-linkedin, .fa-linkedin-in { color: #0077B5 !important; }
+.fa-github { color: #333 !important; }
+
+.social-icon:hover {
+    background: rgba(25, 118, 210, 0.08) !important;
+    transform: scale(1.1) !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+/* Mobile menu button */
+.mobile-menu {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--md-on-background);
+    background: none;
+    border: none;
+    padding: var(--spacing-sm);
+    z-index: 10003 !important;
+    position: relative;
+}
+
+/* Ensure navigation never gets affected by reveal animations */
+nav, nav *, .nav-items, .nav-items *, .social-icon, .social-icon * {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+/* Prevent any pseudo-elements from covering navigation */
+header::before,
+header::after,
+nav::before,
+nav::after,
+.social-icon::before,
+.social-icon::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Additional social icon constraints */
+.nav-items .social-icon {
+    flex: 0 0 auto !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+/* Prevent any conflicting styles */
+.social-icon * {
+    box-sizing: border-box !important;
+}
+
+/* Remove any conflicting button styles from social icons */
+.social-icon.btn,
+.nav-items .social-icon.btn {
+    min-width: 40px !important;
+    max-width: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure main content starts below the fixed header */
+main {
+    padding-top: 80px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero section should not overlap navigation */
+.hero {
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+}
+
+/* Gallery images should not overflow */
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Prevent any pseudo-elements from causing issues */
+.hero::before,
+.hero::after {
+    z-index: -1;
+}
+
+/* Footer should be below everything */
+footer {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ensure all interactive elements are clickable */
+a, button, .btn, .social-icon {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+    padding-top: 80px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--md-background);
+}
+
+.hero-content {
+    text-align: center;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--spacing-xl);
+}
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: var(--radius-round);
+    box-shadow: var(--elevation-3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 4px solid var(--md-surface);
+    object-fit: cover;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: var(--elevation-4);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: var(--spacing-md);
+    color: var(--md-on-background);
+    letter-spacing: -1px;
+}
+
+.hero h1 span {
+    font-weight: 500;
+    color: var(--md-primary);
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: var(--spacing-xl);
+    font-weight: 300;
+}
+
+/* ===== BUTTONS ===== */
+.cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    min-width: 140px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn i {
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    box-shadow: var(--elevation-2);
+}
+
+.btn-primary:hover {
+    background: var(--md-primary-variant);
+    box-shadow: var(--elevation-3);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--md-primary);
+    border: 2px solid var(--md-primary);
+}
+
+.btn-secondary:hover {
+    background: rgba(25, 118, 210, 0.08);
+    transform: translateY(-2px);
+}
+
+/* Ripple animation for buttons */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator {
+    position: absolute;
+    bottom: var(--spacing-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    animation: float 2s ease-in-out infinite;
+    color: var(--md-primary);
+    font-size: 1.5rem;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* ===== CARDS ===== */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--elevation-2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    box-shadow: var(--elevation-3);
+    transform: translateY(-2px);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: var(--spacing-md);
+    color: var(--md-on-surface);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.card h2 i {
+    color: var(--md-primary);
+    font-size: 1.25rem;
+}
+
+/* ===== GRID LAYOUTS ===== */
+.grid {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* ===== LINKS STYLING ===== */
+.link {
+    color: var(--md-primary);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    padding-bottom: 1px;
+}
+
+.link:hover {
+    color: var(--md-primary-variant);
+    border-bottom: 1px solid var(--md-primary);
+    transform: translateY(-1px);
+}
+
+.link:visited {
+    color: var(--md-primary);
+}
+
+/* Education section specific styling */
+#education .date {
+    color: var(--md-primary);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-sm);
+    font-style: italic;
+}
+
+#education h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+    color: var(--md-on-surface);
+}
+
+#education .chip-container {
+    margin: var(--spacing-md) 0;
+}
+
+/* Experience section links */
+#experience .link {
+    font-size: 0.875rem;
+    margin-left: var(--spacing-xs);
+}
+
+/* Styled bullets for lists */
+.styled-bullets {
+    list-style: none;
+    padding: 0;
+}
+
+.styled-bullets li {
+    padding: var(--spacing-xs) 0;
+    position: relative;
+    padding-left: var(--spacing-lg);
+}
+
+.styled-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--md-secondary);
+}
+.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.chip {
+    background: var(--md-surface);
+    color: var(--md-on-surface);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-xl);
+    font-size: 0.875rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.chip:hover {
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    box-shadow: var(--elevation-2);
+    transform: translateY(-2px);
+}
+
+.chip-icon {
+    font-size: 1rem;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+    position: relative;
+    padding-left: var(--spacing-xl);
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: var(--md-primary);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: var(--spacing-xl);
+    animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -33px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background: var(--md-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--md-background);
+}
+
+.timeline-item h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+    color: var(--md-on-surface);
+}
+
+.timeline-item .date {
+    color: var(--md-primary);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.timeline-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-item li {
+    padding: var(--spacing-xs) 0;
+    position: relative;
+    padding-left: var(--spacing-lg);
+}
+
+.timeline-item li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--md-secondary);
+}
+
+/* ===== GRADE CARDS ===== */
+.grade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.grade-card {
+    background: var(--md-surface);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--elevation-1);
+    transition: all 0.3s ease;
+}
+
+.grade-card:hover {
+    box-shadow: var(--elevation-2);
+    transform: translateY(-2px);
+}
+
+.course {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.grade {
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+}
+
+.details {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* ===== PROJECT CARDS ===== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.project-card {
+    background: var(--md-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--elevation-2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.project-card:hover {
+    box-shadow: var(--elevation-4);
+    transform: translateY(-4px);
+}
+
+.project-image {
+    height: 200px;
+    background: linear-gradient(135deg, var(--md-primary) 0%, var(--md-primary-variant) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-content {
+    padding: var(--spacing-lg);
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+.project-tag {
+    background: rgba(25, 118, 210, 0.1);
+    color: var(--md-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.project-card h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+    color: var(--md-on-surface);
+}
+
+.project-card p {
+    color: #666;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    aspect-ratio: 1;
+    cursor: pointer;
+    box-shadow: var(--elevation-2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover {
+    box-shadow: var(--elevation-3);
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    padding: var(--spacing-md);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h4 {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox.show {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    max-width: 95vw;
+    max-height: 95vh;
+    position: relative;
+    animation: zoomIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+/* ===== CONTACT SECTION ===== */
+#contact {
+    margin-top: var(--spacing-xxl);
+    position: relative;
+    z-index: 1;
+}
+
+#contact .card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xxl);
+    text-align: center;
+    box-shadow: var(--elevation-2);
+    position: relative;
+    overflow: hidden;
+}
+
+#contact h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--md-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+#contact h2 i {
+    color: var(--md-primary);
+    font-size: 1.5rem;
+}
+
+#contact p {
+    color: #666;
+    margin-bottom: var(--spacing-xl);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+#contact .cta-buttons {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xl);
+}
+
+#contact .btn {
+    min-width: 160px;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1rem;
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    border: none;
+    cursor: pointer;
+}
+
+#contact .btn i {
+    font-size: 1.25rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-top: var(--spacing-xxl);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* ===== FLOATING ACTION BUTTON ===== */
+.fab {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 56px;
+    height: 56px;
+    color: var(--md-on-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--elevation-3);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    transform: scale(0);
+    border: none;
+}
+
+.fab.show {
+    transform: scale(1);
+}
+
+.fab:hover {
+    background: var(--md-primary-variant);
+    box-shadow: var(--elevation-4);
+    transform: scale(1.1);
+}
+
+.fab i {
+    font-size: 1.5rem;
+}
+
+/* ===== LOADING ANIMATION ===== */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--md-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--glass-border);
+    border-top-color: var(--md-primary);
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== INTERSECTION OBSERVER ANIMATION ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--md-background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--md-primary);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--md-primary-variant);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .nav-items {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--glass-bg) !important;
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: var(--spacing-lg);
+        box-shadow: var(--elevation-3);
+        border-top: 1px solid var(--glass-border);
+        z-index: 10000 !important;
+    }
+
+    .nav-items.show {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        padding-left: var(--spacing-md);
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Mobile contact buttons */
+    #contact .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: var(--spacing-xl) auto 0;
+    }
+
+    #contact .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .grade-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .card {
+        padding: var(--spacing-md);
+    }
+
+    .fab {
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+a:focus,
+button:focus,
+.social-icon:focus,
+.btn:focus,
+.gallery-item:focus {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --md-primary: #0066CC;
+        --md-background: #FFFFFF;
+        --md-on-background: #000000;
+        --glass-bg: rgba(255, 255, 255, 0.95);
+    }
+}
+
+/* Print styles */
+@media print {
+    .fab,
+    .loader,
+    .lightbox,
+    .scroll-indicator {
+        display: none !important;
+    }
+    
+    .card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+}
+
+/* Font Awesome specific fixes */
+.fab, .fas, .fa {
+    font-family: "Font Awesome 5 Brands", "Font Awesome 5 Free" !important;
+    font-weight: 900 !important;
+    display: inline-block !important;
+}
+
+.fab {
+    font-weight: 400 !important;
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+
+.p-0 { padding: 0; }
+.p-1 { padding: var(--spacing-xs); }
+.p-2 { padding: var(--spacing-sm); }
+.p-3 { padding: var(--spacing-md); }
+.p-4 { padding: var(--spacing-lg); }
+.p-5 { padding: var(--spacing-xl); }
+
+/* Hidden utility */
+.hidden {
+    display: none !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Animation classes */
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple-effect {
+    animation: ripple 0.6s linear;
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --md-background: #121212;
+        --md-surface: #1E1E1E;
+        --md-on-background: #FFFFFF;
+        --md-on-surface: #FFFFFF;
+        --glass-bg: rgba(30, 30, 30, 0.8);
+        --glass-border: rgba(255, 255, 255, 0.1);
+    }
+    
+    .fa-github { 
+        color: #FFFFFF !important; 
+    }
+    
+    .card {
+        background: var(--glass-bg);
+        border-color: var(--glass-border);
+    }
+    
+    .chip {
+        background: var(--md-surface);
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+    
+    .grade-card,
+    .project-card {
+        background: var(--md-surface);
+    }
+}
+
+/* Enhanced mobile touch targets */
+@media (max-width: 768px) {
+    .social-icon {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .btn {
+        min-height: 44px;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .mobile-menu {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* Performance optimizations */
+.hero-content,
+.card,
+.project-card,
+.gallery-item {
+    will-change: transform;
+}
+
+.hero-content.loaded,
+.card.loaded,
+.project-card.loaded,
+.gallery-item.loaded {
+    will-change: auto;
+}
+
+/* Smooth scrolling for all browsers */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-backdrop-filter: blur(20px)) {
+    .card,
+    header {
+        -webkit-backdrop-filter: blur(20px);
+    }
+}
+
+/* Firefox-specific fixes */
+@-moz-document url-prefix() {
+    .card,
+    header {
+        background: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Internet Explorer fallbacks */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .card,
+    header {
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .grid-3 {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .grid-3 > * {
+        flex: 1 1 300px;
+        margin: var(--spacing-sm);
+    }
+}</style>
 </head>
 <body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <header>
-        <nav id="navbar">
+        <nav>
             <div class="nav-brand"></div>
             <div class="nav-items" id="navItems">
-                <a href="index.html">Home</a>
-                <a href="projects.html">Projects</a>
-                <a href="art.html">Art</a>
-                <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="instagram-icon">
+                <a href="#home">Home</a>
+<!--                <a href="#about">About</a>-->
+<!--                <a href="#skills">Skills</a>-->
+                <a href="#experience">Experience</a>
+<!--                <a href="#education">Education</a>-->
+                <a href="#projects">Projects</a>
+                <a href="#art">Art</a>
+<!--                <a href="#contact">Contact</a>-->
+                <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="social-icon" title="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/john-christofilogiannis-baa407248/" target="_blank" class="linkedin-icon">
+                <a href="https://www.linkedin.com/in/john-christofilogiannis-baa407248/" target="_blank" class="social-icon" title="LinkedIn">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://www.github.com/christofilojohn" target="_blank" class="social-icon github-icon">
+                <a href="https://www.github.com/christofilojohn" target="_blank" class="social-icon" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
+            <button class="mobile-menu" id="mobileMenuBtn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
-    <main role="main">
-         <section class="container">
-                <div class="profile-header card">
-                    <img src="images/profile.png" alt="John Christofilogiannis" class="profile-pic">
-                    <div>
-                        <h1>John Christofilogiannis</h1>
-                        <p>5th Year Student in School of Electrical and Computer Engineering at TUC</p>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="profile-img-container">
+                    <img src="images/omalos.HEIC" alt="John Christofilogiannis" class="profile-pic">
+                </div>
+                <h1>Ioannis <span>Christofilogiannis</span></h1>
+                <p id="heroSubtitle">Electrical & Computer Engineer | TUC Graduate</p>
+                <div class="cta-buttons">
+                    <a href="#experience" class="btn btn-primary">
+                        <i class="fas fa-briefcase"></i>View Experience
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>Get in Touch
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="container">
+            <div class="grid grid-3">
+                <div class="card reveal">
+                    <h2><i class="fas fa-heart"></i> Interests</h2>
+                    <div class="chip-container">
+                        <div class="chip">
+                            <span class="chip-icon">💻</span>
+                            <span>Programming</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">🎨</span>
+                            <span>Sketching</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">📚</span>
+                            <span>Reading</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">✈️</span>
+                            <span>Traveling</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">🤖</span>
+                            <span>AI</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">🧠</span>
+                            <span>ML</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">🌐</span>
+                            <span>Federated Learning</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">🖌️</span>
+                            <span>UI/UX</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">🎮</span>
+                            <span>Gaming</span>
+                        </div>
                     </div>
                 </div>
-            </section>
-        <div class="container">
 
+                <div class="card reveal">
+                    <h2><i class="fas fa-code"></i> Technical Skills</h2>
+                    <div class="chip-container">
+                        <div class="chip">Python</div>
+                        <div class="chip">C/C++</div>
+                        <div class="chip">C#</div>
+                        <div class="chip">Java</div>
+                        <div class="chip">VHDL</div>
+                        <div class="chip">SQL</div>
+                        <div class="chip">Unity</div>
+                        <div class="chip">GUI Dev</div>
+                        <div class="chip">Web Dev</div>
+                        <div class="chip">Linux</div>
+                        <div class="chip">Windows</div>
+                        <div class="chip">macOS</div>
+                    </div>
+                </div>
 
-<!--            <div class="row">-->
-<!--                <div class="column-3">-->
-                    <section id="interests" class="section card">
-                        <h2>Interests</h2>
-                        <ul class="styled-bullets">
-                            <li>💻 Programming</li>
-                            <li>🎨 Sketching</li>
-                            <li>📚 Reading</li>
-                            <li>✈️ Traveling</li>
-                            <li>🤖 Artificial Intelligence</li>
-                            <li>🌐 Federated Learning</li>
-                            <li>🧠 Machine Learning</li>
-                            <li>🖌️ UI/UX</li>
-                            <li>🎮 Video games</li>
+                <div class="card reveal">
+                    <h2><i class="fas fa-star"></i> Characteristics</h2>
+                    <div class="chip-container">
+                        <div class="chip">
+                            <span class="chip-icon">💡</span>
+                            <span>Creative</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">🚀</span>
+                            <span>Innovative</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">🧠</span>
+                            <span>Problem Solver</span>
+                        </div>
+                        <div class="chip">
+                            <span class="chip-icon">👥</span>
+                            <span>Team Player</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="container">
+            <div class="card reveal">
+                <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+                <div class="timeline">
+                 <div class="timeline-item">
+                        <h3>ML, Computer Vision Researcher - Hellenic Center for Marine Research</h3>
+                        <p class="date">Remote | November 2024 - July 2025</p>
+                        <ul>
                         </ul>
-                    </section>
-<!--                </div>-->
-
-<!--                <div class="column-3">-->
-                    <section id="skills" class="section card">
-                        <h2>Skills</h2>
-                        <ul class="styled-bullets">
-                            <li>💻 Programming Languages: Python, C/C++/C#, Java, VHDL, SQL</li>
-                            <li>🌐 Making Graphical User Interface Applications and Websites</li>
-                            <li>🎮 Game Development in Unity</li>
-                            <li>🖥️ Experience on Operating Systems like Windows, Linux, Mac OS</li>
-                            <li>🔌 Circuit Design Software Knowledge</li>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>ML Research Intern - Heriot Watt University</h3>
+                        <p class="date">Edinburgh, Scotland | July - August 2023</p>
+                        <ul>
+                            <li>Developed machine learning algorithms for anomaly detection in fish gill analysis</li>
+                            <li>Automated Qupath workflows using Groovy scripting</li>
+                            <li>Created Python GUI application using tkinter for biomedical image processing</li>
+                            <li>Collaborated with BCML Lab research team on cutting-edge ML projects</li>
                         </ul>
-                    </section>
-<!--                </div>-->
-
-<!--                <div class="column-3">-->
-                    <section id="characteristics" class="section card">
-                        <h2>Characteristics</h2>
-                        <ul class="styled-bullets">
-                            <li>💡 Creative</li>
-                            <li>🚀 Innovative</li>
-                            <li>🧠 Complex problem solver</li>
-                            <li>👥 Team player</li>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Software Developer - TUCer Autonomous Racing Team</h3>
+                        <p class="date">Chania, Greece | January - July 2023</p>
+                        <ul>
+                            <li>Implemented autonomous driving algorithms using ROS and Python</li>
+                            <li>Developed Arduino-based sensor integration systems</li>
+                            <li>Competed in Shell Eco Marathon 2023 in Nogaro, France</li>
+                            <li>Optimized vehicle control systems for energy efficiency</li>
                         </ul>
-                    </section>
-<!--                </div>-->
-<!--            </div>-->
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <section id="experience" class="section box card">
-                <h2>Experience</h2>
-                
-<!--                  <div class="experience-item">
-                    <h3>Cure4Aqua - Hellenic Center for Marine Research</h3>
-                    <p>11/2024 - Now (<a class=link href="" target="">visit website</a>)</p>
-                    <ul class="styled-bullets">
-                        <li>Worked on a Machine Learning project based on anomaly detection on fish gills</li>
-                        <li>Developed <a class=link href="https://qupath.github.io/" target="https://qupath.github.io/">Qupath</a> automation tools using Groovy</li>
-                        <li>Designed Python GUI using tkinter</li>
-                    </ul>
-                </div> -->
-                
-                <div class="experience-item">
-                    <h3>Internship in Edinburgh - Heriott Watt University BCML Lab</h3>
-                    <p>07/2023 - 08/2023 (<a class=link href="https://bioml.eu.org/team/" target="https://bioml.eu.org/team/">visit website</a>)</p>
-                    <ul class="styled-bullets">
-                        <li>Worked on a Machine Learning project based on anomaly detection on fish gills</li>
-                        <li>Developed <a class=link href="https://qupath.github.io/" target="https://qupath.github.io/">Qupath</a> automation tools using Groovy</li>
-                        <li>Designed Python GUI using tkinter</li>
-                    </ul>
+        <!-- Education Section -->
+        <section id="education" class="container">
+            <div class="card reveal" style="margin-bottom: var(--spacing-lg);">
+                <h2><i class="fas fa-globe-europe"></i> Erasmus+ Projects</h2>
+                <div class="chip-container">
+                    <div class="chip">🇧🇬 Youth IT Empowerment - Bulgaria (Nov 2024)</div>
+                    <div class="chip">🇨🇾 Think Smarter - Cyprus (Feb 2025)</div>
+                    <div class="chip">🇹🇷 World of Mathematics (Group Leader) - Turkey (May 2025)</div>
                 </div>
+            </div>
 
-                <div class="experience-item">
-                    <h3>Software Developer at TUCer team</h3>
-                    <p>01/2023 - 07/2023 (<a class=link href="https://www.tucer.tuc.gr/el/archiki" target="https://www.tucer.tuc.gr/el/archiki">visit website</a>)</p>
-                    <ul class="styled-bullets">
-                        <li>Worked on autonomous driving algorithms using ROS, Python and Arduino software</li>
-                        <li>Participated at <a class=link href="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html" target="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html">Shell Eco Marathon Autonomous Competition 2023</a> in Nogaro - France.</li>
-                    </ul>
-                </div>
-            </section>
-            
-                <section id="erasmus" class="section box card">
-                <h2>Erasmus projects</h2>
-                <div class="education-item">
-                    <ul class="styled-bullets">
-                        <li>🇧🇬 Youth IT empowerment - Vidin, Bulgaria (Youth Exchange - November 2024)</li>
-                        <li>🇨🇾 Think Smarter - Pervolia, Cyprus (Youth Exchange - February 2025)</li>
-                        <li>🇹🇷 World of Mathematics, Group Leader - Antalya, Turkey (Youth Exchange - May 2025)</li>
-                    </ul>
-                </div>
-                </section>
-                
-            <section id="education" class="section box card">
-                <h2>Education</h2>
-                <div class="education-item">
-                    <h3>Languages</h3>
-                    <ul class="styled-bullets">
-                        <li>🇬🇧 IELTS band 8.0 (2025)</li>
-                        <li>🇬🇧 Cambridge Advanced C1 (2015)</li>
-                        <li>🇨🇳 Chinese HSK2 172/200 (2024)</li>
-                        <li>🇫🇷 French A1 (2012)</li>
-                    </ul>
-                </div>
-                <div class="education-item">
-                    <h3> Bachelor's degree with Integrated MSc: School of Electrical and Computer Engineering (ECE) Technical University of Crete (TUC)</h3>
-                    <p>09/2019 - 05/2025 (<a class=link href="https://www.ece.tuc.gr/" target="https://www.ece.tuc.gr/">visit website</a>)</p>
-                    <ul class="styled-bullets">
-                      <li>Diploma thesis: Feature selection in the Federated Machine Learning setting <a class=link href = https://dias.library.tuc.gr/view/103131?locale=en> available here</a>  </li>
-                      <li>Winning team in TUC CTF 2023 competition</li>
-                        <li>Participation and Raspberry pi prize win on <a class=link href = https://edgeless-project.eu/edgeless-1st-code-camp/>EDGELESS 1st Code camp</a> </li>
-                        <li>Advanced beyond the initial phase (<a class=link href="https://algoforum.upatras.gr/el/plirofories/">GRPC</a>) to participate in the <a class=link href = http://acm.ro/>SEERC</a> - <a class=link href = https://icpc.global/>ICPC</a> December 2023 Regional Programming Competition </li>
-                    </ul>
+            <div class="card reveal">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+               
+                <div style="margin-bottom: var(--spacing-xl);">
+                    <h3>Technical University of Crete</h3>
+                    <p class="date">Bachelor's with Integrated MSc in Electrical & Computer Engineering | 2019 - 2025</p>
+                    <div class="chip-container" style="margin: var(--spacing-md) 0;">
+                        <div class="chip">🎓 Diploma Thesis: Federated ML</div>
+                        <div class="chip">🏆 TUC CTF 2023 Winner</div>
+                        <div class="chip">🥇 EDGELESS Code Camp</div>
+                        <div class="chip">💻 ICPC 2023</div>
+                    </div>
                 </div>
 
-                <div class="education-item">
-                    <h3>Graduate of PIERCE American College of Greece</h3>
-                    <p>2019 (<a class=link href="http://www.pierce.gr" target="http://www.pierce.gr">visit website</a>)</p>
-                    <ul class="styled-bullets">
-                        <li>Elected Member of the PIERCE Student Board for 3 years (2016-2019)</li>
-                        <li>Distinctions in mathematics Student Competitions: Kangaroo, Hellenic Mathematic Society (Thales)</li>
-                    </ul>
+                <h3>Graduate of PIERCE American College of Greece</h3>
+                <p class="date">High School Diploma | 2019</p>
+                <div class="chip-container" style="margin: var(--spacing-md) 0;">
+                    <div class="chip">🎓 Student Board Member (2016-2019)</div>
+                    <div class="chip">🏅 Math Competition Awards</div>
                 </div>
 
+                <h3 style="margin-top: var(--spacing-xl);">Language Proficiency</h3>
+                <div class="chip-container" style="margin: var(--spacing-md) 0;">
+                    <div class="chip">🇬🇧 IELTS 8.0</div>
+                    <div class="chip">🇬🇧 Cambridge C1</div>
+                    <div class="chip">🇨🇳 HSK2</div>
+                    <div class="chip">🇫🇷 French A1</div>
+                </div>
 
-                <h3>Notable Grades (TUC):</h3>
-                <div class="table-container">
-<!--        <h3>Option 3: Grid/Card Layout (Most Compact)</h3>-->
-        <div class="grid-container">
-            <div class="grade-card">
-                <div class="course">Computer Security <span class="grade">10</span></div>
-                <div class="details">C, Unix exercises</div>
+                <h3 style="margin-top: var(--spacing-xl);">Notable Academic Achievements</h3>
+                <div class="grade-grid">
+                    <div class="grade-card">
+                        <div class="course">Computer Security <span class="grade">10</span></div>
+                        <div class="details">C, Unix exercises</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Graphics <span class="grade">10</span></div>
+                        <div class="details">Unity</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Distributed Systems <span class="grade">10</span></div>
+                        <div class="details">Kubernetes, Docker, Full-stack</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Computer Organization <span class="grade">10</span></div>
+                        <div class="details">MIPS processor in VHDL</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Data & File Structures <span class="grade">9.5</span></div>
+                        <div class="details">Java labs</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Object Oriented Programming <span class="grade">9</span></div>
+                        <div class="details">Java</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Multiagent Systems <span class="grade">9</span></div>
+                        <div class="details">AI, Game Theory, Python</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Computation Theory <span class="grade">9</span></div>
+                        <div class="details">Bison compiler, flex analyzer</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Reinforcement Learning <span class="grade">9</span></div>
+                        <div class="details">Q-learning video recommendations</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Intro to Programming <span class="grade">8.5</span></div>
+                        <div class="details">C, programming basics</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Autonomous Agents <span class="grade">8.5</span></div>
+                        <div class="details">Robotics, Python, C++</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Software Development Tools <span class="grade">8.5</span></div>
+                        <div class="details">Python, C</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Electronics II <span class="grade">8.5</span></div>
+                        <div class="details">BJT, MOS, OPAMPs</div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="course">Operating Systems <span class="grade">8</span></div>
+                        <div class="details">C, OS basics, scheduling</div>
+                    </div>
+                </div>
             </div>
-            <div class="grade-card">
-                <div class="course">Graphics <span class="grade">10</span></div>
-                <div class="details">Unity</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Distributed Systems <span class="grade">10</span></div>
-                <div class="details">Kubernetes, Docker, Full-stack project</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Computer Organization <span class="grade">10</span></div>
-                <div class="details">Creation of a MIPS-like processor in VHDL</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Data and File Structures <span class="grade">9.5</span></div>
-                <div class="details">with Java labs</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Object Oriented Programming <span class="grade">9</span></div>
-                <div class="details">Java</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Multiagent Systems <span class="grade">9</span></div>
-                <div class="details">AI, Game Theory, Python</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Computation Theory <span class="grade">9</span></div>
-                <div class="details">Bison compiler and flex analyzer project</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Reinforcement Learning <span class="grade">9</span></div>
-                <div class="details">Q-learning and deep Q-learning video recommendations project</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Introduction to Programming and Informatics <span class="grade">8.5</span></div>
-                <div class="details">C, programming basics</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Autonomous Agents <span class="grade">8.5</span></div>
-                <div class="details">Robotics with Python, C++ applications</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Software Development Tools & System Programming <span class="grade">8.5</span></div>
-                <div class="details">Python, C</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Electronics II <span class="grade">8.5</span></div>
-                <div class="details">Multiple BJT, MOS transistors, OPAMPs</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Operating Systems <span class="grade">8</span></div>
-                <div class="details">C, OS basics, task scheduling</div>
-            </div>
-        </div>
-    </div>
-<!--    <table class="grades-table">-->
-<!--      <thead>-->
-<!--        <tr>-->
-<!--          <th>Course</th>-->
-<!--          <th>Details</th>-->
-<!--          <th>Grade(out of 10)</th>-->
-<!--        </tr>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--        <tr>-->
-<!--          <td>Computer Security</td>-->
-<!--          <td>C, Unix exercises</td>-->
-<!--          <td>10</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>Graphics</td>-->
-<!--          <td>Unity</td>-->
-<!--          <td>10</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>Distributed Systems</td>-->
-<!--          <td>Kubernetes, Docker, Full-stack project</td>-->
-<!--          <td>10</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>Computer Organization</td>-->
-<!--          <td>Creation of a MIPS-like processor in VHDL</td>-->
-<!--          <td>10</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>Data and File Structures</td>-->
-<!--          <td>with Java labs</td>-->
-<!--          <td>9.5</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>Object Oriented Programming</td>-->
-<!--          <td>Java</td>-->
-<!--          <td>9</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Multiagent Systems</td>-->
-<!--            <td>Ai, Game Theory, Python</td>-->
-<!--            <td>9</td>-->
-<!--          </tr>-->
-<!--        <tr>-->
-<!--          <td>Computation Theory</td>-->
-<!--          <td>Bison compiler and flex analyzer project</td>-->
-<!--          <td>9</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>Reinforcement Learning</td>-->
-<!--          <td>Q-learning and deep Q-learning video recommendations project</td>-->
-<!--          <td>9</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>Introduction to Programming and Informatics</td>-->
-<!--          <td>C, programming basics</td>-->
-<!--          <td>8.5</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Autonomous Agents</td>-->
-<!--            <td>Robotics with Python, C++ applications</td>-->
-<!--            <td>8.5</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>Software Development Tools & System Programming</td>-->
-<!--          <td>Python, C</td>-->
-<!--          <td>8.5</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Electronics II</td>-->
-<!--            <td>Multiple BJT, MOS transistors, OPAMPs</td>-->
-<!--            <td>8.5</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Operating Systems</td>-->
-<!--            <td>C, OS basics, task scheduling</td>-->
-<!--            <td>8</td>-->
-<!--        </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
+        </section>
 
-            </section>
-<!--            <div class="container box card">-->
-    <section class="section card">
-                <h2>Photo Gallery</h2>
-            <div class="image-gallery">
-                <div class="image-container">
-                    <img src="images/edinburgh.jpg" alt="First Image">
+        <!-- Projects Section -->
+        <section id="projects" class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: var(--spacing-xl); color: var(--md-primary);">
+                Featured Projects
+            </h2>
+           
+            <div class="projects-grid">
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <div style="height: 200px; background: linear-gradient(135deg, var(--md-primary) 0%, var(--md-primary-variant) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Game Dev</span>
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">3D Graphics</span>
+                        </div>
+                        <h3>3D Puzzle-Adventure Game</h3>
+                        <p>Custom Unity game featuring original artwork and innovative puzzle mechanics. Implemented advanced 3D graphics techniques and game physics.</p>
+                        <a href="https://github.com/christofilojohn/graphics_tuc_project" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-github"></i> View on GitHub
+                        </a>
+                    </div>
                 </div>
-                <div class="image-container">
-                    <img src="images/edinburgh2.jpg" alt="First Image">
+
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <div style="height: 200px; background: linear-gradient(135deg, var(--md-secondary) 0%, var(--md-secondary-variant) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Game Theory</span>
+                            <span class="project-tag">Python</span>
+                        </div>
+                        <h3>The Negotiator</h3>
+                        <p>Neural network-based negotiation agent that learns optimal strategies. Implemented research paper algorithms for multiagent systems.</p>
+                        <a href="https://github.com/petrosmp/the_negotiator" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-github"></i> View on GitHub
+                        </a>
+                    </div>
                 </div>
-                <div class="image-container">
-                    <img src="images/antalya.jpeg" alt="Second Image">
+
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <div style="height: 200px; background: linear-gradient(135deg, var(--md-primary) 0%, var(--md-secondary) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            <i class="fas fa-server"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Kubernetes</span>
+                            <span class="project-tag">Distributed Systems</span>
+                            <span class="project-tag">Flask</span>
+                        </div>
+                        <h3>Map-Reduce Implementation</h3>
+                        <p>Scalable distributed computing solution using Kubernetes. Features Longhorn storage integration and real-time cluster monitoring.</p>
+                        <a href="https://github.com/petrosmp/distsys_mapreduce" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-github"></i> View on GitHub
+                        </a>
+                    </div>
                 </div>
-                <div class="image-container">
-                    <img src="images/tucer1.jpg" alt="Second Image">
+
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <div style="height: 200px; background: linear-gradient(135deg, var(--md-primary-variant) 0%, var(--md-primary) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Federated Learning</span>
+                            <span class="project-tag">Deep Learning</span>
+                            <span class="project-tag">Research</span>
+                        </div>
+                        <h3>Federated Learning Framework</h3>
+                        <p>Diploma thesis exploring privacy-preserving machine learning techniques for autonomous agent systems.</p>
+                        <a href="index_autonomous_agents.html" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-globe"></i> View Project
+                        </a>
+                    </div>
                 </div>
-                <div class="image-container">
-                    <img src="images/EDGELESS.jpg" alt="Second Image">
+
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <div style="height: 200px; background: linear-gradient(135deg, var(--md-secondary-variant) 0%, var(--md-secondary) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Networks</span>
+                            <span class="project-tag">Simulation</span>
+                            <span class="project-tag">Python</span>
+                        </div>
+                        <h3>Network Queueing Simulator</h3>
+                        <p>Performance analysis of FCFS and SITA queueing methods for large-scale network systems.</p>
+                        <a href="https://github.com/christofilojohn/LargeAndSocialNetworks" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-github"></i> View on GitHub
+                        </a>
+                    </div>
                 </div>
-                <div class="image-container">
-                    <img src="images/vidin.jpg" alt="Second Image">
-                </div>
-                <div class="image-container">
-                    <img src="images/omalos.png" alt="Second Image">
-                </div>
-                <div class="image-container">
-                    <img src="images/tucer2.jpg" alt="Second Image">
-                </div>
-                <div class="gallery-dots">
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                    <span class="dot" onclick="currentSlide(4)"></span>
-                    <span class="dot" onclick="currentSlide(5)"></span>
-                    <span class="dot" onclick="currentSlide(6)"></span>
-                    <span class="dot" onclick="currentSlide(7)"></span>
-                    <span class="dot" onclick="currentSlide(8)"></span>
+
+                <div class="project-card reveal">
+                    <div class="project-image" style="background: linear-gradient(135deg, var(--md-primary) 0%, var(--md-secondary) 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-microscope" style="font-size: 4rem; color: white;"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Computer Vision</span>
+                            <span class="project-tag">Biomedical</span>
+                            <span class="project-tag">Automation</span>
+                        </div>
+                        <h3>Biomedical Image Analysis</h3>
+                        <p>Automated Qupath annotation system with ML integration for medical image processing and analysis.</p>
+                        <span class="btn btn-secondary">
+                            <i class="fas fa-clock"></i> Coming Soon
+                        </span>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Art Section -->
+        <section id="art" class="container">
+            <div class="card reveal">
+                <h2><i class="fas fa-palette"></i> Digital Artwork</h2>
+                <p style="color: #666; margin-bottom: var(--spacing-lg);">Created on iPad using Procreate - Exploring digital art and character design</p>
+               
+                <div class="gallery">
+                    <div class="gallery-item" onclick="openLightbox('art/Portrait_player.png', 'The Hero')">
+                        <img src="art/Portrait_player.png" alt="The Hero">
+                        <div class="gallery-overlay">
+                            <h4>The Hero</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('art/Portrait_NPC_peasant.png', 'The NPC')">
+                        <img src="art/Portrait_NPC_peasant.png" alt="The NPC">
+                        <div class="gallery-overlay">
+                            <h4>The NPC</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('art/einstein_rick.jpg', 'Einstein Rick')">
+                        <img src="art/einstein_rick.jpg" alt="Einstein Rick">
+                        <div class="gallery-overlay">
+                            <h4>Einstein Rick</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('art/steve_jobs.jpg', 'Steve Jobs')">
+                        <img src="art/steve_jobs.jpg" alt="Steve Jobs">
+                        <div class="gallery-overlay">
+                            <h4>Steve Jobs</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('art/walter_white.png', 'Walter White')">
+                        <img src="art/walter_white.png" alt="Walter White">
+                        <div class="gallery-overlay">
+                            <h4>Walter White</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('art/cuphead.jpg', 'Cupheads')">
+                        <img src="art/cuphead.jpg" alt="Cupheads">
+                        <div class="gallery-overlay">
+                            <h4>Cupheads</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('art/dalle_casa_de_papel.jpg', 'Dali')">
+                        <img src="art/dalle_casa_de_papel.jpg" alt="Dali">
+                        <div class="gallery-overlay">
+                            <h4>Dali</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('art/kratos.jpg', 'Kratos')">
+                        <img src="art/kratos.jpg" alt="Kratos">
+                        <div class="gallery-overlay">
+                            <h4>Kratos</h4>
+                        </div>
+                    </div>
                 </div>
-            </section>
-<!--        </div>-->
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section class="container">
+            <div class="card reveal">
+                <h2><i class="fas fa-camera"></i> Life & Adventures</h2>
+                <div class="gallery">
+                    <div class="gallery-item" onclick="openLightbox('images/edinburgh.jpg', 'Edinburgh')">
+                        <img src="images/edinburgh.jpg" alt="Edinburgh">
+                        <div class="gallery-overlay">
+                            <h4>Edinburgh Internship</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/edinburgh2.jpg', 'Edinburgh')">
+                        <img src="images/edinburgh2.jpg" alt="Edinburgh 2">
+                        <div class="gallery-overlay">
+                            <h4>Edinburgh</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/antalya.jpeg', 'Antalya')">
+                        <img src="images/antalya.jpeg" alt="Antalya">
+                        <div class="gallery-overlay">
+                            <h4>Antalya, Turkey</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/tucer1.jpg', 'TUCer Team')">
+                        <img src="images/tucer1.jpg" alt="TUCer Team">
+                        <div class="gallery-overlay">
+                            <h4>Shell Eco Marathon</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/EDGELESS.jpg', 'EDGELESS')">
+                        <img src="images/EDGELESS.jpg" alt="EDGELESS">
+                        <div class="gallery-overlay">
+                            <h4>EDGELESS Code Camp</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/vidin.jpg', 'Vidin')">
+                        <img src="images/vidin.jpg" alt="Vidin">
+                        <div class="gallery-overlay">
+                            <h4>Bulgaria - Erasmus</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/omalos.png', 'Omalos')">
+                        <img src="images/omalos.png" alt="Omalos">
+                        <div class="gallery-overlay">
+                            <h4>Omalos, Crete</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('images/tucer2.jpg', 'TUCer')">
+                        <img src="images/tucer2.jpg" alt="TUCer 2">
+                        <div class="gallery-overlay">
+                            <h4>TUCer Team</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container">
+            <div class="card reveal">
+                <h2><i class="fas fa-envelope"></i> Let's Connect</h2>
+                <p style="color: #666; margin-bottom: var(--spacing-xl);">
+                    I'm always open to discussing new opportunities, collaborations, or just having a chat about technology and innovation.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://www.linkedin.com/in/john-christofilogiannis-baa407248/" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/christofilojohn" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-instagram"></i> Instagram
+                    </a>
+                </div>
+                <p></p>
+                <h4>&copy; 2025 Ioannis Christofilogiannis</h4>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>© June 2025</p>
-    </footer>
+<!--    <footer>
+        <p>&copy; 2025 Ioannis Christofilogiannis.</p>
+    </footer>-->
 
-    <script src="scripts.js"></script>
+    <!-- Floating Action Button -->
+    <button class="fab" id="scrollToTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-image" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        // Hide loader when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navItems = document.getElementById('navItems');
+       
+        mobileMenuBtn.addEventListener('click', () => {
+            navItems.classList.toggle('show');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                navItems.classList.remove('show');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
+        });
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+       
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        scrollToTopBtn.addEventListener('click', scrollToTop);
+
+        // Show/hide FAB based on scroll
+        let lastScroll = 0;
+       
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+           
+            if (currentScroll > 500) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+           
+            // Header elevation on scroll
+            const header = document.querySelector('header');
+            if (currentScroll > 10) {
+                header.style.boxShadow = 'var(--elevation-3)';
+            } else {
+                header.style.boxShadow = 'var(--elevation-2)';
+            }
+           
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Ripple effect for buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Don't add ripple if it's a link that will navigate away
+                if (this.getAttribute('href') && this.getAttribute('href').startsWith('http')) {
+                    return;
+                }
+               
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+               
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+               
+                this.appendChild(ripple);
+               
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple keyframes via CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Typing effect for hero subtitle
+        const subtitle = document.getElementById('heroSubtitle');
+        if (subtitle) {
+            const text = 'Electrical & Computer Engineer | TUC Graduate';
+            subtitle.textContent = '';
+            let i = 0;
+           
+            function typeWriter() {
+                if (i < text.length) {
+                    subtitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+           
+            setTimeout(typeWriter, 1000);
+        }
+
+        // Lightbox functionality
+        function openLightbox(src, title) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+           
+            lightboxImage.src = src;
+            lightboxImage.alt = title;
+            lightbox.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Improved error handling for Font Awesome
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if Font Awesome icons are loading
+            const testIcon = document.createElement('i');
+            testIcon.className = 'fas fa-heart';
+            testIcon.style.visibility = 'hidden';
+            testIcon.style.position = 'absolute';
+            document.body.appendChild(testIcon);
+           
+            setTimeout(() => {
+                const computed = window.getComputedStyle(testIcon);
+                if (computed.fontFamily.indexOf('Font Awesome') === -1) {
+                    console.warn('Font Awesome may not be loading properly');
+                    // Fallback: replace icons with text
+                    document.querySelectorAll('.social-icon i').forEach(icon => {
+                        if (icon.classList.contains('fa-linkedin')) {
+                            icon.textContent = 'in';
+                        } else if (icon.classList.contains('fa-github')) {
+                            icon.textContent = 'gh';
+                        } else if (icon.classList.contains('fa-instagram')) {
+                            icon.textContent = 'ig';
+                        }
+                        icon.style.fontFamily = 'inherit';
+                        icon.style.fontSize = '0.8rem';
+                        icon.style.fontWeight = 'bold';
+                    });
+                }
+                document.body.removeChild(testIcon);
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
