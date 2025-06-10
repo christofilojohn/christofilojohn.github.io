@@ -647,6 +647,10 @@ main {
     background: var(--md-primary);
 }
 
+div.timeline-item::before {
+    display: none;
+}
+
 .timeline-item {
     position: relative;
     padding-bottom: var(--spacing-xl);
@@ -699,6 +703,7 @@ main {
 }
 
 .timeline-item li {
+    list-style: none;
     padding: var(--spacing-xs) 0;
     position: relative;
     padding-left: var(--spacing-lg);
