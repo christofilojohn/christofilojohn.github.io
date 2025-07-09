@@ -1830,11 +1830,13 @@ html {
             <li>Distinctions in mathematics Student Competitions: Kangaroo, Hellenic Mathematic Society (Thales)</li>
         </ul>
 
+        <h3 style="margin-top: var(--spacing-xl);">Professional Development & Training</h3>
         <div style="margin-bottom: var(--spacing-lg);">
             <h4 style="font-size: 1.1rem; font-weight: 500; margin-bottom: var(--spacing-xs); color: var(--md-on-surface);">
                 Federated Learning Summer School 2025
             </h4>
             <p class="date">FLTA (Federated Learning Technology Alliance) | 2025
+                (<a class="link" href="https://flta.org" target="_blank">visit website</a>)
             </p>
             <div class="chip-container" style="margin: var(--spacing-md) 0;">
                 <div class="chip">🌐 Federated Learning</div>
@@ -2325,12 +2327,15 @@ html {
             allCards.forEach(card => {
                 card.classList.remove('hidden');
                 card.style.visibility = 'hidden';
+                card.style.opacity = '1';
             });
+
+            // Force layout recalculation
+            gradeGrid.offsetHeight;
 
             // Get the first card's position
             const firstCard = allCards[0];
             const firstCardRect = firstCard.getBoundingClientRect();
-            const firstRowBottom = firstCardRect.bottom + 10; // Add small buffer
 
             // Find cards in the first row(s) - show at least 2 rows
             let visibleCards = [];
@@ -2360,8 +2365,10 @@ html {
                 card.style.visibility = 'visible';
                 if (visibleCards.includes(card)) {
                     card.classList.remove('hidden');
+                    card.style.opacity = '1';
                 } else {
                     card.classList.add('hidden');
+                    card.style.opacity = '0';
                 }
             });
         }
@@ -2370,11 +2377,11 @@ html {
         function toggleGrades() {
             const allCards = document.querySelectorAll('.grade-card');
             const hiddenCards = document.querySelectorAll('.grade-card.hidden');
-            const visibleCards = document.querySelectorAll('.grade-card:not(.hidden)');
 
-            // Disable smooth scrolling temporarily
-            const originalScrollBehavior = document.documentElement.style.scrollBehavior;
-            document.documentElement.style.scrollBehavior = 'auto';
+            // Store current scroll position and grid position
+            const currentScrollY = window.pageYOffset;
+            const gradeGridRect = gradeGrid.getBoundingClientRect();
+            const gradeGridTop = currentScrollY + gradeGridRect.top;
 
             if (!isGradesExpanded) {
                 // Expanding
@@ -2391,24 +2398,20 @@ html {
                         setTimeout(() => {
                             card.classList.remove('expanding');
                         }, 400);
-                    }, index * 80);
+                    }, index * 60);
                 });
                 
                 isGradesExpanded = true;
                 
             } else {
-                // Collapsing
+                // Collapsing - prevent any automatic scrolling
                 showMoreText.textContent = 'Show More';
                 showMoreIcon.classList.remove('expanded');
                 
-                // Get current scroll position
-                const currentScrollY = window.pageYOffset;
-                const gradeGridRect = gradeGrid.getBoundingClientRect();
-                const gradeGridTop = currentScrollY + gradeGridRect.top;
-                
-                // Hide cards that aren't in initial visible set
+                // Get cards to hide
                 const cardsToHide = Array.from(allCards).filter(card => !initialVisibleCards.includes(card));
                 
+                // Start hiding cards immediately without waiting
                 cardsToHide.forEach((card, index) => {
                     setTimeout(() => {
                         card.classList.add('collapsing');
@@ -2416,36 +2419,51 @@ html {
                         setTimeout(() => {
                             card.classList.remove('collapsing');
                             card.classList.add('hidden');
-                        }, 300);
-                    }, index * 40);
+                        }, 250);
+                    }, index * 25);
                 });
                 
-                // Show fade overlay after collapse animation
+                // Show fade overlay
                 setTimeout(() => {
                     gradeFadeOverlay.classList.remove('hidden');
-                    
-                    // Smooth scroll back to grades section if user scrolled down
+                }, 150);
+                
+                // Only scroll if user is significantly below the grades section
+                setTimeout(() => {
                     const newScrollY = window.pageYOffset;
-                    const gradeGridNewRect = gradeGrid.getBoundingClientRect();
-                    const gradeGridNewTop = newScrollY + gradeGridNewRect.top;
+                    const shouldScroll = newScrollY > (gradeGridTop + 400); // Only scroll if 400px below grades
                     
-                    if (newScrollY > gradeGridNewTop - 100) {
-                        // Restore smooth scrolling for the scroll back
-                        document.documentElement.style.scrollBehavior = 'smooth';
-                        window.scrollTo({
-                            top: gradeGridNewTop - 100,
-                            behavior: 'smooth'
-                        });
+                    if (shouldScroll) {
+                        // Smooth scroll back, but not too far up
+                        const targetScroll = Math.max(gradeGridTop - 50, 0);
+                        
+                        // Use requestAnimationFrame for smoother scrolling
+                        const scrollStart = newScrollY;
+                        const scrollDistance = targetScroll - scrollStart;
+                        const duration = 300;
+                        let startTime = null;
+                        
+                        function smoothScroll(currentTime) {
+                            if (startTime === null) startTime = currentTime;
+                            const timeElapsed = currentTime - startTime;
+                            const progress = Math.min(timeElapsed / duration, 1);
+                            
+                            // Ease out function for smooth deceleration
+                            const easeOut = 1 - Math.pow(1 - progress, 3);
+                            
+                            window.scrollTo(0, scrollStart + (scrollDistance * easeOut));
+                            
+                            if (progress < 1) {
+                                requestAnimationFrame(smoothScroll);
+                            }
+                        }
+                        
+                        requestAnimationFrame(smoothScroll);
                     }
                 }, 200);
                 
                 isGradesExpanded = false;
             }
-
-            // Restore original scroll behavior after a delay
-            setTimeout(() => {
-                document.documentElement.style.scrollBehavior = originalScrollBehavior;
-            }, 100);
         }
 
         // Initialize on page load
@@ -2453,7 +2471,7 @@ html {
             setTimeout(calculateInitialVisibleCards, 100);
         });
 
-        // Recalculate on window resize
+        // Recalculate on window resize with debouncing
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
