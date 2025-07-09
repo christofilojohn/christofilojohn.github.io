@@ -722,6 +722,7 @@ div.timeline-item::before {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: var(--spacing-md);
     margin-top: var(--spacing-lg);
+    position: relative;
 }
 
 .grade-card {
@@ -730,6 +731,8 @@ div.timeline-item::before {
     border-radius: var(--radius-md);
     box-shadow: var(--elevation-1);
     transition: all 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .grade-card:hover {
@@ -756,6 +759,95 @@ div.timeline-item::before {
 .details {
     font-size: 0.875rem;
     color: #666;
+}
+
+/* ===== EXPANDABLE GRADES FUNCTIONALITY ===== */
+.grade-card.hidden {
+    display: none;
+}
+
+.grade-card.collapsing {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.grade-card.expanding {
+    animation: expandSlideIn 0.4s ease forwards;
+}
+
+@keyframes expandSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grade grid container for fade effect */
+.grade-grid-container {
+    position: relative;
+}
+
+.grade-fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(250, 250, 250, 0), rgba(250, 250, 250, 0.9));
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.grade-fade-overlay.hidden {
+    opacity: 0;
+}
+
+/* Show More Button */
+.show-more-container {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+}
+
+.show-more-btn {
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    border: none;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    min-width: 140px;
+    justify-content: center;
+    box-shadow: var(--elevation-2);
+    position: relative;
+    overflow: hidden;
+}
+
+.show-more-btn:hover {
+    background: var(--md-primary-variant);
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-3);
+}
+
+.show-more-btn i {
+    transition: transform 0.3s ease;
+}
+
+.show-more-btn.expanded i {
+    transform: rotate(180deg);
 }
 
 /* ===== PROJECT CARDS ===== */
@@ -1049,6 +1141,7 @@ footer {
     right: var(--spacing-lg);
     width: 56px;
     height: 56px;
+    background: var(--md-primary);
     color: var(--md-on-primary);
     border-radius: 50%;
     display: flex;
@@ -1213,6 +1306,11 @@ footer {
     .grade-grid {
         grid-template-columns: 1fr;
     }
+
+    .show-more-btn {
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1255,7 +1353,8 @@ a:focus,
 button:focus,
 .social-icon:focus,
 .btn:focus,
-.gallery-item:focus {
+.gallery-item:focus,
+.show-more-btn:focus {
     outline: 2px solid var(--md-primary);
     outline-offset: 2px;
 }
@@ -1275,7 +1374,8 @@ button:focus,
     .fab,
     .loader,
     .lightbox,
-    .scroll-indicator {
+    .scroll-indicator,
+    .show-more-btn {
         display: none !important;
     }
     
@@ -1288,6 +1388,14 @@ button:focus,
     .hero {
         min-height: auto;
         padding: 2rem 0;
+    }
+
+    .grade-card.hidden {
+        display: block !important;
+    }
+
+    .grade-fade-overlay {
+        display: none !important;
     }
 }
 
@@ -1386,6 +1494,10 @@ button:focus,
     .project-card {
         background: var(--md-surface);
     }
+
+    .grade-fade-overlay {
+        background: linear-gradient(to bottom, rgba(18, 18, 18, 0), rgba(18, 18, 18, 0.9));
+    }
 }
 
 /* Enhanced mobile touch targets */
@@ -1458,7 +1570,8 @@ html {
         flex: 1 1 300px;
         margin: var(--spacing-sm);
     }
-}</style>
+}
+    </style>
 </head>
 <body>
     <!-- Loader -->
@@ -1646,7 +1759,7 @@ html {
     </div>
 </section>
 <!-- Publications -->
-<section id="education" class="container">
+<section id="publications" class="container">
   <div class="card reveal">
         <h2><i class="fas fa-book"></i> Publications</h2>
        <div class="timeline">
@@ -1726,63 +1839,83 @@ html {
         </div>
 
         <h3 style="margin-top: var(--spacing-xl);">Notable Grades</h3>
-        <div class="grade-grid">
-            <div class="grade-card">
-                <div class="course">Computer Security <span class="grade">10</span></div>
-                <div class="details">C, Unix exercises</div>
+        <div class="grade-grid-container">
+            <div class="grade-grid" id="gradeGrid">
+                <!-- First row (always visible) -->
+                <div class="grade-card" data-row="1">
+                    <div class="course">Computer Security <span class="grade">10</span></div>
+                    <div class="details">C, Unix exercises</div>
+                </div>
+                <div class="grade-card" data-row="1">
+                    <div class="course">Graphics <span class="grade">10</span></div>
+                    <div class="details">Unity</div>
+                </div>
+                <div class="grade-card" data-row="1">
+                    <div class="course">Distributed Systems <span class="grade">10</span></div>
+                    <div class="details">Kubernetes, Docker, Full-stack</div>
+                </div>
+                
+                <!-- Second row (initially hidden) -->
+                <div class="grade-card hidden" data-row="2">
+                    <div class="course">Computer Organization <span class="grade">10</span></div>
+                    <div class="details">MIPS processor in VHDL</div>
+                </div>
+                <div class="grade-card hidden" data-row="2">
+                    <div class="course">Data & File Structures <span class="grade">9.5</span></div>
+                    <div class="details">Java labs</div>
+                </div>
+                <div class="grade-card hidden" data-row="2">
+                    <div class="course">Object Oriented Programming <span class="grade">9</span></div>
+                    <div class="details">Java</div>
+                </div>
+                
+                <!-- Third row (initially hidden) -->
+                <div class="grade-card hidden" data-row="3">
+                    <div class="course">Multiagent Systems <span class="grade">9</span></div>
+                    <div class="details">AI, Game Theory, Python</div>
+                </div>
+                <div class="grade-card hidden" data-row="3">
+                    <div class="course">Computation Theory <span class="grade">9</span></div>
+                    <div class="details">Bison compiler, flex analyzer</div>
+                </div>
+                <div class="grade-card hidden" data-row="3">
+                    <div class="course">Reinforcement Learning <span class="grade">9</span></div>
+                    <div class="details">Q-learning video recommendations</div>
+                </div>
+                
+                <!-- Fourth row (initially hidden) -->
+                <div class="grade-card hidden" data-row="4">
+                    <div class="course">Intro to Programming <span class="grade">8.5</span></div>
+                    <div class="details">C, programming basics</div>
+                </div>
+                <div class="grade-card hidden" data-row="4">
+                    <div class="course">Autonomous Agents <span class="grade">8.5</span></div>
+                    <div class="details">Robotics, Python, C++</div>
+                </div>
+                <div class="grade-card hidden" data-row="4">
+                    <div class="course">Software Development Tools <span class="grade">8.5</span></div>
+                    <div class="details">Python, C</div>
+                </div>
+                
+                <!-- Fifth row (initially hidden) -->
+                <div class="grade-card hidden" data-row="5">
+                    <div class="course">Electronics II <span class="grade">8.5</span></div>
+                    <div class="details">BJT, MOS, OPAMPs</div>
+                </div>
+                <div class="grade-card hidden" data-row="5">
+                    <div class="course">Operating Systems <span class="grade">8</span></div>
+                    <div class="details">C, OS basics, scheduling</div>
+                </div>
             </div>
-            <div class="grade-card">
-                <div class="course">Graphics <span class="grade">10</span></div>
-                <div class="details">Unity</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Distributed Systems <span class="grade">10</span></div>
-                <div class="details">Kubernetes, Docker, Full-stack</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Computer Organization <span class="grade">10</span></div>
-                <div class="details">MIPS processor in VHDL</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Data & File Structures <span class="grade">9.5</span></div>
-                <div class="details">Java labs</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Object Oriented Programming <span class="grade">9</span></div>
-                <div class="details">Java</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Multiagent Systems <span class="grade">9</span></div>
-                <div class="details">AI, Game Theory, Python</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Computation Theory <span class="grade">9</span></div>
-                <div class="details">Bison compiler, flex analyzer</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Reinforcement Learning <span class="grade">9</span></div>
-                <div class="details">Q-learning video recommendations</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Intro to Programming <span class="grade">8.5</span></div>
-                <div class="details">C, programming basics</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Autonomous Agents <span class="grade">8.5</span></div>
-                <div class="details">Robotics, Python, C++</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Software Development Tools <span class="grade">8.5</span></div>
-                <div class="details">Python, C</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Electronics II <span class="grade">8.5</span></div>
-                <div class="details">BJT, MOS, OPAMPs</div>
-            </div>
-            <div class="grade-card">
-                <div class="course">Operating Systems <span class="grade">8</span></div>
-                <div class="details">C, OS basics, scheduling</div>
-            </div>
+            
+            <div class="grade-fade-overlay" id="gradeFadeOverlay"></div>
+        </div>
+
+        <div class="show-more-container">
+            <button class="show-more-btn" id="showMoreBtn">
+                <span id="showMoreText">Show More</span>
+                <i class="fas fa-chevron-down" id="showMoreIcon"></i>
+            </button>
         </div>
     </div>
 </section>
@@ -2033,33 +2166,25 @@ html {
         <section id="contact" class="container">
             <div class="card reveal">
                 <h2><i class="fas fa-envelope"></i> Let's Connect</h2>
-                <!-- <p style="color: #666; margin-bottom: var(--spacing-xl);">
-                    I'm always open to discussing new opportunities, collaborations, or just having a chat about technology and innovation.
-                </p> -->
                 <div class="cta-buttons">
                     <a href="https://www.linkedin.com/in/john-christofilogiannis-baa407248/" target="_blank" class="btn btn-secondary">
-                        <i class="fas fa-linkedin"></i> LinkedIn
+                        <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
                     <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="btn btn-secondary">
-                        <i class="fas fa-instagram"></i> Instagram
+                        <i class="fab fa-instagram"></i> Instagram
                     </a>
                     <a href="https://github.com/christofilojohn" target="_blank" class="btn btn-secondary">
-                        <i class="fas fa-github"></i> GitHub
+                        <i class="fab fa-github"></i> GitHub
                     </a>
                     <a href="mailto:jchr2001@gmail.com?subject=Hello%20from%20your%20website&body=Hi%20Ioannis,%0A%0AI%20found%20your%20website%20and%20would%20like%20to%20connect..." class="btn btn-secondary">
                         <i class="fas fa-envelope"></i> Mail
                     </a>
-
                 </div>
                 <p></p>
                 <h4>&copy; 2025 Ioannis Christofilogiannis</h4>
             </div>
         </section>
     </main>
-
-<!--    <footer>
-        <p>&copy; 2025 Ioannis Christofilogiannis.</p>
-    </footer>-->
 
     <!-- Floating Action Button -->
     <button class="fab" id="scrollToTopBtn" aria-label="Scroll to top">
@@ -2170,8 +2295,67 @@ html {
             observer.observe(el);
         });
 
+        // ===== EXPANDABLE GRADES FUNCTIONALITY =====
+        let isGradesExpanded = false;
+        const showMoreBtn = document.getElementById('showMoreBtn');
+        const showMoreText = document.getElementById('showMoreText');
+        const showMoreIcon = document.getElementById('showMoreIcon');
+        const gradeGrid = document.getElementById('gradeGrid');
+        const gradeFadeOverlay = document.getElementById('gradeFadeOverlay');
+
+        showMoreBtn.addEventListener('click', function() {
+            if (!isGradesExpanded) {
+                // Show more grades
+                const hiddenCards = document.querySelectorAll('.grade-card.hidden');
+                
+                hiddenCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.remove('hidden');
+                        card.classList.add('expanding');
+                        
+                        // Remove expanding class after animation
+                        setTimeout(() => {
+                            card.classList.remove('expanding');
+                        }, 400);
+                    }, index * 100);
+                });
+                
+                // Update button
+                showMoreText.textContent = 'Show Less';
+                showMoreIcon.classList.add('expanded');
+                gradeFadeOverlay.classList.add('hidden');
+                isGradesExpanded = true;
+                
+            } else {
+                // Hide grades
+                const visibleCards = document.querySelectorAll('.grade-card:not([data-row="1"])');
+                
+                visibleCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('collapsing');
+                        
+                        setTimeout(() => {
+                            card.classList.remove('collapsing');
+                            card.classList.add('hidden');
+                        }, 300);
+                    }, index * 50);
+                });
+                
+                // Update button
+                showMoreText.textContent = 'Show More';
+                showMoreIcon.classList.remove('expanded');
+                gradeFadeOverlay.classList.remove('hidden');
+                isGradesExpanded = false;
+                
+                // Scroll back to grades section
+                setTimeout(() => {
+                    gradeGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
+        });
+
         // Ripple effect for buttons
-        document.querySelectorAll('.btn').forEach(button => {
+        document.querySelectorAll('.btn, .show-more-btn').forEach(button => {
             button.addEventListener('click', function(e) {
                 // Don't add ripple if it's a link that will navigate away
                 if (this.getAttribute('href') && this.getAttribute('href').startsWith('http')) {
