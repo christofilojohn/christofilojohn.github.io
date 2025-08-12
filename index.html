@@ -169,7 +169,7 @@ nav {
 }
 
 /* Social media icons in navigation */
-.social-icon {
+<!--.social-icon {
     font-size: 1.2rem;
     width: 40px !important;
     height: 40px !important;
@@ -198,22 +198,33 @@ nav {
     background: transparent !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
+}-->
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: transparent;
+    transition: transform 0.3s ease;
 }
 
 .social-icon i {
-    display: block !important;
+<!--    display: block !important;-->
     line-height: 1;
-    font-size: 1.2rem !important;
-    opacity: 1 !important;
+    font-size: 1.2rem;
+<!--    opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
     width: auto !important;
     height: auto !important;
-    text-align: center;
-    margin: 0 !important;
+    text-align: center;-->-->
+<!--    margin: 0 !important;
     padding: 0 !important;
     position: static !important;
-    overflow: visible !important;
+    overflow: visible !important;-->
 }
 
 /* Platform-specific colors */
@@ -725,7 +736,7 @@ div.timeline-item::before {
     position: relative;
 }
 
-.grade-card {
+<!--.grade-card {
     background: var(--md-surface);
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
@@ -733,6 +744,18 @@ div.timeline-item::before {
     transition: all 0.3s ease;
     opacity: 1;
     transform: translateY(0);
+}-->
+
+.grade-card {
+    max-height: 500px;
+    overflow: hidden;
+    opacity: 1;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.grade-card.hidden {
+    max-height: 0;
+    opacity: 0;
 }
 
 .grade-card:hover {
@@ -1369,36 +1392,6 @@ button:focus,
     }
 }
 
-/* Print styles */
-@media print {
-    .fab,
-    .loader,
-    .lightbox,
-    .scroll-indicator,
-    .show-more-btn {
-        display: none !important;
-    }
-    
-    .card {
-        break-inside: avoid;
-        box-shadow: none;
-        border: 1px solid #ccc;
-    }
-    
-    .hero {
-        min-height: auto;
-        padding: 2rem 0;
-    }
-
-    .grade-card.hidden {
-        display: block !important;
-    }
-
-    .grade-fade-overlay {
-        display: none !important;
-    }
-}
-
 /* Font Awesome specific fixes */
 .fab, .fas, .fa {
     font-family: "Font Awesome 5 Brands", "Font Awesome 5 Free" !important;
@@ -1592,13 +1585,13 @@ html {
                 <a href="#art">Art</a>
 <!--                <a href="#contact">Contact</a>-->
                 <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="social-icon" title="Instagram">
-                    <i class="fab fa-instagram"></i>
+                    <i class="fas fa-instagram"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/john-christofilogiannis-baa407248/" target="_blank" class="social-icon" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
+                    <i class="fas fa-linkedin"></i>
                 </a>
                 <a href="https://www.github.com/christofilojohn" target="_blank" class="social-icon" title="GitHub">
-                    <i class="fab fa-github"></i>
+                    <i class="fas fa-github"></i>
                 </a>
             </div>
             <button class="mobile-menu" id="mobileMenuBtn" aria-label="Menu">
@@ -1763,22 +1756,27 @@ html {
   <div class="card reveal">
         <h2><i class="fas fa-book"></i> Publications</h2>
        <div class="timeline">
-            <h3> Feature selection in the Federated Machine Learning setting</h3>
+            <ul class="styled-bullets">
+                <li><h3> Feature selection in the Federated Machine Learning setting</h3>
                 <p class="date"> May 2025</p>
-             <p> <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank"> Institutional Repository Technical University of Crete</a></p>
-            <!-- <ul class="styled-bullets">
-                <li>...</li>  
-            </ul> -->
-            <!-- <div class="timeline-item">
-                 <h3>FLASH: A framework for Federated Learning with Attribute Selection and Hyperparameter optimization </h3>
+                <p> 
+                <ul class="styled-bullets">
+                    <li>                <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank"> Institutional Repository Technical University of Crete</a></p></li>
+                  
+                </ul>
+
+                <li><h3>FLASH: A framework for Federated Learning with Attribute Selection and Hyperparameter optimization </h3>
                 <p class="date"> October 2025</p>
                 
                 <ul class="styled-bullets">
-                    <li>...</li>
+                    <li>Accepted in <a class="link" href="https://flta-conference.org/flta-2025">FLTA IEEE 2025 </a> conference </li>
                   
                 </ul>
-            </div> -->
-        </div>
+</li>  
+            </ul>
+            
+            
+    </div>
 
 </section>
         <!-- Education Section -->
@@ -2182,13 +2180,13 @@ html {
                 <h2><i class="fas fa-envelope"></i> Let's Connect</h2>
                 <div class="cta-buttons">
                     <a href="https://www.linkedin.com/in/john-christofilogiannis-baa407248/" target="_blank" class="btn btn-secondary">
-                        <i class="fab fa-linkedin"></i> LinkedIn
+                        <i class="fas fa-linkedin"></i> LinkedIn
                     </a>
                     <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="btn btn-secondary">
-                        <i class="fab fa-instagram"></i> Instagram
+                        <i class="fas fa-instagram"></i> Instagram
                     </a>
                     <a href="https://github.com/christofilojohn" target="_blank" class="btn btn-secondary">
-                        <i class="fab fa-github"></i> GitHub
+                        <i class="fas fa-github"></i> GitHub
                     </a>
                     <a href="mailto:jchr2001@gmail.com?subject=Hello%20from%20your%20website&body=Hi%20Ioannis,%0A%0AI%20found%20your%20website%20and%20would%20like%20to%20connect..." class="btn btn-secondary">
                         <i class="fas fa-envelope"></i> Mail
