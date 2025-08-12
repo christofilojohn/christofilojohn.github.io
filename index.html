@@ -564,9 +564,9 @@ main {
     transform: translateY(-1px);
 }
 
-.link:visited {
+<!--.link:visited {
     color: var(--md-primary);
-}
+}-->
 
 /* Education section specific styling */
 #education .date {
@@ -587,11 +587,11 @@ main {
     margin: var(--spacing-md) 0;
 }
 
-/* Experience section links */
+<!--/* Experience section links */
 #experience .link {
     font-size: 0.875rem;
     margin-left: var(--spacing-xs);
-}
+}-->
 
 /* Styled bullets for lists */
 .styled-bullets {
@@ -1671,18 +1671,18 @@ html {
                 <div class="card reveal">
                     <h2><i class="fas fa-code"></i> Technical Skills</h2>
                     <div class="chip-container">
-                        <div class="chip">Python</div>
-                        <div class="chip">C/C++</div>
-                        <div class="chip">C#</div>
-                        <div class="chip">Java</div>
-                        <div class="chip">VHDL</div>
-                        <div class="chip">SQL</div>
-                        <div class="chip">Unity</div>
-                        <div class="chip">GUI Dev</div>
-                        <div class="chip">Web Dev</div>
-                        <div class="chip">Linux</div>
-                        <div class="chip">Windows</div>
-                        <div class="chip">macOS</div>
+                        <div class="chip"><i class="fas fa-python"></i>Python</div>
+                        <div class="chip"><i class="fa fa-terminal"></i>C/C++</div>
+                       <div class="chip"><i class="fas fa-unity"></i>Unity/C#</div>
+                        <div class="chip"><i class="fas fa-java"></i>Java</div>
+                        <div class="chip"><i class="fas fa-code"></i>VHDL</div>
+                        <div class="chip"><i class="fas fa-database"></i>SQL</div>
+  
+                        <div class="chip"><i class="fas fa-file-code"></i>GUI Dev</div>
+                        <div class="chip"><i class="fas fa-globe"></i>Web Dev</div>
+                        <div class="chip"><i class="fas fa-linux"></i>Linux</div>
+                        <div class="chip"><i class="fas fa-windows"></i>Windows</div>
+                        <div class="chip"><i class="fas fa-apple"></i>macOS</div>
                     </div>
                 </div>
 
@@ -1757,6 +1757,14 @@ html {
         <h2><i class="fas fa-book"></i> Publications</h2>
        <div class="timeline">
             <ul class="styled-bullets">
+                
+                <li><h3>FLASH: A framework for Federated Learning with Attribute Selection and Hyperparameter optimization </h3>
+                <p class="date"> October 2025</p>
+                
+                <ul class="styled-bullets">
+                    <li>Accepted in <a class="link" href="https://flta-conference.org/flta-2025">FLTA IEEE 2025 </a> conference </li>
+                  
+                </ul>
                 <li><h3> Feature selection in the Federated Machine Learning setting</h3>
                 <p class="date"> May 2025</p>
                 <p> 
@@ -1765,13 +1773,6 @@ html {
                   
                 </ul>
 
-                <li><h3>FLASH: A framework for Federated Learning with Attribute Selection and Hyperparameter optimization </h3>
-                <p class="date"> October 2025</p>
-                
-                <ul class="styled-bullets">
-                    <li>Accepted in <a class="link" href="https://flta-conference.org/flta-2025">FLTA IEEE 2025 </a> conference </li>
-                  
-                </ul>
 </li>  
             </ul>
             
@@ -1844,9 +1845,13 @@ html {
             </div>
             <ul class="styled-bullets">
                 <li>Intensive summer school focused on cutting-edge federated learning techniques</li>
-                <li>Hands-on workshops with privacy-preserving machine learning algorithms</li>
-                <li>Collaborative projects with international participants and industry experts</li>
-                <li>Advanced topics in distributed ML, differential privacy, and secure aggregation</li>
+                <li>Hands-on workshops with privacy-preserving algorithms and frameworks</li>
+               <li>Collaborative projects with international participants and industry experts from 
+                    <a class='link' href="https://flower.dev/" target="_blank">Flower</a>, 
+                    <a class='link' href="https://scaleoutsystems.com/" target="_blank">Scaleout</a>, 
+                    <a class='link' href="https://developer.nvidia.com/flare" target="_blank">Nvidia FLARE</a>, 
+                    P2PFL
+                </li>
             </ul>
         </div>
 
