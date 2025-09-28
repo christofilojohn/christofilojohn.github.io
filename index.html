@@ -775,179 +775,154 @@
             observer.observe(el);
         });
 
-        // ===== EXPANDABLE GRADES FUNCTIONALITY =====
-        let isGradesExpanded = false;
-        const showMoreBtn = document.getElementById('showMoreBtn');
-        const showMoreText = document.getElementById('showMoreText');
-        const showMoreIcon = document.getElementById('showMoreIcon');
-        const gradeGrid = document.getElementById('gradeGrid');
-        const gradeFadeOverlay = document.getElementById('gradeFadeOverlay');
-        let initialVisibleCards = [];
+        // ===== FIXED EXPANDABLE GRADES FUNCTIONALITY =====
+let isGradesExpanded = false;
+const showMoreBtn = document.getElementById('showMoreBtn');
+const showMoreText = document.getElementById('showMoreText');
+const showMoreIcon = document.getElementById('showMoreIcon');
+const gradeGrid = document.getElementById('gradeGrid');
+const gradeFadeOverlay = document.getElementById('gradeFadeOverlay');
+let initialVisibleCount = 6; // Show first 6 cards initially
 
-        // Function to calculate how many cards fit in the first row(s)
-        function calculateInitialVisibleCards() {
-            const allCards = document.querySelectorAll('.grade-card');
-            if (allCards.length === 0) return;
+// Function to initialize grades display
+function initializeGrades() {
+    const allCards = document.querySelectorAll('.grade-card');
+    if (allCards.length === 0) return;
 
-            // Temporarily show all cards to calculate layout
-            allCards.forEach(card => {
-                card.classList.remove('hidden');
-                card.style.visibility = 'hidden';
-                card.style.opacity = '1';
-            });
+    // Show only the first 6 cards initially
+    allCards.forEach((card, index) => {
+        if (index < initialVisibleCount) {
+            card.classList.remove('hidden');
+            card.style.display = 'block';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        } else {
+            card.classList.add('hidden');
+            card.style.display = 'none';
+            card.style.opacity = '0';
+        }
+    });
 
-            // Force layout recalculation
-            gradeGrid.offsetHeight;
+    // Show fade overlay if there are hidden cards
+    if (allCards.length > initialVisibleCount) {
+        gradeFadeOverlay.classList.remove('hidden');
+    } else {
+        gradeFadeOverlay.classList.add('hidden');
+        showMoreBtn.style.display = 'none';
+    }
+}
 
-            // Get the first card's position
-            const firstCard = allCards[0];
-            const firstCardRect = firstCard.getBoundingClientRect();
-
-            // Find cards in the first row(s) - show at least 2 rows
-            let visibleCards = [];
-            let rowCount = 0;
-            let currentRowTop = firstCardRect.top;
-
-            allCards.forEach((card, index) => {
-                const cardRect = card.getBoundingClientRect();
+// Function to handle smooth expanding/collapsing
+function toggleGrades() {
+    const allCards = document.querySelectorAll('.grade-card');
+    
+    if (!isGradesExpanded) {
+        // Expanding - show all hidden cards
+        showMoreText.textContent = 'Show Less';
+        showMoreIcon.classList.add('expanded');
+        gradeFadeOverlay.classList.add('hidden');
+        
+        // Show cards with staggered animation
+        allCards.forEach((card, index) => {
+            if (index >= initialVisibleCount) {
+                card.style.display = 'block';
                 
-                // Check if this card starts a new row
-                if (cardRect.top > currentRowTop + 10) {
-                    rowCount++;
-                    currentRowTop = cardRect.top;
-                }
-
-                // Show first 2 rows minimum, or until we have at least 6 cards
-                if (rowCount < 2 || visibleCards.length < 6) {
-                    visibleCards.push(card);
-                }
-            });
-
-            // Store initial visible cards
-            initialVisibleCards = visibleCards;
-
-            // Reset visibility and apply initial state
-            allCards.forEach((card, index) => {
-                card.style.visibility = 'visible';
-                if (visibleCards.includes(card)) {
+                setTimeout(() => {
                     card.classList.remove('hidden');
                     card.style.opacity = '1';
-                } else {
-                    card.classList.add('hidden');
-                    card.style.opacity = '0';
-                }
-            });
-        }
-
-        // Function to handle smooth expanding/collapsing
-        function toggleGrades() {
-            const allCards = document.querySelectorAll('.grade-card');
-            const hiddenCards = document.querySelectorAll('.grade-card.hidden');
-
-            // Store current scroll position and grid position
-            const currentScrollY = window.pageYOffset;
-            const gradeGridRect = gradeGrid.getBoundingClientRect();
-            const gradeGridTop = currentScrollY + gradeGridRect.top;
-
-            if (!isGradesExpanded) {
-                // Expanding
-                showMoreText.textContent = 'Show Less';
-                showMoreIcon.classList.add('expanded');
-                gradeFadeOverlay.classList.add('hidden');
-                
-                // Show cards with staggered animation
-                hiddenCards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.remove('hidden');
-                        card.classList.add('expanding');
-                        
-                        setTimeout(() => {
-                            card.classList.remove('expanding');
-                        }, 400);
-                    }, index * 60);
-                });
-                
-                isGradesExpanded = true;
-                
-            } else {
-                // Collapsing - prevent any automatic scrolling
-                showMoreText.textContent = 'Show More';
-                showMoreIcon.classList.remove('expanded');
-                
-                // Get cards to hide
-                const cardsToHide = Array.from(allCards).filter(card => !initialVisibleCards.includes(card));
-                
-                // Start hiding cards immediately without waiting
-                cardsToHide.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('collapsing');
-                        
-                        setTimeout(() => {
-                            card.classList.remove('collapsing');
-                            card.classList.add('hidden');
-                        }, 250);
-                    }, index * 25);
-                });
-                
-                // Show fade overlay
-                setTimeout(() => {
-                    gradeFadeOverlay.classList.remove('hidden');
-                }, 150);
-                
-                // Only scroll if user is significantly below the grades section
-                setTimeout(() => {
-                    const newScrollY = window.pageYOffset;
-                    const shouldScroll = newScrollY > (gradeGridTop + 400); // Only scroll if 400px below grades
-                    
-                    if (shouldScroll) {
-                        // Smooth scroll back, but not too far up
-                        const targetScroll = Math.max(gradeGridTop - 50, 0);
-                        
-                        // Use requestAnimationFrame for smoother scrolling
-                        const scrollStart = newScrollY;
-                        const scrollDistance = targetScroll - scrollStart;
-                        const duration = 300;
-                        let startTime = null;
-                        
-                        function smoothScroll(currentTime) {
-                            if (startTime === null) startTime = currentTime;
-                            const timeElapsed = currentTime - startTime;
-                            const progress = Math.min(timeElapsed / duration, 1);
-                            
-                            // Ease out function for smooth deceleration
-                            const easeOut = 1 - Math.pow(1 - progress, 3);
-                            
-                            window.scrollTo(0, scrollStart + (scrollDistance * easeOut));
-                            
-                            if (progress < 1) {
-                                requestAnimationFrame(smoothScroll);
-                            }
-                        }
-                        
-                        requestAnimationFrame(smoothScroll);
-                    }
-                }, 200);
-                
-                isGradesExpanded = false;
+                    card.style.transform = 'translateY(0)';
+                    card.style.transition = 'all 0.4s ease';
+                }, (index - initialVisibleCount) * 100);
             }
+        });
+        
+        isGradesExpanded = true;
+        
+    } else {
+        // Collapsing - hide cards beyond initial count
+        showMoreText.textContent = 'Show More';
+        showMoreIcon.classList.remove('expanded');
+        
+        // Store current scroll position
+        const currentScrollY = window.pageYOffset;
+        const gradeGridRect = gradeGrid.getBoundingClientRect();
+        const gradeGridTop = currentScrollY + gradeGridRect.top;
+        
+        // Hide cards with animation
+        allCards.forEach((card, index) => {
+            if (index >= initialVisibleCount) {
+                card.style.transition = 'all 0.3s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(-20px)';
+                
+                setTimeout(() => {
+                    card.classList.add('hidden');
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        // Show fade overlay after animation
+        setTimeout(() => {
+            gradeFadeOverlay.classList.remove('hidden');
+        }, 200);
+        
+        // Scroll back to grades section if user is far below
+        setTimeout(() => {
+            const newScrollY = window.pageYOffset;
+            const shouldScroll = newScrollY > (gradeGridTop + 400);
+            
+            if (shouldScroll) {
+                const targetScroll = Math.max(gradeGridTop - 100, 0);
+                window.scrollTo({
+                    top: targetScroll,
+                    behavior: 'smooth'
+                });
+            }
+        }, 200);
+        
+        isGradesExpanded = false;
+    }
+}
+
+// Initialize on DOM content loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initializeGrades, 100);
+});
+
+// Also initialize on window load as backup
+window.addEventListener('load', function() {
+    setTimeout(initializeGrades, 200);
+});
+
+// Recalculate on window resize with debouncing
+let resizeTimeout;
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+        if (!isGradesExpanded) {
+            initializeGrades();
         }
+    }, 300);
+});
 
-        // Initialize on page load
-        window.addEventListener('load', () => {
-            setTimeout(calculateInitialVisibleCards, 100);
-        });
+// Attach click handler
+if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', toggleGrades);
+}
 
-        // Recalculate on window resize with debouncing
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                if (!isGradesExpanded) {
-                    calculateInitialVisibleCards();
-                }
-            }, 250);
-        });
-
+// Additional fixes for touch devices
+if (showMoreBtn) {
+    showMoreBtn.addEventListener('touchstart', function(e) {
+        // Prevent double-tap zoom on mobile
+        e.preventDefault();
+    });
+    
+    showMoreBtn.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        toggleGrades();
+    });
+}
         // Attach click handler
         showMoreBtn.addEventListener('click', toggleGrades);
 
