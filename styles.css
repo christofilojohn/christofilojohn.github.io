@@ -23,7 +23,7 @@
     /* Glass effect colors */
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(255, 255, 255, 0.3);
-    --shadow-color: rgba(0, 0, 0, 0.1);g
+    --shadow-color: rgba(0, 0, 0, 0.1);
    
     /* Spacing */
     --spacing-xs: 4px;
@@ -159,62 +159,26 @@ nav {
 }
 
 /* Social media icons in navigation */
-<!--.social-icon {
-    font-size: 1.2rem;
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
-    max-width: 40px !important;
-    min-height: 40px !important;
-    max-height: 40px !important;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    position: relative;
-    text-decoration: none;
-    flex-shrink: 0 !important;
-    flex-grow: 0 !important;
-    flex-basis: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    z-index: 10003 !important;
-    
-    /* Force visibility and prevent expansion */
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-    background: transparent !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-}-->
-
 .social-icon {
     width: 40px;
     height: 40px;
-    display: flex;
+    min-width: 40px;
+    min-height: 40px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     background: transparent;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10003;
 }
 
 .social-icon i {
-<!--    display: block !important;-->
-    line-height: 1;
     font-size: 1.2rem;
-<!--    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    width: auto !important;
-    height: auto !important;
-    text-align: center;-->-->
-<!--    margin: 0 !important;
-    padding: 0 !important;
-    position: static !important;
-    overflow: visible !important;-->
+    line-height: 1;
 }
 
 /* Platform-specific colors */
@@ -223,10 +187,8 @@ nav {
 .fa-github { color: #333 !important; }
 
 .social-icon:hover {
-    background: rgba(25, 118, 210, 0.08) !important;
-    transform: scale(1.1) !important;
-    width: 40px !important;
-    height: 40px !important;
+    background: rgba(25, 118, 210, 0.08);
+    transform: scale(1.1);
 }
 
 /* Mobile menu button */
@@ -253,34 +215,9 @@ nav, nav *, .nav-items, .nav-items *, .social-icon, .social-icon * {
 header::before,
 header::after,
 nav::before,
-nav::after,
-.social-icon::before,
-.social-icon::after {
+nav::after {
     display: none !important;
     content: none !important;
-}
-
-/* Additional social icon constraints */
-.nav-items .social-icon {
-    flex: 0 0 auto !important;
-    width: 40px !important;
-    height: 40px !important;
-}
-
-/* Prevent any conflicting styles */
-.social-icon * {
-    box-sizing: border-box !important;
-}
-
-/* Remove any conflicting button styles from social icons */
-.social-icon.btn,
-.nav-items .social-icon.btn {
-    min-width: 40px !important;
-    max-width: 40px !important;
-    width: 40px !important;
-    height: 40px !important;
-    padding: 0 !important;
-    margin: 0 !important;
 }
 
 /* Ensure main content starts below the fixed header */
@@ -426,8 +363,10 @@ main {
     justify-content: center;
     gap: var(--spacing-sm);
     min-width: 140px;
+    min-height: 44px;
     border: none;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .btn i {
@@ -554,10 +493,6 @@ main {
     transform: translateY(-1px);
 }
 
-<!--.link:visited {
-    color: var(--md-primary);
-}-->
-
 /* Education section specific styling */
 #education .date {
     color: var(--md-primary);
@@ -577,12 +512,6 @@ main {
     margin: var(--spacing-md) 0;
 }
 
-<!--/* Experience section links */
-#experience .link {
-    font-size: 0.875rem;
-    margin-left: var(--spacing-xs);
-}-->
-
 /* Styled bullets for lists */
 .styled-bullets {
     list-style: none;
@@ -601,6 +530,7 @@ main {
     left: 0;
     color: var(--md-secondary);
 }
+
 .chip-container {
     display: flex;
     flex-wrap: wrap;
@@ -726,26 +656,21 @@ div.timeline-item::before {
     position: relative;
 }
 
-<!--.grade-card {
+.grade-card {
     background: var(--md-surface);
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     box-shadow: var(--elevation-1);
     transition: all 0.3s ease;
-    opacity: 1;
-    transform: translateY(0);
-}-->
-
-.grade-card {
     max-height: 500px;
     overflow: hidden;
     opacity: 1;
-    transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
 .grade-card.hidden {
     max-height: 0;
     opacity: 0;
+    display: none;
 }
 
 .grade-card:hover {
@@ -775,10 +700,6 @@ div.timeline-item::before {
 }
 
 /* ===== EXPANDABLE GRADES FUNCTIONALITY ===== */
-.grade-card.hidden {
-    display: none;
-}
-
 .grade-card.collapsing {
     opacity: 0;
     transform: translateY(-20px);
@@ -843,10 +764,12 @@ div.timeline-item::before {
     align-items: center;
     gap: var(--spacing-sm);
     min-width: 140px;
+    min-height: 44px;
     justify-content: center;
     box-shadow: var(--elevation-2);
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .show-more-btn:hover {
@@ -857,6 +780,7 @@ div.timeline-item::before {
 
 .show-more-btn i {
     transition: transform 0.3s ease;
+    font-size: 1rem;
 }
 
 .show-more-btn.expanded i {
@@ -1114,22 +1038,6 @@ div.timeline-item::before {
 
 #contact .btn {
     min-width: 160px;
-    padding: var(--spacing-md) var(--spacing-xl);
-    font-size: 1rem;
-    border-radius: var(--radius-xl);
-    text-decoration: none;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-sm);
-    border: none;
-    cursor: pointer;
 }
 
 #contact .btn i {
@@ -1324,6 +1232,22 @@ footer {
         width: 100%;
         max-width: 300px;
     }
+
+    /* Enhanced mobile touch targets */
+    .social-icon {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .btn {
+        min-height: 44px;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .mobile-menu {
+        min-width: 44px;
+        min-height: 44px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1480,24 +1404,6 @@ button:focus,
 
     .grade-fade-overlay {
         background: linear-gradient(to bottom, rgba(18, 18, 18, 0), rgba(18, 18, 18, 0.9));
-    }
-}
-
-/* Enhanced mobile touch targets */
-@media (max-width: 768px) {
-    .social-icon {
-        min-width: 44px;
-        min-height: 44px;
-    }
-    
-    .btn {
-        min-height: 44px;
-        padding: var(--spacing-md) var(--spacing-lg);
-    }
-    
-    .mobile-menu {
-        min-width: 44px;
-        min-height: 44px;
     }
 }
 
