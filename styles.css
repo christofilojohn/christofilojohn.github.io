@@ -1435,14 +1435,6 @@ html {
     }
 }
 
-/* Firefox-specific fixes */
-@-moz-document url-prefix() {
-    .card,
-    header {
-        background: rgba(255, 255, 255, 0.9);
-    }
-}
-
 /* Internet Explorer fallbacks */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     .card,
