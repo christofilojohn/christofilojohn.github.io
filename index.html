@@ -7,7 +7,7 @@
     <!-- Updated Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
     <link rel="stylesheet" href="styles.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Loader -->
@@ -705,7 +705,7 @@
                     <a href="https://github.com/christofilojohn" target="_blank" class="btn btn-secondary">
                         <i class="fas fa-github"></i> GitHub
                     </a>
-                    <a href="mailto:jchr2001@gmail.com?subject=Hello%20from%20your%20website&body=Hi%20Ioannis,%0A%0AI%20found%20your%20website%20and%20would%20like%20to%20connect..." class="btn btn-secondary">
+                    <a href="/cdn-cgi/l/email-protection#d8b2bbb0aaeae8e8e998bfb5b9b1b4f6bbb7b5e7abadbab2bdbbace590bdb4b4b7fdeae8beaab7b5fdeae8a1b7adaafdeae8afbdbaabb1acbdfebab7bca1e590b1fdeae891b7b9b6b6b1abf4fde899fde89991fdeae8beb7adb6bcfdeae8a1b7adaafdeae8afbdbaabb1acbdfdeae8b9b6bcfdeae8afb7adb4bcfdeae8b4b1b3bdfdeae8acb7fdeae8bbb7b6b6bdbbacf6f6f6" class="btn btn-secondary">
                         <i class="fas fa-envelope"></i> Mail
                     </a>
                 </div>
@@ -728,13 +728,24 @@
         </div>
     </div>
 
-    <script>
-        // Hide loader when page loads
-        window.addEventListener('load', () => {
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Hide loader when DOM is ready (faster than waiting for all images)
+        document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
-            }, 500);
+            }, 300);
         });
+        
+        // Fallback: also hide on window load
+        window.addEventListener('load', () => {
+            document.getElementById('loader').classList.add('hidden');
+        });
+        
+        // Emergency fallback: hide after 2 seconds no matter what
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+            if (loader) loader.classList.add('hidden');
+        }, 2000);
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1022,7 +1033,7 @@ if (showMoreBtn) {
         // Typing effect for hero subtitle
         const subtitle = document.getElementById('heroSubtitle');
         if (subtitle) {
-            const text = 'Electrical & Computer Engineer | TUC Graduate';
+            const text = 'Electrical & Computer Engineer | MSc Computer Science - Intelligent Systems, Trinity College Dublin (2026)';
             subtitle.textContent = '';
             let i = 0;
            
@@ -1061,7 +1072,7 @@ if (showMoreBtn) {
             }
         });
 
-        // Improved error handling for Font Awesome
+       // Improved error handling for Font Awesome
         document.addEventListener('DOMContentLoaded', () => {
             // Check if Font Awesome icons are loading
             const testIcon = document.createElement('i');
@@ -1072,6 +1083,7 @@ if (showMoreBtn) {
            
             setTimeout(() => {
                 const computed = window.getComputedStyle(testIcon);
+                // If font-family doesn't contain "Font Awesome", fallback
                 if (computed.fontFamily.indexOf('Font Awesome') === -1) {
                     console.warn('Font Awesome may not be loading properly');
                     // Fallback: replace icons with text
@@ -1084,13 +1096,15 @@ if (showMoreBtn) {
                             icon.textContent = 'ig';
                         }
                         icon.style.fontFamily = 'inherit';
-                        icon.style.fontSize = '0.8rem';
-                        icon.style.fontWeight = 'bold';
                     });
                 }
-                document.body.removeChild(testIcon);
+                // Clean up test icon
+                if(document.body.contains(testIcon)) {
+                    document.body.removeChild(testIcon);
+                }
             }, 1000);
         });
     </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
