@@ -231,6 +231,21 @@ nav {
     box-shadow: var(--elevation-2);
 }
 
+.cv-btn {
+    width: auto !important;
+    padding: 0 12px;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--terminal-green);
+    border: 1px solid var(--glass-border);
+}
+
+.cv-btn i {
+    color: var(--terminal-green) !important;
+}
+
 .mobile-menu {
     display: none;
     font-size: 1.5rem;
