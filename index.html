@@ -353,10 +353,9 @@
             <div class="chip">🇫🇷 French A1</div>
         </div>
 
-        <h3 style="margin-top: var(--spacing-xl);">Notable Grades</h3>
+        <!-- <h3 style="margin-top: var(--spacing-xl);">Notable Grades</h3>
         <div class="grade-grid-container">
             <div class="grade-grid" id="gradeGrid">
-                <!-- All grade cards without data-row attributes -->
                 <div class="grade-card">
                     <div class="course">Computer Security <span class="grade">10</span></div>
                     <div class="details">C, Unix exercises</div>
@@ -424,7 +423,7 @@
                 <i class="fas fa-chevron-down" id="showMoreIcon"></i>
             </button>
         </div>
-    </div>
+    </div> -->
 </section>
         <!-- Projects Section -->
         <section id="projects" class="container">
@@ -958,7 +957,7 @@
             observer.observe(el);
         });
 
-        // ===== FIXED EXPANDABLE GRADES FUNCTIONALITY =====
+        /* ===== FIXED EXPANDABLE GRADES FUNCTIONALITY (disabled) =====
 let isGradesExpanded = false;
 const showMoreBtn = document.getElementById('showMoreBtn');
 const showMoreText = document.getElementById('showMoreText');
@@ -1108,6 +1107,7 @@ if (showMoreBtn) {
 }
         // Attach click handler
         showMoreBtn.addEventListener('click', toggleGrades);
+        */ // ===== END GRADES (disabled) =====
 
         // Ripple effect for buttons
         document.querySelectorAll('.btn, .show-more-btn').forEach(button => {
