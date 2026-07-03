@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "static-site",
-      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
       "runtimeArgs": ["-m", "http.server", "4173"],
       "port": 4173
     }
