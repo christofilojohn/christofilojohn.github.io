@@ -3,448 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Christofilogiannis - Portfolio</title>
-    <!-- Updated Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ioannis Christofilogiannis — ML Engineer & Researcher</title>
+    <meta name="description" content="Ioannis Christofilogiannis — Electrical & Computer Engineer, MSc Computer Science (Intelligent Systems) at Trinity College Dublin. Federated Learning, Machine Learning & Computer Vision.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-spinner"></div>
-    </div>
 
-    <header>
-        <nav>
-            <div class="nav-brand"></div>
-            <div class="nav-items" id="navItems">
-                <a href="#home">Home</a>
-<!--                <a href="#about">About</a>-->
-<!--                <a href="#skills">Skills</a>-->
-                <a href="#experience">Experience</a>
-<!--                <a href="#education">Education</a>-->
-                <a href="#projects">Projects</a>
-                <!-- <a href="#art">Art</a> -->
-<!--                <a href="#contact">Contact</a>-->
-<!-- <a href="cv/cv.pdf" download class="social-icon cv-btn" title="CV">
-    <i class="fas fa-file-pdf"></i>
-    <span>CV</span>
-</a> -->
-                <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="social-icon" title="Instagram">
-                    <i class="fas fa-instagram"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/ioannis-christofilogiannis/" target="_blank" class="social-icon" title="LinkedIn">
-                    <i class="fas fa-linkedin"></i>
-                </a>
-                <a href="https://www.github.com/christofilojohn" target="_blank" class="social-icon" title="GitHub">
-                    <i class="fas fa-github"></i>
-                </a>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#top" class="nav-logo">ic.</a>
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        <div class="nav-links" id="navLinks">
+            <a href="#experience">Experience</a>
+            <a href="#publications">Publications</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-sep"></div>
+        <div class="nav-icons">
+            <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/ioannis-christofilogiannis/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.github.com/christofilojohn" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="top">
+        <div class="aurora"><span class="blob-3"></span></div>
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-avatar">
+                <img src="images/profile.jpeg" alt="Ioannis Christofilogiannis">
             </div>
-            <button class="mobile-menu" id="mobileMenuBtn" aria-label="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
+            <p class="hero-eyebrow">Federated Learning · Machine Learning · Computer Vision</p>
+            <h1>Ioannis <span class="gradient-text">Christofilogiannis</span></h1>
+            <p class="hero-subtitle"><span id="typewriter"></span><span class="cursor"></span></p>
+            <div class="hero-cta">
+                <a href="#experience" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
+                <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> Get in Touch</a>
+            </div>
+        </div>
+        <a href="#about" class="hero-scroll" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <div class="profile-img-container">
-                    <img src="images/profile.jpeg" alt="John Christofilogiannis" class="profile-pic">
-                </div>
-                <h1>Ioannis <span>Christofilogiannis</span></h1>
-                <p id="heroSubtitle">Federated Learning Engineer | Electrical and Computer Engineering Graduate</p>
-                <div class="cta-buttons">
-                    <a href="#experience" class="btn btn-primary">
-                        <i class="fas fa-briefcase"></i>View Experience
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>Get in Touch
-                    </a>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about" class="container">
-            <div class="grid grid-3">
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">01</span>
+                <h2 class="section-title">About</h2>
+            </div>
+            <div class="bento">
                 <div class="card reveal">
-                    <h2><i class="fas fa-heart"></i> Interests</h2>
-                    <div class="chip-container">
-                        <div class="chip">
-                            <span class="chip-icon">💻</span>
-                            <span>Programming</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">🎨</span>
-                            <span>Sketching</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">📚</span>
-                            <span>Reading</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">✈️</span>
-                            <span>Traveling</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">🤖</span>
-                            <span>AI</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">🧠</span>
-                            <span>ML</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">🌐</span>
-                            <span>Federated Learning</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">🖌️</span>
-                            <span>UI/UX</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">🎮</span>
-                            <span>Gaming</span>
-                        </div>
+                    <h3 class="card-label"><i class="fas fa-heart"></i> Interests</h3>
+                    <div class="chips">
+                        <span class="chip">💻 Programming</span>
+                        <span class="chip">🎨 Sketching</span>
+                        <span class="chip">📚 Reading</span>
+                        <span class="chip">✈️ Traveling</span>
+                        <span class="chip">🤖 AI</span>
+                        <span class="chip">🧠 ML</span>
+                        <span class="chip">🌐 Federated Learning</span>
+                        <span class="chip">🖌️ UI/UX</span>
+                        <span class="chip">🎮 Gaming</span>
                     </div>
                 </div>
-
                 <div class="card reveal">
-                    <h2><i class="fas fa-code"></i> Technical Skills</h2>
-                    <div class="chip-container">
-                        <div class="chip"><i class="fas fa-python"></i>Python</div>
-                        <div class="chip"><i class="fa fa-terminal"></i>C/C++</div>
-                       <div class="chip"><i class="fas fa-unity"></i>Unity/C#</div>
-                        <div class="chip"><i class="fas fa-java"></i>Java</div>
-                        <div class="chip"><i class="fas fa-code"></i>VHDL</div>
-                        <div class="chip"><i class="fas fa-database"></i>SQL</div>
-
-                        <div class="chip"><i class="fas fa-file-code"></i>GUI Dev</div>
-                        <div class="chip"><i class="fas fa-globe"></i>Web Dev</div>
-                        <div class="chip"><i class="fas fa-linux"></i>Linux</div>
-                        <div class="chip"><i class="fas fa-windows"></i>Windows</div>
-                        <div class="chip"><i class="fas fa-apple"></i>macOS</div>
+                    <h3 class="card-label"><i class="fas fa-code"></i> Technical Skills</h3>
+                    <div class="chips">
+                        <span class="chip"><i class="fab fa-python"></i> Python</span>
+                        <span class="chip"><i class="fas fa-terminal"></i> C/C++</span>
+                        <span class="chip"><i class="fab fa-unity"></i> Unity/C#</span>
+                        <span class="chip"><i class="fab fa-java"></i> Java</span>
+                        <span class="chip"><i class="fas fa-microchip"></i> VHDL</span>
+                        <span class="chip"><i class="fas fa-database"></i> SQL</span>
+                        <span class="chip"><i class="fas fa-window-restore"></i> GUI Dev</span>
+                        <span class="chip"><i class="fas fa-globe"></i> Web Dev</span>
+                        <span class="chip"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="chip"><i class="fab fa-windows"></i> Windows</span>
+                        <span class="chip"><i class="fab fa-apple"></i> macOS</span>
                     </div>
                 </div>
-
                 <div class="card reveal">
-                    <h2><i class="fas fa-star"></i> Characteristics</h2>
-                    <div class="chip-container">
-                        <div class="chip">
-                            <span class="chip-icon">💡</span>
-                            <span>Creative</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">🚀</span>
-                            <span>Innovative</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">🧠</span>
-                            <span>Problem Solver</span>
-                        </div>
-                        <div class="chip">
-                            <span class="chip-icon">👥</span>
-                            <span>Team Player</span>
-                        </div>
+                    <h3 class="card-label"><i class="fas fa-star"></i> Characteristics</h3>
+                    <div class="chips">
+                        <span class="chip">💡 Creative</span>
+                        <span class="chip">🚀 Innovative</span>
+                        <span class="chip">🧠 Problem Solver</span>
+                        <span class="chip">👥 Team Player</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-<section id="experience" class="container">
-    <div class="card reveal">
-        <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                        <h3>ML, Computer Vision Researcher - Hellenic Center for Marine Research</h3>
-                        <p class="date">Remote | November 2024 - July 2025</p>
-                        <ul class="styled-bullets">
-                            <li>First author of Aquacultural Engineering Journal <a class="link" href="https://www.sciencedirect.com/science/article/pii/S0144860925001736">paper</a></li>
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">02</span>
+                <h2 class="section-title">Experience</h2>
+            </div>
+            <div class="card reveal">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>ML, Computer Vision Researcher · <span class="org">Hellenic Center for Marine Research</span></h3>
+                        <span class="date">Remote — November 2024 – July 2025</span>
+                        <ul class="bullets">
+                            <li>First author of Aquacultural Engineering Journal <a class="link" href="https://www.sciencedirect.com/science/article/pii/S0144860925001736" target="_blank" rel="noopener">paper</a></li>
                             <li>Annotated underwater images for fish disease prediction</li>
                             <li>Trained YOLO models</li>
-                            <li>Developed an Ai-assisted annotation GUI application</li>
+                            <li>Developed an AI-assisted annotation GUI application</li>
                         </ul>
                     </div>
-            <div class="timeline-item">
-                <h3>ML Research Intern - Heriot Watt University</h3>
-                <p class="date">Edinburgh, Scotland | July - August 2023
-                    (<a class="link" href="https://bioml.eu.org/team/" target="_blank">visit website</a>)
-                </p>
-                <ul class="styled-bullets">
-                    <li>Developed machine learning algorithms for anomaly detection in fish gill analysis</li>
-                    <li>Automated <a class="link" href="https://qupath.github.io/" target="_blank">Qupath</a> workflows using Groovy scripting</li>
-                    <li>Created Python GUI application using tkinter for biomedical image processing</li>
-                    <li>Collaborated with BCML Lab research team on cutting-edge ML projects</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <h3>Software Developer - TUCer Autonomous Racing Team</h3>
-                <p class="date">Chania, Greece | January - July 2023
-                    (<a class="link" href="https://www.tucer.tuc.gr/el/archiki" target="_blank">visit website</a>)
-                </p>
-                <ul class="styled-bullets">
-                    <li>Implemented autonomous driving algorithms using ROS and Python</li>
-                    <li>Developed Arduino-based sensor integration systems</li>
-                    <li>Competed in <a class="link" href="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html" target="_blank">Shell Eco Marathon 2023</a> in Nogaro, France</li>
-                    <li>Optimized vehicle control systems for energy efficiency</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Publications -->
-<section id="publications" class="container">
-  <div class="card reveal">
-        <h2><i class="fas fa-book"></i> Publications</h2>
-       <div class="timeline">
-            <ul class="styled-bullets">
-
-                <li><h3>FLASH: A framework for Federated Learning with Attribute Selection and Hyperparameter optimization </h3>
-                <p class="date"> October 2025</p>
-                <ul class="styled-bullets">
-                    <li>Best Student paper award in <a class="link" href="https://flta-conference.org/flta-2025">FLTA IEEE 2025 </a> conference </li>
-                    <li>Available on <a class="link" href="https://ieeexplore.ieee.org/document/11336571"> IEEE Xplore </a> and publicly on <a class="link" href="https://zenodo.org/records/18596175?fbclid=IwY2xjawP5IIdleHRuA2FlbQIxMABicmlkETFKbU5zOUxXRTZwUzBSZHJSc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHoj-fBGD8YFBYSL3bVZSGtC432q6Hh6_9cxMZHz7xIbs31WofE7KYcaF6iXj_aem_akJ34zJa-VLx8B5oRGq5rA">Zenodo (preprint)</a>.</li>
-                    <li>Authors: Ioannis Christofilogiannis, George Valavanis, Alexander Shevtsov, Ioannis Lamprou and Sotiris Ioannidis
-                    </li>
-                </ul>
-
-                <li><h3>Automatic Detection of fin, operculum and skin deformities in Mediterranean Fish Species </h3>
-                <p class="date"> December 2025</p>
-                <ul class="styled-bullets">
-                    <li>Open access, read <a class="link" href="https://www.sciencedirect.com/science/article/pii/S0144860925001736"> here. </a></li>
-                    <li>Accepted in <a class="link" href="https://www.sciencedirect.com/journal/aquacultural-engineering"> Aquacultural engineering journal. </a>
-                    </li>
-                    <li>Authors: Ioannis Christofilogiannis, Dimitra Georgopoulou, Charalabos Vouidaskis, Zacharias Choulakis, Dimitris Voskakis, Nikos Papandroulakis
-                    </li>
-                </ul>
-
-                <li><h3>NON-INVASIVE MONITORING OF FISH MORPHOMETRIC TRAITS USING YOLO-BASED COMPUTER VISION IN AQUACULTURE </h3>
-                <p class="date"> September 2025</p>
-
-                <ul class="styled-bullets">
-                    <li>Accepted in <a class="link" href="https://www.aquaeas.org">Aquaculture Europe 25. September 22-25, 2025, Valencia, Spain. European Aquaculture Society </a> conference </li>
-                </ul>
-
-                <li><h3>Towards Federated Learning Across Biobanks: Prototype Software from the 2026 Carnegie Mellon University–NVIDIA Hackathon </h3>
-                <p class="date"> March 2026</p>
-
-                <ul class="styled-bullets">
-                    <li>Available in <a class="link" href="https://osf.io/preprints/biohackrxiv/5psfj_v1"> Open Science Framework </a> </li>
-                    <li>The Carnegie Mellon University-NVIDIA Federated Learning Hackathon for Biomedical Applications (January 7-9, 2026) convened researchers from academia, government, and industry to implement federated frameworks for disease subtyping, genetic association studies, and multimodal clinical prediction using NVIDIA FLARE. </li>
-                </ul>
-
-                <li><h3> Feature selection in the Federated Machine Learning setting</h3>
-                <p class="date"> May 2025 </p>
-                <p>
-                <ul class="styled-bullets">
-                    <li>                <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank"> Institutional Repository Technical University of Crete</a>
-                    <br>Note: The FLASH framework was initially called FLEx but was changed due to conflicts</p></li>
-
-                </ul>
-
-</li>
-            </ul>
-
-
-    </div>
-
-</section>
-        <!-- Education Section -->
-        <section id="education" class="container">
-    <div class="card reveal">
-        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-
-        <div style="margin-bottom: var(--spacing-xl);">
-<h3>Trinity College Dublin</h3>
-<p class="date">MSc Computer Science - Intelligent Systems | September 2025 - 2026
-    (<a class="link" href="https://www.tcd.ie/" target="_blank">visit website</a>)
-</p>
-
-<ul class="styled-bullets">
-    <li>🥇 Winning team (Federated Infrastructure) on the collaborative event -
-        <a class="link" href="https://guides.library.cmu.edu/hackathon/2026" target="_blank">
-            Carnegie Mellon x NVIDIA Federated Learning Hackathon for Biomedical Applications
-        </a>
-    </li>
-</ul>
-
-<h3>Technical University of Crete</h3>
-            <p class="date">Bachelor's with Integrated MSc in Electrical & Computer Engineering | 2019 - 2025
-                (<a class="link" href="https://www.ece.tuc.gr/" target="_blank">visit website</a>)
-            </p>
-            <div class="chip-container" style="margin: var(--spacing-md) 0;">
-                <div class="chip">🎓 Diploma Thesis: <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank">Feature Selection in Federated Learning </a></div>
-                <div class="chip">🏆 TUC CTF 2023 Winner</div>
-                <div class="chip">🥇 <a class="link" href="https://edgeless-project.eu/edgeless-1st-code-camp/" target="_blank">EDGELESS Code Camp</a></div>
-                <div class="chip">💻 <a class="link" href="https://icpc.global/" target="_blank">ICPC 2023</a></div>
-            </div>
-            <ul class="styled-bullets">
-                <li>Diploma thesis: Feature selection in the Federated Machine Learning setting
-                    <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank">available here from 01/26</a>
-                </li>
-                <!-- <li>Winning team in TUC CTF 2023 competition</li> -->
-                <!-- <li>Participation and Raspberry pi prize win on  -->
-                    <!-- <a class="link" href="https://edgeless-project.eu/edgeless-1st-code-camp/" target="_blank">EDGELESS 1st Code camp</a> -->
-                <!-- </li> -->
-                <li>Advanced beyond the initial phase
-                    (<a class="link" href="https://algoforum.upatras.gr/el/plirofories/" target="_blank">GRPC</a>)
-                    to participate in the <a class="link" href="http://acm.ro/" target="_blank">SEERC</a> -
-                    <a class="link" href="https://icpc.global/" target="_blank">ICPC</a> December 2023 Regional Programming Competition
-                </li>
-            </ul>
-        </div>
-
-        <h3>Graduate of PIERCE American College of Greece</h3>
-        <p class="date">High School Diploma | 2019
-            (<a class="link" href="http://www.pierce.gr" target="_blank">visit website</a>)
-        </p>
-        <div class="chip-container" style="margin: var(--spacing-md) 0;">
-            <div class="chip">🎓 Student Board Member (2016-2019)</div>
-            <div class="chip">🏅 Math Competition Awards</div>
-        </div>
-        <ul class="styled-bullets">
-            <li>Elected Member of the PIERCE Student Board for 3 years (2016-2019)</li>
-            <li>Distinctions in mathematics Student Competitions: Kangaroo, Hellenic Mathematic Society (Thales)</li>
-        </ul>
-
-        <h3 style="margin-top: var(--spacing-xl);">Professional Development & Training</h3>
-        <div style="margin-bottom: var(--spacing-lg);">
-            <h4 style="font-size: 1.1rem; font-weight: 500; margin-bottom: var(--spacing-xs); color: var(--md-on-surface);">
-                Auditing CAREERS AND EMPLOYABILITY (CE) Course on Trinity College Dublin 2026
-            </h4>
-        </div>
-        <div style="margin-bottom: var(--spacing-lg);">
-            <h4 style="font-size: 1.1rem; font-weight: 500; margin-bottom: var(--spacing-xs); color: var(--md-on-surface);">
-                Federated Learning Summer School 2025
-            </h4>
-            <p class="date">FLTA (Federated Learning Technology Alliance) | 2025
-                (<a class="link" href="https://flta.org" target="_blank">visit website</a>)
-            </p>
-            <div class="chip-container" style="margin: var(--spacing-md) 0;">
-                <div class="chip">🌐 Federated Learning</div>
-                <div class="chip">🔒 Privacy-Preserving ML</div>
-                <div class="chip">📊 Distributed Systems</div>
-                <div class="chip">🎯 Advanced Training</div>
-            </div>
-            <ul class="styled-bullets">
-                <li>Intensive summer school focused on cutting-edge federated learning techniques</li>
-                <li>Hands-on workshops with privacy-preserving algorithms and frameworks</li>
-               <li>Collaborative projects with international participants and industry experts from
-                    <a class='link' href="https://flower.dev/" target="_blank">Flower</a>,
-                    <a class='link' href="https://scaleoutsystems.com/" target="_blank">Scaleout</a>,
-                    <a class='link' href="https://developer.nvidia.com/flare" target="_blank">Nvidia FLARE</a>,
-                    P2PFL
-                </li>
-            </ul>
-        </div>
-
-        <h3 style="margin-top: var(--spacing-xl);">Language Proficiency</h3>
-        <div class="chip-container" style="margin: var(--spacing-md) 0;">
-            <div class="chip">🇬🇧 IELTS 8.0</div>
-            <div class="chip">🇬🇧 Cambridge C1</div>
-            <div class="chip">🇨🇳 HSK2</div>
-            <div class="chip">🇫🇷 French A1</div>
-        </div>
-
-        <!-- <h3 style="margin-top: var(--spacing-xl);">Notable Grades</h3>
-        <div class="grade-grid-container">
-            <div class="grade-grid" id="gradeGrid">
-                <div class="grade-card">
-                    <div class="course">Computer Security <span class="grade">10</span></div>
-                    <div class="details">C, Unix exercises</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Graphics <span class="grade">10</span></div>
-                    <div class="details">Unity</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Distributed Systems <span class="grade">10</span></div>
-                    <div class="details">Kubernetes, Docker, Full-stack</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Computer Organization <span class="grade">10</span></div>
-                    <div class="details">MIPS processor in VHDL</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Data & File Structures <span class="grade">9.5</span></div>
-                    <div class="details">Java labs</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Object Oriented Programming <span class="grade">9</span></div>
-                    <div class="details">Java</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Multiagent Systems <span class="grade">9</span></div>
-                    <div class="details">AI, Game Theory, Python</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Computation Theory <span class="grade">9</span></div>
-                    <div class="details">Bison compiler, flex analyzer</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Reinforcement Learning <span class="grade">9</span></div>
-                    <div class="details">Q-learning video recommendations</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Intro to Programming <span class="grade">8.5</span></div>
-                    <div class="details">C, programming basics</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Autonomous Agents <span class="grade">8.5</span></div>
-                    <div class="details">Robotics, Python, C++</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Software Development Tools <span class="grade">8.5</span></div>
-                    <div class="details">Python, C</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Electronics II <span class="grade">8.5</span></div>
-                    <div class="details">BJT, MOS, OPAMPs</div>
-                </div>
-                <div class="grade-card">
-                    <div class="course">Operating Systems <span class="grade">8</span></div>
-                    <div class="details">C, OS basics, scheduling</div>
-                </div>
-            </div>
-
-            <div class="grade-fade-overlay" id="gradeFadeOverlay"></div>
-        </div>
-
-        <div class="show-more-container">
-            <button class="show-more-btn" id="showMoreBtn">
-                <span id="showMoreText">Show More</span>
-                <i class="fas fa-chevron-down" id="showMoreIcon"></i>
-            </button>
-        </div>
-    </div> -->
-</section>
-        <!-- Projects Section -->
-        <section id="projects" class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: var(--spacing-xl); color: var(--md-primary);">
-                Featured Projects
-            </h2>
-
-            <div class="projects-grid">
-                <div class="project-card reveal">
-                    <div class="project-image">
-                            <div style="
-        width: 100%;
-            height: 200px;
-
-        background-image: url('images/projects/feature_election_diagram.svg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;">
-    </div>
+                    <div class="timeline-item">
+                        <h3>ML Research Intern · <span class="org">Heriot-Watt University</span></h3>
+                        <span class="date">Edinburgh, Scotland — July – August 2023 (<a class="link" href="https://bioml.eu.org/team/" target="_blank" rel="noopener">visit website</a>)</span>
+                        <ul class="bullets">
+                            <li>Developed machine learning algorithms for anomaly detection in fish gill analysis</li>
+                            <li>Automated <a class="link" href="https://qupath.github.io/" target="_blank" rel="noopener">QuPath</a> workflows using Groovy scripting</li>
+                            <li>Created Python GUI application using tkinter for biomedical image processing</li>
+                            <li>Collaborated with BCML Lab research team on cutting-edge ML projects</li>
+                        </ul>
                     </div>
-                    <div class="project-content">
+                    <div class="timeline-item">
+                        <h3>Software Developer · <span class="org">TUCer Autonomous Racing Team</span></h3>
+                        <span class="date">Chania, Greece — January – July 2023 (<a class="link" href="https://www.tucer.tuc.gr/el/archiki" target="_blank" rel="noopener">visit website</a>)</span>
+                        <ul class="bullets">
+                            <li>Implemented autonomous driving algorithms using ROS and Python</li>
+                            <li>Developed Arduino-based sensor integration systems</li>
+                            <li>Competed in <a class="link" href="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html" target="_blank" rel="noopener">Shell Eco Marathon 2023</a> in Nogaro, France</li>
+                            <li>Optimized vehicle control systems for energy efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications -->
+        <section id="publications" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">03</span>
+                <h2 class="section-title">Publications</h2>
+            </div>
+            <div class="pub-list">
+                <article class="pub reveal">
+                    <span class="pub-date">Oct 2025</span>
+                    <div>
+                        <span class="badge"><i class="fas fa-trophy"></i> Best Student Paper — FLTA IEEE 2025</span>
+                        <h3>FLASH: A framework for Federated Learning with Attribute Selection and Hyperparameter optimization</h3>
+                        <ul class="bullets">
+                            <li>Best Student Paper award at the <a class="link" href="https://flta-conference.org/flta-2025" target="_blank" rel="noopener">FLTA IEEE 2025</a> conference</li>
+                            <li>Available on <a class="link" href="https://ieeexplore.ieee.org/document/11336571" target="_blank" rel="noopener">IEEE Xplore</a> and publicly on <a class="link" href="https://zenodo.org/records/18596175" target="_blank" rel="noopener">Zenodo (preprint)</a></li>
+                        </ul>
+                        <p class="authors">Ioannis Christofilogiannis, George Valavanis, Alexander Shevtsov, Ioannis Lamprou, Sotiris Ioannidis</p>
+                    </div>
+                </article>
+                <article class="pub reveal">
+                    <span class="pub-date">Dec 2025</span>
+                    <div>
+                        <h3>Automatic Detection of fin, operculum and skin deformities in Mediterranean Fish Species</h3>
+                        <ul class="bullets">
+                            <li>Open access — read it <a class="link" href="https://www.sciencedirect.com/science/article/pii/S0144860925001736" target="_blank" rel="noopener">here</a></li>
+                            <li>Accepted in the <a class="link" href="https://www.sciencedirect.com/journal/aquacultural-engineering" target="_blank" rel="noopener">Aquacultural Engineering journal</a></li>
+                        </ul>
+                        <p class="authors">Ioannis Christofilogiannis, Dimitra Georgopoulou, Charalabos Vouidaskis, Zacharias Choulakis, Dimitris Voskakis, Nikos Papandroulakis</p>
+                    </div>
+                </article>
+                <article class="pub reveal">
+                    <span class="pub-date">Sep 2025</span>
+                    <div>
+                        <h3>Non-invasive Monitoring of Fish Morphometric Traits Using YOLO-based Computer Vision in Aquaculture</h3>
+                        <ul class="bullets">
+                            <li>Accepted at <a class="link" href="https://www.aquaeas.org" target="_blank" rel="noopener">Aquaculture Europe 25</a> — September 22–25, 2025, Valencia, Spain. European Aquaculture Society conference</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="pub reveal">
+                    <span class="pub-date">Mar 2026</span>
+                    <div>
+                        <h3>Towards Federated Learning Across Biobanks: Prototype Software from the 2026 Carnegie Mellon University–NVIDIA Hackathon</h3>
+                        <ul class="bullets">
+                            <li>Available on the <a class="link" href="https://osf.io/preprints/biohackrxiv/5psfj_v1" target="_blank" rel="noopener">Open Science Framework</a></li>
+                            <li>The Carnegie Mellon University–NVIDIA Federated Learning Hackathon for Biomedical Applications (January 7–9, 2026) convened researchers from academia, government, and industry to implement federated frameworks for disease subtyping, genetic association studies, and multimodal clinical prediction using NVIDIA FLARE.</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="pub reveal">
+                    <span class="pub-date">May 2025</span>
+                    <div>
+                        <h3>Feature Selection in the Federated Machine Learning Setting</h3>
+                        <ul class="bullets">
+                            <li>Diploma thesis — <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank" rel="noopener">Institutional Repository, Technical University of Crete</a></li>
+                            <li>Note: the FLASH framework was initially called FLEx but was renamed due to conflicts</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">04</span>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="edu-grid">
+                <div class="card edu-card reveal">
+                    <h3>Trinity College Dublin</h3>
+                    <p class="degree">MSc Computer Science — Intelligent Systems</p>
+                    <span class="date">September 2025 – 2026 (<a class="link" href="https://www.tcd.ie/" target="_blank" rel="noopener">visit website</a>)</span>
+                    <ul class="bullets">
+                        <li>🥇 Winning team (Federated Infrastructure) at the collaborative <a class="link" href="https://guides.library.cmu.edu/hackathon/2026" target="_blank" rel="noopener">Carnegie Mellon × NVIDIA Federated Learning Hackathon for Biomedical Applications</a></li>
+                    </ul>
+                </div>
+                <div class="card edu-card reveal">
+                    <h3>Technical University of Crete</h3>
+                    <p class="degree">Bachelor's with Integrated MSc in Electrical &amp; Computer Engineering</p>
+                    <span class="date">2019 – 2025 (<a class="link" href="https://www.ece.tuc.gr/" target="_blank" rel="noopener">visit website</a>)</span>
+                    <div class="chips">
+                        <span class="chip">🎓 Diploma Thesis: <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank" rel="noopener">Feature Selection in Federated Learning</a></span>
+                        <span class="chip">🏆 TUC CTF 2023 Winner</span>
+                        <span class="chip">🥇 <a class="link" href="https://edgeless-project.eu/edgeless-1st-code-camp/" target="_blank" rel="noopener">EDGELESS Code Camp</a></span>
+                        <span class="chip">💻 <a class="link" href="https://icpc.global/" target="_blank" rel="noopener">ICPC 2023</a></span>
+                    </div>
+                    <ul class="bullets">
+                        <li>Diploma thesis: Feature selection in the Federated Machine Learning setting — <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank" rel="noopener">available here from 01/26</a></li>
+                        <li>Advanced beyond the initial phase (<a class="link" href="https://algoforum.upatras.gr/el/plirofories/" target="_blank" rel="noopener">GRPC</a>) to participate in the <a class="link" href="http://acm.ro/" target="_blank" rel="noopener">SEERC</a> – <a class="link" href="https://icpc.global/" target="_blank" rel="noopener">ICPC</a> December 2023 Regional Programming Competition</li>
+                    </ul>
+                </div>
+                <div class="card edu-card reveal">
+                    <h3>PIERCE — The American College of Greece</h3>
+                    <p class="degree">High School Diploma</p>
+                    <span class="date">2019 (<a class="link" href="http://www.pierce.gr" target="_blank" rel="noopener">visit website</a>)</span>
+                    <div class="chips">
+                        <span class="chip">🎓 Student Board Member (2016–2019)</span>
+                        <span class="chip">🏅 Math Competition Awards</span>
+                    </div>
+                    <ul class="bullets">
+                        <li>Elected Member of the PIERCE Student Board for 3 years (2016–2019)</li>
+                        <li>Distinctions in mathematics student competitions: Kangaroo, Hellenic Mathematical Society (Thales)</li>
+                    </ul>
+                </div>
+                <div class="card edu-card reveal">
+                    <h3>Professional Development &amp; Training</h3>
+                    <div class="edu-sub" style="border-top: none; margin-top: 10px; padding-top: 0;">
+                        <h4>Careers and Employability (CE) Course — Trinity College Dublin</h4>
+                        <span class="date">Auditing, 2026</span>
+                    </div>
+                    <div class="edu-sub">
+                        <h4>Federated Learning Summer School 2025</h4>
+                        <span class="date">FLTA (Federated Learning Technology Alliance) — 2025 (<a class="link" href="https://flta.org" target="_blank" rel="noopener">visit website</a>)</span>
+                        <div class="chips" style="margin: 12px 0;">
+                            <span class="chip">🌐 Federated Learning</span>
+                            <span class="chip">🔒 Privacy-Preserving ML</span>
+                            <span class="chip">📊 Distributed Systems</span>
+                            <span class="chip">🎯 Advanced Training</span>
+                        </div>
+                        <ul class="bullets">
+                            <li>Intensive summer school focused on cutting-edge federated learning techniques</li>
+                            <li>Hands-on workshops with privacy-preserving algorithms and frameworks</li>
+                            <li>Collaborative projects with international participants and industry experts from <a class="link" href="https://flower.dev/" target="_blank" rel="noopener">Flower</a>, <a class="link" href="https://scaleoutsystems.com/" target="_blank" rel="noopener">Scaleout</a>, <a class="link" href="https://developer.nvidia.com/flare" target="_blank" rel="noopener">NVIDIA FLARE</a>, P2PFL</li>
+                        </ul>
+                    </div>
+                    <div class="edu-sub">
+                        <h4>Language Proficiency</h4>
+                        <div class="chips" style="margin-top: 12px;">
+                            <span class="chip">🇬🇧 IELTS 8.0</span>
+                            <span class="chip">🇬🇧 Cambridge C1</span>
+                            <span class="chip">🇨🇳 HSK2</span>
+                            <span class="chip">🇫🇷 French A1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">05</span>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/feature_election_diagram.svg" alt="FLASH feature election diagram" loading="lazy"></div>
+                    <div class="project-body">
                         <div class="project-tags">
                             <span class="project-tag">Federated Learning</span>
                             <span class="project-tag">Python</span>
@@ -452,105 +302,55 @@
                             <span class="project-tag">Docker</span>
                         </div>
                         <h3>FLASH</h3>
-                        <p>A framework for Federated Learning with Attribute Selection. In proceedings FLTA IEEE 2025. We developed Feature Election a method to use conventional ML Feature Selection algorithms on FL and a federated Hyperparameter Optimization method. </p>
-                        <a href="https://github.com/parasecurity/FLASH" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-github"></i> Give us a <i class="fas fa-star"></i> on GitHub
-                        </a>
+                        <p>A framework for Federated Learning with Attribute Selection. In proceedings of FLTA IEEE 2025. We developed Feature Election — a method to use conventional ML feature selection algorithms in FL — and a federated hyperparameter optimization method.</p>
+                        <a href="https://github.com/parasecurity/FLASH" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Give us a <i class="fas fa-star"></i> on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
-                 </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <div style="
-                            width: 100%;
-                            height: 200px;
-                            background-image: url('images/projects/YOLO_tool.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;">
-                        </div>
-                    </div>
-                    <div class="project-content">
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/YOLO_tool.png" alt="YOLO AI-assisted annotation tool" loading="lazy"></div>
+                    <div class="project-body">
                         <div class="project-tags">
                             <span class="project-tag">YOLO</span>
                             <span class="project-tag">Computer Vision</span>
                             <span class="project-tag">Aquaculture</span>
                             <span class="project-tag">Python GUI</span>
                         </div>
-                        <h3>YOLO Ai Assisted Annotation Tool</h3>
-                        <p> Simple, Ai-assisted annotation tool with YOLO model integration. Originally designed for classifying Mediterranean fish fin quality, this tool is highly adaptable for any binary classification annotation project. </p>
-                        <a href="https://github.com/christofilojohn/YOLO-Annotation-Tool" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-github"></i> Give us a <i class="fas fa-star"></i> on GitHub
-                        </a>
+                        <h3>YOLO AI-Assisted Annotation Tool</h3>
+                        <p>Simple, AI-assisted annotation tool with YOLO model integration. Originally designed for classifying Mediterranean fish fin quality, this tool is highly adaptable for any binary classification annotation project.</p>
+                        <a href="https://github.com/christofilojohn/YOLO-Annotation-Tool" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Give us a <i class="fas fa-star"></i> on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <div style="
-                            width: 100%;
-                            height: 200px;
-                            background-image: url('images/projects/MacVision.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;">
-                        </div>
-                    </div>
-                    <div class="project-content">
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/MacVision.png" alt="Mac Vision Tools menu bar app" loading="lazy"></div>
+                    <div class="project-body">
                         <div class="project-tags">
                             <span class="project-tag">YOLO</span>
                             <span class="project-tag">Computer Vision</span>
-                            <span class="project-tag">Aquaculture</span>
-                            <span class="project-tag">Python GUI</span>
+                            <span class="project-tag">macOS</span>
+                            <span class="project-tag">Real-time ML</span>
                         </div>
                         <h3>Mac Vision Tools</h3>
-                        <p> A macOS menu bar app for real-time ML-powered detection with multiple modes. </p>
-                        <a href="https://github.com/christofilojohn/MacVisionTools" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-github"></i> Give a <i class="fas fa-star"></i> on GitHub </a>
+                        <p>A macOS menu bar app for real-time ML-powered detection with multiple modes.</p>
+                        <a href="https://github.com/christofilojohn/MacVisionTools" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Give a <i class="fas fa-star"></i> on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <div style="
-                            width: 100%;
-                            height: 200px;
-                            background-image: url('images/projects/architecture_dark.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;">
-                        </div>
-                    </div>
-                    <div class="project-content">
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/architecture_dark.png" alt="Hybrid search architecture" loading="lazy"></div>
+                    <div class="project-body">
                         <div class="project-tags">
                             <span class="project-tag">Information Retrieval</span>
                             <span class="project-tag">Hybrid Search</span>
                             <span class="project-tag">Apache Lucene</span>
                             <span class="project-tag">Sentence Transformers</span>
                         </div>
-                        <h3>A poor man's Hybrid Search</h3>
-                        <p> A lightweight hybrid search system combining classical BM25 lexical retrieval with neural semantic search using Reciprocal Rank Fusion (RRF). Achieves +27% MAP improvement over baseline BM25 on the Cranfield collection. </p>
-                        <a href="https://github.com/christofilojohn/A-poor-mans-hybrid-search" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-github"></i> Give a <i class="fas fa-star"></i> on GitHub </a>
+                        <h3>A Poor Man's Hybrid Search</h3>
+                        <p>A lightweight hybrid search system combining classical BM25 lexical retrieval with neural semantic search using Reciprocal Rank Fusion (RRF). Achieves +27% MAP improvement over baseline BM25 on the Cranfield collection.</p>
+                        <a href="https://github.com/christofilojohn/A-poor-mans-hybrid-search" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Give a <i class="fas fa-star"></i> on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-
-
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-    <div style="
-        width: 100%;
-            height: 200px;
-
-        background-image: url('images/projects/unity_tuc_project.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;">
-    </div>
-</div>
-
-            <div class="project-content">
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/unity_tuc_project.png" alt="3D puzzle-adventure Unity game" loading="lazy"></div>
+                    <div class="project-body">
                         <div class="project-tags">
                             <span class="project-tag">Game Dev</span>
                             <span class="project-tag">Unity</span>
@@ -558,26 +358,12 @@
                         </div>
                         <h3>3D Puzzle-Adventure Game</h3>
                         <p>Custom Unity game featuring original artwork and innovative puzzle mechanics. Implemented advanced 3D graphics techniques and game physics.</p>
-                        <a href="https://github.com/christofilojohn/graphics_tuc_project" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-github"></i> View on GitHub
-                        </a>
+                        <a href="https://github.com/christofilojohn/graphics_tuc_project" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-         <div style="
-        width: 100%;
-            height: 200px;
-
-        background-image: url('images/projects/negotiator.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;">
-    </div>
-
-                    </div>
-                    <div class="project-content">
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/negotiator.jpg" alt="The Negotiator agent" loading="lazy"></div>
+                    <div class="project-body">
                         <div class="project-tags">
                             <span class="project-tag">Machine Learning</span>
                             <span class="project-tag">Game Theory</span>
@@ -585,25 +371,12 @@
                         </div>
                         <h3>The Negotiator</h3>
                         <p>Neural network-based negotiation agent that learns optimal strategies. Implemented research paper algorithms for multiagent systems.</p>
-                        <a href="https://github.com/petrosmp/the_negotiator" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-github"></i> View on GitHub
-                        </a>
+                        <a href="https://github.com/petrosmp/the_negotiator" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                            <div style="
-        width: 100%;
-            height: 200px;
-
-        background-image: url('images/projects/DS_project.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;">
-    </div>
-                    </div>
-                    <div class="project-content">
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/DS_project.png" alt="Map-Reduce distributed systems project" loading="lazy"></div>
+                    <div class="project-body">
                         <div class="project-tags">
                             <span class="project-tag">Kubernetes</span>
                             <span class="project-tag">Distributed Systems</span>
@@ -611,25 +384,12 @@
                         </div>
                         <h3>Map-Reduce Implementation</h3>
                         <p>Scalable distributed computing solution using Kubernetes. Features Longhorn storage integration and real-time cluster monitoring.</p>
-                        <a href="https://github.com/petrosmp/distsys_mapreduce" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-github"></i> View on GitHub
-                        </a>
+                        <a href="https://github.com/petrosmp/distsys_mapreduce" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <div style="
-                            width: 100%;
-                            height: 200px;
-                            background-image: url('images/projects/large_and_social.png');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;">
-                        </div>
-                    </div>
-                    <div class="project-content">
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/large_and_social.png" alt="Network queueing simulation" loading="lazy"></div>
+                    <div class="project-body">
                         <div class="project-tags">
                             <span class="project-tag">Networks</span>
                             <span class="project-tag">Simulation</span>
@@ -637,597 +397,187 @@
                         </div>
                         <h3>Network Queueing Simulator</h3>
                         <p>Performance analysis of FCFS and SITA queueing methods for large-scale network systems.</p>
-                        <a href="https://github.com/christofilojohn/LargeAndSocialNetworks" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-github"></i> View on GitHub
-                        </a>
+                        <a href="https://github.com/christofilojohn/LargeAndSocialNetworks" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-
-                <!-- <div class="project-card reveal">
-                    <div class="project-image" style="background: linear-gradient(135deg, var(--md-primary) 0%, var(--md-secondary) 100%); display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-microscope" style="font-size: 4rem; color: white;"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Computer Vision</span>
-                            <span class="project-tag">Biomedical</span>
-                            <span class="project-tag">Automation</span>
-                        </div>
-                        <h3>Biomedical Image Analysis</h3>
-                        <p>Automated Qupath annotation system with ML integration for medical image processing and analysis.</p>
-                        <span class="btn btn-secondary">
-                            <i class="fas fa-clock"></i> Coming Soon
-                        </span>
-                    </div>
-                </div>
-            </div> -->
-        </section>
-
-        <!-- Art Section
-        <section id="art" class="container">
-            <div class="card reveal">
-                <h2><i class="fas fa-palette"></i> Digital Artwork</h2>
-                <p style="color: #666; margin-bottom: var(--spacing-lg);">Created on iPad using Procreate - Exploring digital art and character design</p>
-
-                <div class="gallery">
-                    <div class="gallery-item" onclick="openLightbox('art/Portrait_player.png', 'The Hero')">
-                        <img src="art/Portrait_player.png" alt="The Hero">
-                        <div class="gallery-overlay">
-                            <h4>The Hero</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('art/Portrait_NPC_peasant.png', 'The NPC')">
-                        <img src="art/Portrait_NPC_peasant.png" alt="The NPC">
-                        <div class="gallery-overlay">
-                            <h4>The NPC</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('art/einstein_rick.jpg', 'Einstein Rick')">
-                        <img src="art/einstein_rick.jpg" alt="Einstein Rick">
-                        <div class="gallery-overlay">
-                            <h4>Einstein Rick</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('art/steve_jobs.jpg', 'Steve Jobs')">
-                        <img src="art/steve_jobs.jpg" alt="Steve Jobs">
-                        <div class="gallery-overlay">
-                            <h4>Steve Jobs</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('art/walter_white.png', 'Walter White')">
-                        <img src="art/walter_white.png" alt="Walter White">
-                        <div class="gallery-overlay">
-                            <h4>Walter White</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('art/cuphead.jpg', 'Cupheads')">
-                        <img src="art/cuphead.jpg" alt="Cupheads">
-                        <div class="gallery-overlay">
-                            <h4>Cupheads</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('art/dalle_casa_de_papel.jpg', 'Dali')">
-                        <img src="art/dalle_casa_de_papel.jpg" alt="Dali">
-                        <div class="gallery-overlay">
-                            <h4>Dali</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('art/kratos.jpg', 'Kratos')">
-                        <img src="art/kratos.jpg" alt="Kratos">
-                        <div class="gallery-overlay">
-                            <h4>Kratos</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
-        <!-- Photo Gallery Section -->
-        <section class="container">
-            <div class="card reveal">
-                <h2><i class="fas fa-camera"></i> Life & Adventures</h2>
-                <div class="gallery">
-
-                   <div class="gallery-item" onclick="openLightbox('images/FLTA1.jpeg', 'FLTA Conference')">
-                        <img src="images/FLTA1.jpeg" alt="FLTA Conference">
-                        <div class="gallery-overlay">
-                            <h4>FLTA Conference 2025</h4>
-                        </div>
-                    </div>
-
-                     <div class="gallery-item" onclick="openLightbox('images/FLTA2.jpeg', 'FLTA Conference - Presentation')">
-                        <img src="images/FLTA2.jpeg" alt="FLTA Conference">
-                        <div class="gallery-overlay">
-                            <h4>FLTA Conference 2025 - Presentation</h4>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item" onclick="openLightbox('images/DUBROVNIK.jpeg', 'Dubrovnik')">
-                        <img src="images/DUBROVNIK.jpeg" alt="Dubrovnik">
-                        <div class="gallery-overlay">
-                            <h4>Dubrovnik</h4>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item" onclick="openLightbox('images/FLTA_project.jpg', 'FLTA Summer School 2025')">
-                        <img src="images/FLTA_project.jpg" alt="FLTA Summer School">
-                        <div class="gallery-overlay">
-                            <h4>FLTA Summer School 2025 - Project</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('images/FLTA.jpg', 'FLTA Summer School 2025')">
-                        <img src="images/FLTA.jpg" alt="FLTA Summer School">
-                        <div class="gallery-overlay">
-                            <h4>FLTA Summer School 2025</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('images/edinburgh.jpg', 'Edinburgh')">
-                        <img src="images/edinburgh.jpg" alt="Edinburgh">
-                        <div class="gallery-overlay">
-                            <h4>Edinburgh Internship</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('images/edinburgh2.jpg', 'Edinburgh')">
-                        <img src="images/edinburgh2.jpg" alt="Edinburgh 2">
-                        <div class="gallery-overlay">
-                            <h4>Edinburgh</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('images/antalya.jpeg', 'Antalya')">
-                        <img src="images/antalya.jpeg" alt="Antalya">
-                        <div class="gallery-overlay">
-                            <h4>Antalya, Turkey</h4>
-                        </div>
-                    </div>
-<!--                    <div class="gallery-item" onclick="openLightbox('images/tucer1.jpg', 'TUCer Team')">
-                        <img src="images/tucer1.jpg" alt="TUCer Team">
-                        <div class="gallery-overlay">
-                            <h4>Shell Eco Marathon</h4>
-                        </div>
-                    </div>-->
-                    <div class="gallery-item" onclick="openLightbox('images/EDGELESS.jpg', 'EDGELESS')">
-                        <img src="images/EDGELESS.jpg" alt="EDGELESS">
-                        <div class="gallery-overlay">
-                            <h4>EDGELESS Code Camp</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('images/vidin.jpg', 'Vidin')">
-                        <img src="images/vidin.jpg" alt="Vidin">
-                        <div class="gallery-overlay">
-                            <h4>Bulgaria - Erasmus</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('images/omalos.png', 'Omalos')">
-                        <img src="images/omalos.png" alt="Omalos">
-                        <div class="gallery-overlay">
-                            <h4>Omalos, Crete</h4>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox('images/tucer2.jpg', 'TUCer')">
-                        <img src="images/tucer2.jpg" alt="TUCer 2">
-                        <div class="gallery-overlay">
-                            <h4>TUCer Team</h4>
-                        </div>
-                    </div>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="container">
-            <div class="card reveal">
-                <h2><i class="fas fa-envelope"></i> Let's Connect</h2>
-                <div class="cta-buttons">
-                    <a href="https://www.linkedin.com/in/ioannis-christofilogiannis/" target="_blank" class="btn btn-secondary">
-                        <i class="fas fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" class="btn btn-secondary">
-                        <i class="fas fa-instagram"></i> Instagram
-                    </a>
-                    <a href="https://github.com/christofilojohn" target="_blank" class="btn btn-secondary">
-                        <i class="fas fa-github"></i> GitHub
-                    </a>
-                    <a href="mailto:jchr2001@gmail.com" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i> Mail
-                    </a>
+        <!-- Gallery -->
+        <section id="gallery" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">06</span>
+                <h2 class="section-title">Life &amp; Adventures</h2>
+            </div>
+            <div class="gallery reveal">
+                <figure class="gallery-item" data-title="FLTA Conference 2025">
+                    <img src="images/FLTA1.jpeg" alt="FLTA Conference 2025" loading="lazy">
+                    <figcaption class="gallery-caption">FLTA Conference 2025</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="FLTA Conference 2025 — Presentation">
+                    <img src="images/FLTA2.jpeg" alt="FLTA Conference 2025 — Presentation" loading="lazy">
+                    <figcaption class="gallery-caption">FLTA Conference 2025 — Presentation</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="Dubrovnik">
+                    <img src="images/DUBROVNIK.jpeg" alt="Dubrovnik" loading="lazy">
+                    <figcaption class="gallery-caption">Dubrovnik</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="FLTA Summer School 2025 — Project">
+                    <img src="images/FLTA_project.jpg" alt="FLTA Summer School 2025 — Project" loading="lazy">
+                    <figcaption class="gallery-caption">FLTA Summer School 2025 — Project</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="FLTA Summer School 2025">
+                    <img src="images/FLTA.jpg" alt="FLTA Summer School 2025" loading="lazy">
+                    <figcaption class="gallery-caption">FLTA Summer School 2025</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="Edinburgh Internship">
+                    <img src="images/edinburgh.jpg" alt="Edinburgh Internship" loading="lazy">
+                    <figcaption class="gallery-caption">Edinburgh Internship</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="Edinburgh">
+                    <img src="images/edinburgh2.jpg" alt="Edinburgh" loading="lazy">
+                    <figcaption class="gallery-caption">Edinburgh</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="Antalya, Turkey">
+                    <img src="images/antalya.jpeg" alt="Antalya, Turkey" loading="lazy">
+                    <figcaption class="gallery-caption">Antalya, Turkey</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="EDGELESS Code Camp">
+                    <img src="images/EDGELESS.jpg" alt="EDGELESS Code Camp" loading="lazy">
+                    <figcaption class="gallery-caption">EDGELESS Code Camp</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="Bulgaria — Erasmus">
+                    <img src="images/vidin.jpg" alt="Bulgaria — Erasmus" loading="lazy">
+                    <figcaption class="gallery-caption">Bulgaria — Erasmus</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="Omalos, Crete">
+                    <img src="images/omalos.png" alt="Omalos, Crete" loading="lazy">
+                    <figcaption class="gallery-caption">Omalos, Crete</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="TUCer Team">
+                    <img src="images/tucer2.jpg" alt="TUCer Team" loading="lazy">
+                    <figcaption class="gallery-caption">TUCer Team</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <div class="contact-card reveal">
+                <div class="contact-inner">
+                    <p class="hero-eyebrow">07 — Contact</p>
+                    <h2>Let's Connect</h2>
+                    <p>Interested in federated learning, computer vision, or just want to say hi? My inbox is always open.</p>
+                    <div class="contact-links">
+                        <a href="mailto:jchr2001@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Say Hello</a>
+                        <a href="https://www.linkedin.com/in/ioannis-christofilogiannis/" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <a href="https://github.com/christofilojohn" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://www.instagram.com/john.christofilojohn/" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
                 </div>
-                <p></p>
-                <h4>&copy; 2026 Ioannis Christofilogiannis</h4>
             </div>
         </section>
     </main>
 
-    <!-- Floating Action Button -->
-    <button class="fab" id="scrollToTopBtn" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <footer>
+        <p>© 2026 Ioannis Christofilogiannis — designed &amp; built with care</p>
+    </footer>
 
     <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <div class="lightbox-content">
-            <span class="lightbox-close">&times;</span>
-            <img id="lightbox-image" src="" alt="">
-        </div>
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img id="lightboxImg" src="" alt="">
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Hide loader when DOM is ready (faster than waiting for all images)
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 300);
-        });
+    <!-- Scroll to top -->
+    <button class="to-top" id="toTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
-        // Fallback: also hide on window load
-        window.addEventListener('load', () => {
-            document.getElementById('loader').classList.add('hidden');
-        });
-
-        // Emergency fallback: hide after 2 seconds no matter what
-        setTimeout(() => {
-            const loader = document.getElementById('loader');
-            if (loader) loader.classList.add('hidden');
-        }, 2000);
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navItems = document.getElementById('navItems');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navItems.classList.toggle('show');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav')) {
-                navItems.classList.remove('show');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            }
-        });
-
-        // Scroll to top functionality
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+    <script>
+        // ---------- Theme toggle ----------
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.className = 'fas fa-moon';
         }
-
-        scrollToTopBtn.addEventListener('click', scrollToTop);
-
-        // Show/hide FAB based on scroll
-        let lastScroll = 0;
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-
-            if (currentScroll > 500) {
-                scrollToTopBtn.classList.add('show');
+        themeToggle.addEventListener('click', () => {
+            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
             } else {
-                scrollToTopBtn.classList.remove('show');
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.className = 'fas fa-moon';
             }
-
-            // Header elevation on scroll
-            const header = document.querySelector('header');
-            if (currentScroll > 10) {
-                header.style.boxShadow = 'var(--elevation-3)';
-            } else {
-                header.style.boxShadow = 'var(--elevation-2)';
-            }
-
-            lastScroll = currentScroll;
         });
 
-        // Intersection Observer for reveal animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
+        // ---------- Mobile menu ----------
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            menuBtn.querySelector('i').className = navLinks.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
         });
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            menuBtn.querySelector('i').className = 'fas fa-bars';
+        }));
 
-        /* ===== FIXED EXPANDABLE GRADES FUNCTIONALITY (disabled) =====
-let isGradesExpanded = false;
-const showMoreBtn = document.getElementById('showMoreBtn');
-const showMoreText = document.getElementById('showMoreText');
-const showMoreIcon = document.getElementById('showMoreIcon');
-const gradeGrid = document.getElementById('gradeGrid');
-const gradeFadeOverlay = document.getElementById('gradeFadeOverlay');
-let initialVisibleCount = 6; // Show first 6 cards initially
-
-// Function to initialize grades display
-function initializeGrades() {
-    const allCards = document.querySelectorAll('.grade-card');
-    if (allCards.length === 0) return;
-
-    // Show only the first 6 cards initially
-    allCards.forEach((card, index) => {
-        if (index < initialVisibleCount) {
-            card.classList.remove('hidden');
-            card.style.display = 'block';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
+        // ---------- Typewriter ----------
+        const typeTarget = document.getElementById('typewriter');
+        const typeText = 'Electrical & Computer Engineer | MSc Computer Science — Intelligent Systems, Trinity College Dublin (2026)';
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) {
+            typeTarget.textContent = typeText;
         } else {
-            card.classList.add('hidden');
-            card.style.display = 'none';
-            card.style.opacity = '0';
-        }
-    });
-
-    // Show fade overlay if there are hidden cards
-    if (allCards.length > initialVisibleCount) {
-        gradeFadeOverlay.classList.remove('hidden');
-    } else {
-        gradeFadeOverlay.classList.add('hidden');
-        showMoreBtn.style.display = 'none';
-    }
-}
-
-// Function to handle smooth expanding/collapsing
-function toggleGrades() {
-    const allCards = document.querySelectorAll('.grade-card');
-
-    if (!isGradesExpanded) {
-        // Expanding - show all hidden cards
-        showMoreText.textContent = 'Show Less';
-        showMoreIcon.classList.add('expanded');
-        gradeFadeOverlay.classList.add('hidden');
-
-        // Show cards with staggered animation
-        allCards.forEach((card, index) => {
-            if (index >= initialVisibleCount) {
-                card.style.display = 'block';
-
-                setTimeout(() => {
-                    card.classList.remove('hidden');
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                    card.style.transition = 'all 0.4s ease';
-                }, (index - initialVisibleCount) * 100);
-            }
-        });
-
-        isGradesExpanded = true;
-
-    } else {
-        // Collapsing - hide cards beyond initial count
-        showMoreText.textContent = 'Show More';
-        showMoreIcon.classList.remove('expanded');
-
-        // Store current scroll position
-        const currentScrollY = window.pageYOffset;
-        const gradeGridRect = gradeGrid.getBoundingClientRect();
-        const gradeGridTop = currentScrollY + gradeGridRect.top;
-
-        // Hide cards with animation
-        allCards.forEach((card, index) => {
-            if (index >= initialVisibleCount) {
-                card.style.transition = 'all 0.3s ease';
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(-20px)';
-
-                setTimeout(() => {
-                    card.classList.add('hidden');
-                    card.style.display = 'none';
-                }, 300);
-            }
-        });
-
-        // Show fade overlay after animation
-        setTimeout(() => {
-            gradeFadeOverlay.classList.remove('hidden');
-        }, 200);
-
-        // Scroll back to grades section if user is far below
-        setTimeout(() => {
-            const newScrollY = window.pageYOffset;
-            const shouldScroll = newScrollY > (gradeGridTop + 400);
-
-            if (shouldScroll) {
-                const targetScroll = Math.max(gradeGridTop - 100, 0);
-                window.scrollTo({
-                    top: targetScroll,
-                    behavior: 'smooth'
-                });
-            }
-        }, 200);
-
-        isGradesExpanded = false;
-    }
-}
-
-// Initialize on DOM content loaded
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(initializeGrades, 100);
-});
-
-// Also initialize on window load as backup
-window.addEventListener('load', function() {
-    setTimeout(initializeGrades, 200);
-});
-
-// Recalculate on window resize with debouncing
-let resizeTimeout;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(function() {
-        if (!isGradesExpanded) {
-            initializeGrades();
-        }
-    }, 300);
-});
-
-// Attach click handler
-if (showMoreBtn) {
-    showMoreBtn.addEventListener('click', toggleGrades);
-}
-
-// Additional fixes for touch devices
-if (showMoreBtn) {
-    showMoreBtn.addEventListener('touchstart', function(e) {
-        // Prevent double-tap zoom on mobile
-        e.preventDefault();
-    });
-
-    showMoreBtn.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        toggleGrades();
-    });
-}
-        // Attach click handler
-        showMoreBtn.addEventListener('click', toggleGrades);
-        */ // ===== END GRADES (disabled) =====
-
-        // Ripple effect for buttons
-        document.querySelectorAll('.btn, .show-more-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                // Don't add ripple if it's a link that will navigate away
-                if (this.getAttribute('href') && this.getAttribute('href').startsWith('http')) {
-                    return;
+            let i = 0;
+            setTimeout(function type() {
+                if (i < typeText.length) {
+                    typeTarget.textContent += typeText.charAt(i++);
+                    setTimeout(type, 32);
                 }
+            }, 600);
+        }
 
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
+        // ---------- Reveal on scroll ----------
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.style.position = 'absolute';
-                ripple.style.borderRadius = '50%';
-                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.animation = 'ripple 0.6s linear';
-                ripple.style.pointerEvents = 'none';
-
-                this.appendChild(ripple);
-
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
+        // ---------- Lightbox ----------
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxImg.src = item.querySelector('img').src;
+                lightboxImg.alt = item.dataset.title || '';
+                lightbox.classList.add('show');
+                document.body.style.overflow = 'hidden';
             });
         });
-
-        // Add ripple keyframes via CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Typing effect for hero subtitle
-        const subtitle = document.getElementById('heroSubtitle');
-        if (subtitle) {
-            const text = 'Electrical & Computer Engineer | MSc Computer Science - Intelligent Systems, Trinity College Dublin (2026)';
-            subtitle.textContent = '';
-            let i = 0;
-
-            function typeWriter() {
-                if (i < text.length) {
-                    subtitle.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
-                }
-            }
-
-            setTimeout(typeWriter, 1000);
-        }
-
-        // Lightbox functionality
-        function openLightbox(src, title) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightbox-image');
-
-            lightboxImage.src = src;
-            lightboxImage.alt = title;
-            lightbox.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
         function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('show');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = '';
         }
+        lightbox.addEventListener('click', closeLightbox);
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-        // Close lightbox with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-
-       // Improved error handling for Font Awesome
-        document.addEventListener('DOMContentLoaded', () => {
-            // Check if Font Awesome icons are loading
-            const testIcon = document.createElement('i');
-            testIcon.className = 'fas fa-heart';
-            testIcon.style.visibility = 'hidden';
-            testIcon.style.position = 'absolute';
-            document.body.appendChild(testIcon);
-
-            setTimeout(() => {
-                const computed = window.getComputedStyle(testIcon);
-                // If font-family doesn't contain "Font Awesome", fallback
-                if (computed.fontFamily.indexOf('Font Awesome') === -1) {
-                    console.warn('Font Awesome may not be loading properly');
-                    // Fallback: replace icons with text
-                    document.querySelectorAll('.social-icon i').forEach(icon => {
-                        if (icon.classList.contains('fa-linkedin')) {
-                            icon.textContent = 'in';
-                        } else if (icon.classList.contains('fa-github')) {
-                            icon.textContent = 'gh';
-                        } else if (icon.classList.contains('fa-instagram')) {
-                            icon.textContent = 'ig';
-                        }
-                        icon.style.fontFamily = 'inherit';
-                    });
-                }
-                // Clean up test icon
-                if(document.body.contains(testIcon)) {
-                    document.body.removeChild(testIcon);
-                }
-            }, 1000);
-        });
+        // ---------- Scroll to top ----------
+        const toTop = document.getElementById('toTop');
+        window.addEventListener('scroll', () => {
+            toTop.classList.toggle('show', window.scrollY > 600);
+        }, { passive: true });
+        toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     </script>
-    <script src="scripts.js"></script>
 </body>
 </html>
