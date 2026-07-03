@@ -19,6 +19,8 @@
     --accent-soft: rgba(45, 212, 191, 0.12);
     --accent-2-soft: rgba(167, 139, 250, 0.12);
     --glow: rgba(45, 212, 191, 0.35);
+    --blue-light: #7dd3fc;
+    --blue-deep: #38bdf8;
     --nav-bg: rgba(11, 13, 18, 0.72);
     --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
     --radius: 18px;
@@ -44,6 +46,8 @@
     --accent-soft: rgba(13, 148, 136, 0.10);
     --accent-2-soft: rgba(124, 58, 237, 0.10);
     --glow: rgba(13, 148, 136, 0.22);
+    --blue-light: #38bdf8;
+    --blue-deep: #0284c7;
     --nav-bg: rgba(247, 247, 245, 0.78);
     --card-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
 }
@@ -234,16 +238,23 @@ img { max-width: 100%; display: block; }
     border-radius: 50%;
     padding: 4px;
     margin: 0 auto 28px;
-    background: conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+    position: relative;
+}
+.hero-avatar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, var(--blue-light), var(--blue-deep), var(--blue-light));
     animation: spin-ring 10s linear infinite;
 }
 .hero-avatar img {
+    position: relative;
     width: 100%;
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--bg);
-    animation: spin-ring 10s linear infinite reverse;
 }
 @keyframes spin-ring { to { transform: rotate(360deg); } }
 
@@ -263,7 +274,7 @@ img { max-width: 100%; display: block; }
     margin-bottom: 8px;
 }
 .hero h1 .gradient-text {
-    background: linear-gradient(110deg, var(--accent) 10%, var(--accent-2) 55%, var(--accent-3) 95%);
+    background: linear-gradient(110deg, var(--blue-light) 10%, var(--blue-deep) 90%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -303,7 +314,7 @@ img { max-width: 100%; display: block; }
     transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.4), box-shadow 0.25s, background 0.25s, border-color 0.25s;
 }
 .btn-primary {
-    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    background: linear-gradient(120deg, var(--blue-light), var(--blue-deep));
     color: #0a0f14;
     box-shadow: 0 4px 24px var(--glow);
 }
@@ -639,7 +650,7 @@ footer {
 }
 .lightbox.show { opacity: 1; pointer-events: auto; }
 .lightbox img {
-    max-width: min(1100px, 92vw);
+    max-width: min(1100px, 100%);
     max-height: 86vh;
     border-radius: var(--radius-sm);
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
