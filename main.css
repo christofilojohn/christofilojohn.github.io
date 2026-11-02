@@ -782,22 +782,7 @@ footer {
     46% { opacity: 0.9; transform: scale(1); }
     60%, 100% { opacity: 0; transform: scale(1.18); }
 }
-.fl-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-dim);
-    padding: 5px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    margin-bottom: 18px;
-}
-.fl-status #flPhase { color: var(--accent); }
-.fl-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blink 1.2s steps(1) infinite; }
-@media (prefers-reduced-motion: reduce) { .fl-packet, .fl-status { display: none; } }
+@media (prefers-reduced-motion: reduce) { .fl-packet { display: none; } }
 .fl-orbit .hero-avatar {
     position: absolute;
     top: 50%;

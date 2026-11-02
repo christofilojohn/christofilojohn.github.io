@@ -75,7 +75,6 @@
                     <img src="images/profile.jpeg" alt="Ioannis Christofilogiannis">
                 </div>
             </div>
-            <p class="fl-status" aria-hidden="true"><span class="fl-dot"></span> Round <span id="flRound">1</span> · 6 sites · <span id="flPhase">local training</span> · 0 bytes of raw data shared</p>
             <p class="hero-eyebrow">Federated Learning · Machine Learning · Computer Vision</p>
             <h1>Ioannis <span class="gradient-text">Christofilogiannis</span></h1>
             <p class="hero-subtitle"><span id="typewriter"></span><span class="cursor"></span></p>
@@ -886,24 +885,6 @@
                     setTimeout(type, 28);
                 }
             }, 600);
-        }
-
-        // ---------- Hero: federated round ticker (matches the 4s SVG cycle) ----------
-        if (!reduceMotion) {
-            const roundEl = document.getElementById('flRound');
-            const phaseEl = document.getElementById('flPhase');
-            const phases = [[0, 'local training'], [480, 'sending updates'], [1700, 'aggregating'], [2200, 'sharing global model']];
-            const flSvg = document.querySelector('.fl-links');
-            let round = 1;
-            (function tick() {
-                const t = flSvg.getCurrentTime() * 1000;  // SVG animation clock, so labels match the packets
-                const r = Math.floor(t / 4000) + 1, inRound = t % 4000;
-                if (r !== round) { round = r; roundEl.textContent = r; }
-                let label = phases[0][1];
-                for (const [at, name] of phases) if (inRound >= at) label = name;
-                if (phaseEl.textContent !== label) phaseEl.textContent = label;
-                requestAnimationFrame(tick);
-            })();
         }
 
         // ---------- Reveal on scroll ----------
