@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ioannis Christofilogiannis — ML Engineer & Researcher</title>
-    <meta name="description" content="Ioannis Christofilogiannis — Electrical & Computer Engineer, MSc Computer Science (Intelligent Systems) at Trinity College Dublin. Federated Learning, Machine Learning & Computer Vision.">
+    <title>Ioannis Christofilogiannis — Federated Learning & ML Research Engineer</title>
+    <meta name="description" content="Ioannis Christofilogiannis — ML research engineer specialising in federated learning. Creator of Feature Election (Best Student Paper, IEEE FLTA 2025; merged into NVIDIA FLARE). MSc Intelligent Systems (Distinction), Trinity College Dublin.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +17,13 @@
     <nav class="nav">
         <a href="#top" class="nav-logo">ic.</a>
         <div class="nav-links" id="navLinks">
+            <a href="#federated">Federated&nbsp;Learning</a>
             <a href="#experience">Experience</a>
             <a href="#publications">Publications</a>
-            <a href="#education">Education</a>
             <a href="#projects">Projects</a>
+            <a href="#awards">Awards</a>
             <a href="#gallery">Gallery</a>
+            <a href="https://towardsdatascience.com/voting-on-features-federated-feature-selection-without-sharing-data/" target="_blank" rel="noopener">Article</a>
             <a href="#contact">Contact</a>
         </div>
         <div class="nav-sep"></div>
@@ -39,256 +41,441 @@
         <div class="aurora"><span class="blob-3"></span></div>
         <div class="hero-grid-overlay"></div>
         <div class="hero-content">
-            <div class="hero-avatar">
-                <img src="images/profile.jpeg" alt="Ioannis Christofilogiannis">
+            <!-- Federated network: the avatar is the aggregator, data owners orbit around it -->
+            <div class="fl-orbit" aria-hidden="true">
+                <svg class="fl-links" viewBox="0 0 320 320">
+                    <circle class="fl-ring" cx="160" cy="160" r="132"/>
+                    <line x1="160" y1="160" x2="160" y2="28"/>
+                    <line x1="160" y1="160" x2="274.3" y2="94"/>
+                    <line x1="160" y1="160" x2="274.3" y2="226"/>
+                    <line x1="160" y1="160" x2="160" y2="292"/>
+                    <line x1="160" y1="160" x2="45.7" y2="226"/>
+                    <line x1="160" y1="160" x2="45.7" y2="94"/>
+                    <!-- One FL round per 4s: local updates travel in, the aggregated global model travels back out -->
+                    <circle class="fl-packet in" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M160 52 L160 86" keyPoints="0;0;1;1" keyTimes="0;0.12;0.42;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.12;0.42" calcMode="discrete"/></circle>
+                    <circle class="fl-packet out" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M160 52 L160 86" keyPoints="1;1;0;0" keyTimes="0;0.55;0.85;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.55;0.85" calcMode="discrete"/></circle>
+                    <circle class="fl-packet in" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M253.5 106 L224.1 123" keyPoints="0;0;1;1" keyTimes="0;0.12;0.42;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.12;0.42" calcMode="discrete"/></circle>
+                    <circle class="fl-packet out" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M253.5 106 L224.1 123" keyPoints="1;1;0;0" keyTimes="0;0.55;0.85;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.55;0.85" calcMode="discrete"/></circle>
+                    <circle class="fl-packet in" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M253.5 214 L224.1 197" keyPoints="0;0;1;1" keyTimes="0;0.12;0.42;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.12;0.42" calcMode="discrete"/></circle>
+                    <circle class="fl-packet out" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M253.5 214 L224.1 197" keyPoints="1;1;0;0" keyTimes="0;0.55;0.85;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.55;0.85" calcMode="discrete"/></circle>
+                    <circle class="fl-packet in" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M160 268 L160 234" keyPoints="0;0;1;1" keyTimes="0;0.12;0.42;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.12;0.42" calcMode="discrete"/></circle>
+                    <circle class="fl-packet out" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M160 268 L160 234" keyPoints="1;1;0;0" keyTimes="0;0.55;0.85;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.55;0.85" calcMode="discrete"/></circle>
+                    <circle class="fl-packet in" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M66.5 214 L95.9 197" keyPoints="0;0;1;1" keyTimes="0;0.12;0.42;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.12;0.42" calcMode="discrete"/></circle>
+                    <circle class="fl-packet out" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M66.5 214 L95.9 197" keyPoints="1;1;0;0" keyTimes="0;0.55;0.85;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.55;0.85" calcMode="discrete"/></circle>
+                    <circle class="fl-packet in" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M66.5 106 L95.9 123" keyPoints="0;0;1;1" keyTimes="0;0.12;0.42;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.12;0.42" calcMode="discrete"/></circle>
+                    <circle class="fl-packet out" r="3.2"><animateMotion dur="4s" repeatCount="indefinite" path="M66.5 106 L95.9 123" keyPoints="1;1;0;0" keyTimes="0;0.55;0.85;1" calcMode="linear"/><animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.55;0.85" calcMode="discrete"/></circle>
+                </svg>
+                <span class="fl-node" style="--a: 0deg"><i class="fas fa-hospital"></i></span>
+                <span class="fl-node" style="--a: 60deg"><i class="fas fa-building-columns"></i></span>
+                <span class="fl-node" style="--a: 120deg"><i class="fas fa-dna"></i></span>
+                <span class="fl-node" style="--a: 180deg"><i class="fas fa-mobile-screen"></i></span>
+                <span class="fl-node" style="--a: 240deg"><i class="fas fa-fish"></i></span>
+                <span class="fl-node" style="--a: 300deg"><i class="fas fa-industry"></i></span>
+                <div class="hero-avatar">
+                    <img src="images/profile.jpeg" alt="Ioannis Christofilogiannis">
+                </div>
             </div>
+            <p class="fl-status" aria-hidden="true"><span class="fl-dot"></span> Round <span id="flRound">1</span> · 6 sites · <span id="flPhase">local training</span> · 0 bytes of raw data shared</p>
             <p class="hero-eyebrow">Federated Learning · Machine Learning · Computer Vision</p>
             <h1>Ioannis <span class="gradient-text">Christofilogiannis</span></h1>
             <p class="hero-subtitle"><span id="typewriter"></span><span class="cursor"></span></p>
+            <div class="hero-creds">
+                <span class="cred"><i class="fas fa-trophy"></i> Best Student Paper · IEEE FLTA 2025</span>
+                <span class="cred"><i class="fas fa-code-merge"></i> Algorithm merged into NVIDIA FLARE</span>
+                <span class="cred"><i class="fas fa-microphone"></i> Speaker · NVIDIA FLARE Day &amp; Federate AI Summit</span>
+                <span class="cred"><i class="fas fa-graduation-cap"></i> MSc Distinction · Trinity College Dublin</span>
+            </div>
             <div class="hero-cta">
-                <a href="#experience" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
+                <a href="#federated" class="btn btn-primary"><i class="fas fa-diagram-project"></i> My Federated Learning Work</a>
                 <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> Get in Touch</a>
             </div>
         </div>
-        <a href="#about" class="hero-scroll" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
+        <a href="#federated" class="hero-scroll" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
     </header>
 
     <main>
 
+        <!-- Federated Learning spotlight -->
+        <section id="federated" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">01</span>
+                <h2 class="section-title">Federated Learning — my core expertise</h2>
+            </div>
+            <div class="fl-spotlight">
+                <div class="card fl-intro reveal">
+                    <p class="lead">I build machine learning that goes to the data instead of pooling it. My method <strong>Feature Election</strong> lets independent sites agree on the most informative features of high-dimensional, non-IID data without sharing a single row.</p>
+                    <p>It won <strong>Best Student Paper at IEEE FLTA 2025</strong>, passed the NVIDIA FLARE core team's code review, tests and CI and was <strong>merged upstream</strong>, launched the same day on <strong>Flower Hub</strong>, and I've presented it at <strong>NVIDIA FLARE Day 2026</strong> and the <strong>Federate AI Summit in Boston</strong>.</p>
+                    <div class="chips">
+                        <span class="chip">NVIDIA FLARE</span>
+                        <span class="chip">Flower</span>
+                        <span class="chip">Federated feature selection</span>
+                        <span class="chip">Federated HPO</span>
+                        <span class="chip">Non-IID data</span>
+                        <span class="chip">Cross-site analytics</span>
+                        <span class="chip">PyTorch</span>
+                        <span class="chip">Docker · Kubernetes · AWS</span>
+                    </div>
+                    <div class="fl-actions">
+                        <a href="https://towardsdatascience.com/voting-on-features-federated-feature-selection-without-sharing-data/" target="_blank" rel="noopener" class="project-link"><i class="fas fa-newspaper"></i> Read the article on Towards Data Science <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/NVIDIA/NVFlare/tree/main/examples/advanced/feature_election" target="_blank" rel="noopener" class="project-link"><i class="fas fa-microchip"></i> In NVIDIA FLARE <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://flower.ai/apps/christofilojohn/feature-election" target="_blank" rel="noopener" class="project-link"><i class="fas fa-seedling"></i> On Flower Hub <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/parasecurity/FLASH" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> FLASH on GitHub <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <figure class="card fl-figure reveal">
+                    <img src="images/projects/feature_election_diagram.svg" alt="Feature Election data flow: clients score features locally, the server aggregates votes into a global mask" loading="lazy">
+                    <figcaption>Feature Election: each site scores features locally; only votes travel to the server.</figcaption>
+                </figure>
+            </div>
+            <div class="fl-proof">
+                <div class="proof reveal">
+                    <i class="fas fa-flask"></i>
+                    <h3>Research</h3>
+                    <p>FLASH: federated feature selection + hyperparameter optimisation. Best Student Paper, IEEE FLTA 2025. MEng thesis on feature selection in FL.</p>
+                </div>
+                <div class="proof reveal">
+                    <i class="fas fa-code-merge"></i>
+                    <h3>Open source</h3>
+                    <p>Feature Election merged into <a class="link" href="https://nvidia.github.io/NVFlare/" target="_blank" rel="noopener">NVIDIA FLARE</a> after core-team review; same-day launch on Flower Hub.</p>
+                </div>
+                <div class="proof reveal">
+                    <i class="fas fa-microphone-lines"></i>
+                    <h3>Talks</h3>
+                    <p><a class="link" href="https://www.nvidia.com/en-us/on-demand/session/flareday2026-flare26a09/" target="_blank" rel="noopener">NVIDIA FLARE Day 2026</a>, Federate AI Summit 2026 (Boston, talk + poster), Flower AI Summit 2026 (poster).</p>
+                </div>
+                <div class="proof reveal">
+                    <i class="fas fa-people-group"></i>
+                    <h3>Hackathons</h3>
+                    <p>CMU × NVIDIA FL Hackathon: 3 team awards for a biobank-scale FLARE + AWS prototype. Cross-TRE federated analysis at the Nordic Biobank × NVIDIA hackathon.</p>
+                </div>
+            </div>
+
+            <!-- Feature Election on stage -->
+            <div class="fe-stage">
+                <a class="video-card reveal" href="https://www.nvidia.com/en-us/on-demand/session/flareday2026-flare26a09/" target="_blank" rel="noopener">
+                    <img src="images/nvidia_flare_day_talk.jpg" alt="NVIDIA FLARE Day 2026 talk: Feature Election" loading="lazy">
+                    <span class="video-play"><i class="fas fa-play"></i></span>
+                    <span class="video-label"><i class="fas fa-video"></i> Watch the talk · NVIDIA FLARE Day 2026</span>
+                </a>
+                <div class="fe-venues reveal">
+                    <h3 class="sub-heading"><i class="fas fa-earth-europe"></i> Feature Election, presented at</h3>
+                    <ol class="venues">
+                        <li>
+                            <span class="talk-date">Sep 2025</span>
+                            <div><strong>IEEE FLTA 2025</strong>, Dubrovnik: paper talk, <em>Best Student Paper</em> · <a class="link" href="https://ieeexplore.ieee.org/document/11336571" target="_blank" rel="noopener">paper</a></div>
+                        </li>
+                        <li>
+                            <span class="talk-date">2026</span>
+                            <div><strong>Flower AI Summit 2026</strong>: poster · <a class="link" href="https://flower.ai/apps/christofilojohn/feature-election" target="_blank" rel="noopener">Flower Hub app</a></div>
+                        </li>
+                        <li>
+                            <span class="talk-date">Sep 2026</span>
+                            <div><strong>NVIDIA FLARE Day 2026</strong>: talk · <a class="link" href="https://www.nvidia.com/en-us/on-demand/session/flareday2026-flare26a09/" target="_blank" rel="noopener">video</a> · <a class="link" href="https://github.com/NVIDIA/NVFlare/tree/main/examples/advanced/feature_election" target="_blank" rel="noopener">FLARE example</a></div>
+                        </li>
+                        <li>
+                            <span class="talk-date">Oct 2026</span>
+                            <div><strong>Federate AI Summit 2026</strong>, Boston: talk + poster · <a class="link" href="#news">photos</a></div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest: Federate AI Summit -->
+        <section id="news" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">02</span>
+                <h2 class="section-title">Latest — Federate AI Summit, Boston</h2>
+            </div>
+            <div class="summit reveal">
+                <div class="summit-text">
+                    <span class="badge"><i class="fas fa-calendar"></i> 20 October 2026</span>
+                    <h3>Feature Election: private feature selection for tabular data</h3>
+                    <p>I gave a talk and presented a poster on Feature Election at the Federate AI Summit in Boston, showing how independent data holders can pick the features that matter without ever pooling their data, and how it now ships inside NVIDIA FLARE and Flower.</p>
+                    <p>I also recorded an on-camera interview at the summit, and took the chance to visit MIT while in town.</p>
+                    <a href="https://towardsdatascience.com/voting-on-features-federated-feature-selection-without-sharing-data/" target="_blank" rel="noopener" class="project-link"><i class="fas fa-newspaper"></i> The ideas behind the talk, on Towards Data Science <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="summit-photos">
+                    <figure class="gallery-item summit-main" data-title="Talk at the Federate AI Summit, Boston">
+                        <img src="images/federate_summit_talk.jpg" alt="Giving the Feature Election talk at the Federate AI Summit" loading="lazy">
+                        <figcaption class="gallery-caption">On stage at the Federate AI Summit</figcaption>
+                    </figure>
+                    <figure class="gallery-item" data-title="Interview at the Federate AI Summit">
+                        <img src="images/federate_summit_interview.jpg" alt="Filmed interview at the Federate AI Summit" loading="lazy">
+                        <figcaption class="gallery-caption">Summit interview</figcaption>
+                    </figure>
+                    <figure class="gallery-item" data-title="MIT, Cambridge MA">
+                        <img src="images/mit_boston.jpg" alt="In front of the MIT Great Dome" loading="lazy">
+                        <figcaption class="gallery-caption">MIT, Cambridge</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
         <!-- About -->
         <section id="about" class="section">
             <div class="section-header reveal">
-                <span class="section-num">01</span>
+                <span class="section-num">03</span>
                 <h2 class="section-title">About</h2>
+            </div>
+            <div class="card about-summary reveal">
+                <p class="lead">ML research engineer whose core expertise is federated learning. I've published first-author research in federated ML and computer vision, trained multi-agent RL policies for traffic control, and shipped LLM-powered apps. MSc Intelligent Systems (Distinction) at Trinity College Dublin and a 5-year MEng in Electrical &amp; Computer Engineering.</p>
             </div>
             <div class="bento">
                 <div class="card reveal">
-                    <h3 class="card-label"><i class="fas fa-heart"></i> Interests</h3>
+                    <h3 class="card-label"><i class="fas fa-diagram-project"></i> Federated &amp; distributed ML</h3>
                     <div class="chips">
-                        <span class="chip">💻 Programming</span>
-                        <span class="chip">🎨 Sketching</span>
-                        <span class="chip">📚 Reading</span>
-                        <span class="chip">✈️ Traveling</span>
-                        <span class="chip">🤖 AI</span>
-                        <span class="chip">🧠 ML</span>
-                        <span class="chip">🌐 Federated Learning</span>
-                        <span class="chip">🖌️ UI/UX</span>
-                        <span class="chip">🎮 Gaming</span>
+                        <span class="chip">NVIDIA FLARE</span>
+                        <span class="chip">Flower</span>
+                        <span class="chip">Feature selection</span>
+                        <span class="chip">Training-subset selection</span>
+                        <span class="chip">Non-IID benchmarking</span>
                     </div>
                 </div>
                 <div class="card reveal">
-                    <h3 class="card-label"><i class="fas fa-code"></i> Technical Skills</h3>
+                    <h3 class="card-label"><i class="fas fa-magnifying-glass"></i> Search, retrieval &amp; RAG</h3>
+                    <div class="chips">
+                        <span class="chip">BM25 + dense retrieval</span>
+                        <span class="chip">Reciprocal Rank Fusion</span>
+                        <span class="chip">Apache Lucene</span>
+                        <span class="chip">trec_eval</span>
+                        <span class="chip">Grounded answers w/ citations</span>
+                        <span class="chip">🎓 TCD Information Retrieval · Distinction (94%)</span>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <h3 class="card-label"><i class="fas fa-brain"></i> Deep learning &amp; RL</h3>
+                    <div class="chips">
+                        <span class="chip">PyTorch</span>
+                        <span class="chip">TensorFlow</span>
+                        <span class="chip">scikit-learn</span>
+                        <span class="chip">Hugging Face</span>
+                        <span class="chip">MAPPO · IPPO</span>
+                        <span class="chip">YOLO v8–v12 fine-tuning</span>
+                        <span class="chip">CoreML · Metal</span>
+                    </div>
+                </div>
+                <div class="card reveal span-2">
+                    <h3 class="card-label"><i class="fas fa-robot"></i> AI agents &amp; LLM engineering</h3>
+                    <div class="chips">
+                        <span class="chip">Claude Code (daily, plugins)</span>
+                        <span class="chip">Anthropic API</span>
+                        <span class="chip">OpenAI Agents SDK</span>
+                        <span class="chip">Multi-agent pipelines (planner → builder)</span>
+                        <span class="chip">Tool use</span>
+                        <span class="chip">Prompt engineering</span>
+                        <span class="chip">Human-in-the-loop reporting</span>
+                        <span class="chip">Multi-model routing &amp; fallback</span>
+                        <span class="chip">Open models: Qwen</span>
+                        <span class="chip">Local inference: llama.cpp · MLX</span>
+                    </div>
+                    <p class="card-note">Building <a class="link" href="https://github.com/AquarkGR/Trident" target="_blank" rel="noopener">Trident</a>, an open-source prompt → plan → build agent pipeline with editions for Claude Code, the OpenAI Agents SDK and local Qwen models.</p>
+                </div>
+                <div class="card reveal">
+                    <h3 class="card-label"><i class="fas fa-code"></i> Engineering</h3>
                     <div class="chips">
                         <span class="chip"><i class="fab fa-python"></i> Python</span>
-                        <span class="chip"><i class="fas fa-terminal"></i> C/C++</span>
-                        <span class="chip"><i class="fab fa-unity"></i> Unity/C#</span>
                         <span class="chip"><i class="fab fa-java"></i> Java</span>
-                        <span class="chip"><i class="fas fa-microchip"></i> VHDL</span>
+                        <span class="chip"><i class="fas fa-terminal"></i> C/C++</span>
+                        <span class="chip"><i class="fab fa-swift"></i> Swift/Metal</span>
                         <span class="chip"><i class="fas fa-database"></i> SQL</span>
-                        <span class="chip"><i class="fas fa-window-restore"></i> GUI Dev</span>
-                        <span class="chip"><i class="fas fa-globe"></i> Web Dev</span>
-                        <span class="chip"><i class="fab fa-linux"></i> Linux</span>
-                        <span class="chip"><i class="fab fa-windows"></i> Windows</span>
-                        <span class="chip"><i class="fab fa-apple"></i> macOS</span>
+                        <span class="chip">FastAPI</span>
+                        <span class="chip"><i class="fab fa-docker"></i> Docker</span>
+                        <span class="chip">Kubernetes</span>
+                        <span class="chip"><i class="fab fa-aws"></i> AWS</span>
                     </div>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-label"><i class="fas fa-star"></i> Characteristics</h3>
-                    <div class="chips">
-                        <span class="chip">💡 Creative</span>
-                        <span class="chip">🚀 Innovative</span>
-                        <span class="chip">🧠 Problem Solver</span>
-                        <span class="chip">👥 Team Player</span>
-                    </div>
+                <div class="card reveal span-all">
+                    <h3 class="card-label"><i class="fas fa-compass"></i> How I work</h3>
+                    <ul class="bullets">
+                        <li><strong>I ship to production:</strong> Irish Tunes went from concept to a deployed web app; my first-ever NVIDIA FLARE contribution was merged upstream.</li>
+                        <li><strong>I pick up slack:</strong> hired at HCMR for ML, I also built the data pipeline and annotation tool the scientists relied on.</li>
+                        <li><strong>I measure before optimising:</strong> benchmark on real-world conditions, keep pipelines reproducible and documented.</li>
+                        <li><strong>I learn new stacks fast:</strong> shipped a native Swift/Metal app from a Python/C++ background.</li>
+                    </ul>
                 </div>
+            </div>
+            <div class="chips langs reveal">
+                <span class="chip">🇬🇷 Greek (native)</span>
+                <span class="chip">🇬🇧 English C1 · IELTS 8.0</span>
+                <span class="chip">🇫🇷 French A1</span>
+                <span class="chip">🇨🇳 Chinese HSK2</span>
+                <span class="chip">🇪🇺 EU citizen</span>
             </div>
         </section>
 
         <!-- Experience -->
         <section id="experience" class="section">
             <div class="section-header reveal">
-                <span class="section-num">02</span>
+                <span class="section-num">04</span>
                 <h2 class="section-title">Experience</h2>
             </div>
             <div class="card reveal">
                 <div class="timeline">
                     <div class="timeline-item">
-                        <h3>ML, Computer Vision Researcher · <span class="org">Hellenic Center for Marine Research</span></h3>
-                        <span class="date">Remote — November 2024 – July 2025</span>
+                        <h3>MSc Dissertation Researcher · <span class="org">Trinity College Dublin</span></h3>
+                        <span class="date">Dublin — Aug 2025 – Aug 2026 · Supervisor: Prof. Vinny Cahill</span>
                         <ul class="bullets">
-                            <li>First author of Aquacultural Engineering Journal <a class="link" href="https://www.sciencedirect.com/science/article/pii/S0144860925001736" target="_blank" rel="noopener">paper</a></li>
-                            <li>Annotated underwater images for fish disease prediction</li>
-                            <li>Trained YOLO models</li>
-                            <li>Developed an AI-assisted annotation GUI application</li>
+                            <li>Multi-agent reinforcement learning (MAPPO, IPPO) in PyTorch for motorway traffic management — Distinction (76%)</li>
+                            <li>Showed that the representation given to the centralised critic decides whether it beats independent learners; a compact agent-specific input closed the gap. Paper in preparation</li>
+                            <li>Built <a class="link" href="https://sumo-mac-gui.jchr2001.workers.dev/" target="_blank" rel="noopener">sumoMacGUI</a>, a native macOS SwiftUI/Metal front-end for SUMO simulations</li>
                         </ul>
                     </div>
                     <div class="timeline-item">
-                        <h3>ML Research Intern · <span class="org">Heriot-Watt University</span></h3>
-                        <span class="date">Edinburgh, Scotland — July – August 2023 (<a class="link" href="https://bioml.eu.org/team/" target="_blank" rel="noopener">visit website</a>)</span>
+                        <h3>ML &amp; Computer Vision Researcher · <span class="org">Hellenic Centre for Marine Research</span></h3>
+                        <span class="date">Remote — Dec 2024 – Jul 2025 · Cure4Aqua (EU-funded)</span>
                         <ul class="bullets">
-                            <li>Developed machine learning algorithms for anomaly detection in fish gill analysis</li>
-                            <li>Automated <a class="link" href="https://qupath.github.io/" target="_blank" rel="noopener">QuPath</a> workflows using Groovy scripting</li>
-                            <li>Created Python GUI application using tkinter for biomedical image processing</li>
-                            <li>Collaborated with BCML Lab research team on cutting-edge ML projects</li>
+                            <li>Curated large stereo image datasets (sanitisation, validation, augmentation) and selected the most valuable training subsets</li>
+                            <li>Benchmarked YOLO v8–v12 under real conditions — YOLOv12s reached mAP 0.81 / 0.91</li>
+                            <li>First-author <a class="link" href="https://www.sciencedirect.com/science/article/pii/S0144860925001736" target="_blank" rel="noopener">paper in Aquacultural Engineering</a></li>
+                            <li>Built the data pipeline and the AI-assisted annotation tool the marine biologists relied on</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>AI Researcher, MEng Thesis · <span class="org">Technical University of Crete</span></h3>
+                        <span class="date">Chania — Sep 2024 – May 2025 · Supervisor: Prof. Sotiris Ioannidis</span>
+                        <ul class="bullets">
+                            <li>Designed FLASH / Feature Election — finding the most informative features across independent sites without pooling data</li>
+                            <li>Led to the Best Student Paper at IEEE FLTA 2025 and the upstream NVIDIA FLARE integration</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Software Engineer (part-time) · <span class="org">Aquark</span></h3>
+                        <span class="date">Oct 2023 – Present</span>
+                        <ul class="bullets">
+                            <li>Building <a class="link" href="https://github.com/AquarkGR/Trident" target="_blank" rel="noopener">Trident</a>, an open-source planner/executor agent pipeline across Claude Code, the OpenAI Agents SDK and a local Qwen model</li>
+                            <li>Software and websites for the company</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Computer Vision Research Intern · <span class="org">Heriot-Watt University, BCML Lab</span></h3>
+                        <span class="date">Edinburgh — Jul – Aug 2023 (<a class="link" href="https://bioml.eu.org/team/" target="_blank" rel="noopener">lab website</a>)</span>
+                        <ul class="bullets">
+                            <li>Anomaly detection for fish-gill histopathology in a joint academic–industry team with biotech company EpitogenX</li>
+                            <li>Automated <a class="link" href="https://qupath.github.io/" target="_blank" rel="noopener">QuPath</a> workflows in Groovy</li>
                         </ul>
                     </div>
                     <div class="timeline-item">
                         <h3>Software Developer · <span class="org">TUCer Autonomous Racing Team</span></h3>
-                        <span class="date">Chania, Greece — January – July 2023 (<a class="link" href="https://www.tucer.tuc.gr/el/archiki" target="_blank" rel="noopener">visit website</a>)</span>
+                        <span class="date">Chania — Jan – Jul 2023 (<a class="link" href="https://www.tucer.tuc.gr/el/archiki" target="_blank" rel="noopener">team website</a>)</span>
                         <ul class="bullets">
-                            <li>Implemented autonomous driving algorithms using ROS and Python</li>
-                            <li>Developed Arduino-based sensor integration systems</li>
-                            <li>Competed in <a class="link" href="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html" target="_blank" rel="noopener">Shell Eco Marathon 2023</a> in Nogaro, France</li>
-                            <li>Optimized vehicle control systems for energy efficiency</li>
+                            <li>Autonomous driving algorithms with ROS and Python; Arduino sensor integration</li>
+                            <li>Competed in <a class="link" href="https://www.shellecomarathon.com/about/previous-seasons/2023-programme-on-track/regional-europe.html" target="_blank" rel="noopener">Shell Eco-marathon 2023</a>, Nogaro, France</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Publications -->
+        <!-- Publications & Talks -->
         <section id="publications" class="section">
             <div class="section-header reveal">
-                <span class="section-num">03</span>
-                <h2 class="section-title">Publications</h2>
+                <span class="section-num">05</span>
+                <h2 class="section-title">Publications &amp; Talks</h2>
             </div>
             <div class="pub-list">
                 <article class="pub reveal">
-                    <span class="pub-date">Oct 2025</span>
+                    <span class="pub-date">2025</span>
                     <div>
-                        <span class="badge"><i class="fas fa-trophy"></i> Best Student Paper — FLTA IEEE 2025</span>
-                        <h3>FLASH: A framework for Federated Learning with Attribute Selection and Hyperparameter optimization</h3>
-                        <ul class="bullets">
-                            <li>Best Student Paper award at the <a class="link" href="https://flta-conference.org/flta-2025" target="_blank" rel="noopener">FLTA IEEE 2025</a> conference</li>
-                            <li>Available on <a class="link" href="https://ieeexplore.ieee.org/document/11336571" target="_blank" rel="noopener">IEEE Xplore</a> and publicly on <a class="link" href="https://zenodo.org/records/18596175" target="_blank" rel="noopener">Zenodo (preprint)</a></li>
-                        </ul>
-                        <p class="authors">Ioannis Christofilogiannis, George Valavanis, Alexander Shevtsov, Ioannis Lamprou, Sotiris Ioannidis</p>
+                        <span class="badge"><i class="fas fa-trophy"></i> Best Student Paper — IEEE FLTA 2025</span>
+                        <h3>FLASH: Federated Learning with Attribute Selection and Hyperparameter Optimization</h3>
+                        <p class="pub-meta">IEEE FLTA 2025, Dubrovnik · integrated into NVIDIA FLARE &amp; Flower</p>
+                        <p class="pub-links"><a class="link" href="https://ieeexplore.ieee.org/document/11336571" target="_blank" rel="noopener">IEEE Xplore</a> · <a class="link" href="https://zenodo.org/records/18596175" target="_blank" rel="noopener">Zenodo preprint</a></p>
+                        <p class="authors">I. Christofilogiannis, G. Valavanis, A. Shevtsov, I. Lamprou, S. Ioannidis</p>
                     </div>
                 </article>
                 <article class="pub reveal">
-                    <span class="pub-date">Dec 2025</span>
+                    <span class="pub-date">2026</span>
                     <div>
-                        <h3>Automatic Detection of fin, operculum and skin deformities in Mediterranean Fish Species</h3>
-                        <ul class="bullets">
-                            <li>Open access — read it <a class="link" href="https://www.sciencedirect.com/science/article/pii/S0144860925001736" target="_blank" rel="noopener">here</a></li>
-                            <li>Accepted in the <a class="link" href="https://www.sciencedirect.com/journal/aquacultural-engineering" target="_blank" rel="noopener">Aquacultural Engineering journal</a></li>
-                        </ul>
-                        <p class="authors">Ioannis Christofilogiannis, Dimitra Georgopoulou, Charalabos Vouidaskis, Zacharias Choulakis, Dimitris Voskakis, Nikos Papandroulakis</p>
+                        <span class="badge"><i class="fas fa-book-open"></i> Journal · First author</span>
+                        <h3>Automatic Detection of Fin, Operculum &amp; Skin Deformities in Mediterranean Fish</h3>
+                        <p class="pub-meta">Aquacultural Engineering · YOLOv12s reaches mAP 0.81 (fin classification) and 0.91 (red-spot detection) with real-time inference on stereo underwater imagery</p>
+                        <p class="pub-links"><a class="link" href="https://www.sciencedirect.com/science/article/pii/S0144860925001736" target="_blank" rel="noopener">ScienceDirect (open access)</a></p>
+                        <p class="authors">I. Christofilogiannis, D. Georgopoulou, C. Vouidaskis, Z. Choulakis, D. Voskakis, N. Papandroulakis</p>
                     </div>
                 </article>
                 <article class="pub reveal">
-                    <span class="pub-date">Sep 2025</span>
+                    <span class="pub-date">2026</span>
+                    <div>
+                        <span class="badge"><i class="fas fa-graduation-cap"></i> MSc Dissertation · Distinction</span>
+                        <h3>Multi-agent Reinforcement Learning for Travel Time Reliability</h3>
+                        <p class="pub-meta">Trinity College Dublin, MSc Computer Science (Intelligent Systems) · Supervisor: Prof. Vinny Cahill · <i class="fas fa-lock"></i> Closed access</p>
+                        <p class="pub-links"><a class="link" href="papers/christofilogiannis_dissertation_abstract.pdf" target="_blank" rel="noopener">Abstract (PDF)</a></p>
+                        <details class="abstract">
+                            <summary>Read the abstract</summary>
+                            <p>Between its ramps, a motorway has no signals, meters, or signs: nothing for learning-based traffic control to actuate. Two decades of reinforcement learning for traffic have therefore lived in the infrastructure, while the road between the ramps stays uncontrolled. This dissertation moves the learning to the vehicles. It models road space as a conveyor of moving slot reservations and treats every vehicle as a recurrent learning agent choosing among five discrete slot manoeuvres: hold the current reservation, shift forward or backward, or change into a compatible slot in an adjacent lane. On top of a rule-based slot simulator and the SUMO microscopic traffic simulator, a complete multi-agent learning system is built: lifetime-scoped agent rows, compact local observations with optional task signals, an 18-term reward with hybrid per-agent credit assignment, and a three-layer safety envelope that makes collisions structurally impossible. Multi-Agent Proximal Policy Optimization (MAPPO) and Independent PPO (IPPO) are trained on a segment suite inspired by Dublin’s M50, spanning straight and curved corridors, passable hazards, lane drops and gains, on-ramp merges, and exit diverges, each evaluated against matched do-nothing and random-valid baselines.</p>
+                            <p>Learning pays exactly where coordination is genuinely needed. On free-flowing roads the slot layer alone sustains throughput, and training adds discipline: vehicles stay within one slot of their assignment 96% of the time, using a quarter of the maneuvers of a random policy, and the behavior transfers zero-shot to an unseen curved corridor. Where scenarios demand more, trained vehicles take their assigned exit 88% of the time against an 18% baseline. In the on-ramp scenario they finish merges in their assigned mainline lane 72% against 42% while cutting the merge queue by up to 90%. They also clear a lane drop into the surviving lane 88% against 65% with a travel-time tail less than half as long. Every result, for every policy, at every demand level, is collision-free.</p>
+                            <p>The most important finding is that IPPO consistently beat centralized MAPPO, which looks like evidence against centralized training with decentralized execution. Diagnosis traced the gap to the critic’s input: a 1289-value joint observation, two thirds padding, in which the vehicle being valued is marked by a single flipped bit. Replacing it with Minimal MAPPO, a 29-value agent-specific critic holding only the global traffic state and the focal vehicle’s own view, closes the gap on the merge, overtakes IPPO on the exit corridor. It also degrades most gracefully under demand far beyond training, with 26% less queueing than IPPO at the heaviest demand tested. Minimal MAPPO manages to match or beat IPPO on difficult scenarios because the critic can clearly see whose return it is predicting, due to the more targeted observation vector, while it is utilizing more observation features than IPPO. Finally, a native macOS alternative for SUMO GUI was built when the official interface failed on the test system. This work is a demonstration that, inside a safe environment, learning vehicle-level cooperation on a motorway is feasible.</p>
+                        </details>
+                        <p class="authors">I. Christofilogiannis</p>
+                    </div>
+                </article>
+                <article class="pub reveal">
+                    <span class="pub-date">2026</span>
+                    <div>
+                        <span class="badge"><i class="fas fa-star"></i> Editor's Pick — Towards Data Science</span>
+                        <h3>Voting on Features: Federated Feature Selection Without Sharing Data</h3>
+                        <p class="pub-links"><a class="link" href="https://towardsdatascience.com/voting-on-features-federated-feature-selection-without-sharing-data/" target="_blank" rel="noopener">Read the article</a></p>
+                    </div>
+                </article>
+                <article class="pub reveal">
+                    <span class="pub-date">2026</span>
+                    <div>
+                        <h3>Towards Federated Learning Across Biobanks: Prototype Software from the 2026 CMU–NVIDIA Hackathon</h3>
+                        <p class="pub-meta">OSF / BioHackrXiv · 100+ authors</p>
+                        <p class="pub-links"><a class="link" href="https://osf.io/preprints/biohackrxiv/5psfj_v1" target="_blank" rel="noopener">BioHackrXiv</a></p>
+                    </div>
+                </article>
+                <article class="pub reveal">
+                    <span class="pub-date">2025</span>
                     <div>
                         <h3>Non-invasive Monitoring of Fish Morphometric Traits Using YOLO-based Computer Vision in Aquaculture</h3>
-                        <ul class="bullets">
-                            <li>Accepted at <a class="link" href="https://www.aquaeas.org" target="_blank" rel="noopener">Aquaculture Europe 25</a> — September 22–25, 2025, Valencia, Spain. European Aquaculture Society conference</li>
-                        </ul>
+                        <p class="pub-meta"><a class="link" href="https://www.aquaeas.org" target="_blank" rel="noopener">Aquaculture Europe 25</a>, Valencia</p>
                     </div>
                 </article>
                 <article class="pub reveal">
-                    <span class="pub-date">Mar 2026</span>
-                    <div>
-                        <h3>Towards Federated Learning Across Biobanks: Prototype Software from the 2026 Carnegie Mellon University–NVIDIA Hackathon</h3>
-                        <ul class="bullets">
-                            <li>Available on the <a class="link" href="https://osf.io/preprints/biohackrxiv/5psfj_v1" target="_blank" rel="noopener">Open Science Framework</a></li>
-                            <li>The Carnegie Mellon University–NVIDIA Federated Learning Hackathon for Biomedical Applications (January 7–9, 2026) convened researchers from academia, government, and industry to implement federated frameworks for disease subtyping, genetic association studies, and multimodal clinical prediction using NVIDIA FLARE.</li>
-                        </ul>
-                    </div>
-                </article>
-                <article class="pub reveal">
-                    <span class="pub-date">May 2025</span>
+                    <span class="pub-date">2025</span>
                     <div>
                         <h3>Feature Selection in the Federated Machine Learning Setting</h3>
-                        <ul class="bullets">
-                            <li>Diploma thesis — <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank" rel="noopener">Institutional Repository, Technical University of Crete</a></li>
-                            <li>Note: the FLASH framework was initially called FLEx but was renamed due to conflicts</li>
-                        </ul>
+                        <p class="pub-meta">MEng diploma thesis — <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank" rel="noopener">Technical University of Crete repository</a></p>
                     </div>
                 </article>
             </div>
-        </section>
 
-        <!-- Education -->
-        <section id="education" class="section">
-            <div class="section-header reveal">
-                <span class="section-num">04</span>
-                <h2 class="section-title">Education</h2>
-            </div>
-            <div class="edu-grid">
-                <div class="card edu-card reveal">
-                    <h3>Trinity College Dublin</h3>
-                    <p class="degree">MSc Computer Science — Intelligent Systems</p>
-                    <span class="date">September 2025 – 2026 (<a class="link" href="https://www.tcd.ie/" target="_blank" rel="noopener">visit website</a>)</span>
-                    <ul class="bullets">
-                        <li>🥇 Winning team (Federated Infrastructure) at the collaborative <a class="link" href="https://guides.library.cmu.edu/hackathon/2026" target="_blank" rel="noopener">Carnegie Mellon × NVIDIA Federated Learning Hackathon for Biomedical Applications</a></li>
-                    </ul>
-                </div>
-                <div class="card edu-card reveal">
-                    <h3>Technical University of Crete</h3>
-                    <p class="degree">Bachelor's with Integrated MSc in Electrical &amp; Computer Engineering</p>
-                    <span class="date">2019 – 2025 (<a class="link" href="https://www.ece.tuc.gr/" target="_blank" rel="noopener">visit website</a>)</span>
-                    <div class="chips">
-                        <span class="chip">🎓 Diploma Thesis: <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank" rel="noopener">Feature Selection in Federated Learning</a></span>
-                        <span class="chip">🏆 TUC CTF 2023 Winner</span>
-                        <span class="chip">🥇 <a class="link" href="https://edgeless-project.eu/edgeless-1st-code-camp/" target="_blank" rel="noopener">EDGELESS Code Camp</a></span>
-                        <span class="chip">💻 <a class="link" href="https://icpc.global/" target="_blank" rel="noopener">ICPC 2023</a></span>
-                    </div>
-                    <ul class="bullets">
-                        <li>Diploma thesis: Feature selection in the Federated Machine Learning setting — <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank" rel="noopener">available here from 01/26</a></li>
-                        <li>Advanced beyond the initial phase (<a class="link" href="https://algoforum.upatras.gr/el/plirofories/" target="_blank" rel="noopener">GRPC</a>) to participate in the <a class="link" href="http://acm.ro/" target="_blank" rel="noopener">SEERC</a> – <a class="link" href="https://icpc.global/" target="_blank" rel="noopener">ICPC</a> December 2023 Regional Programming Competition</li>
-                    </ul>
-                </div>
-                <div class="card edu-card reveal">
-                    <h3>PIERCE — The American College of Greece</h3>
-                    <p class="degree">High School Diploma</p>
-                    <span class="date">2019 (<a class="link" href="http://www.pierce.gr" target="_blank" rel="noopener">visit website</a>)</span>
-                    <div class="chips">
-                        <span class="chip">🎓 Student Board Member (2016–2019)</span>
-                        <span class="chip">🏅 Math Competition Awards</span>
-                    </div>
-                    <ul class="bullets">
-                        <li>Elected Member of the PIERCE Student Board for 3 years (2016–2019)</li>
-                        <li>Distinctions in mathematics student competitions: Kangaroo, Hellenic Mathematical Society (Thales)</li>
-                    </ul>
-                </div>
-                <div class="card edu-card reveal">
-                    <h3>Professional Development &amp; Training</h3>
-                    <div class="edu-sub" style="border-top: none; margin-top: 10px; padding-top: 0;">
-                        <h4>Careers and Employability (CE) Course — Trinity College Dublin</h4>
-                        <span class="date">Auditing, 2026</span>
-                    </div>
-                    <div class="edu-sub">
-                        <h4>Federated Learning Summer School 2025</h4>
-                        <span class="date">FLTA (Federated Learning Technology Alliance) — 2025 (<a class="link" href="https://flta.org" target="_blank" rel="noopener">visit website</a>)</span>
-                        <div class="chips" style="margin: 12px 0;">
-                            <span class="chip">🌐 Federated Learning</span>
-                            <span class="chip">🔒 Privacy-Preserving ML</span>
-                            <span class="chip">📊 Distributed Systems</span>
-                            <span class="chip">🎯 Advanced Training</span>
-                        </div>
-                        <ul class="bullets">
-                            <li>Intensive summer school focused on cutting-edge federated learning techniques</li>
-                            <li>Hands-on workshops with privacy-preserving algorithms and frameworks</li>
-                            <li>Collaborative projects with international participants and industry experts from <a class="link" href="https://flower.dev/" target="_blank" rel="noopener">Flower</a>, <a class="link" href="https://scaleoutsystems.com/" target="_blank" rel="noopener">Scaleout</a>, <a class="link" href="https://developer.nvidia.com/flare" target="_blank" rel="noopener">NVIDIA FLARE</a>, P2PFL</li>
-                        </ul>
-                    </div>
-                    <div class="edu-sub">
-                        <h4>Language Proficiency</h4>
-                        <div class="chips" style="margin-top: 12px;">
-                            <span class="chip">🇬🇧 IELTS 8.0</span>
-                            <span class="chip">🇬🇧 Cambridge C1</span>
-                            <span class="chip">🇨🇳 HSK2</span>
-                            <span class="chip">🇫🇷 French A1</span>
-                        </div>
-                    </div>
-                </div>
+            <h3 class="sub-heading reveal"><i class="fas fa-microphone"></i> Talks &amp; posters</h3>
+            <div class="talks">
+                <article class="talk reveal">
+                    <div class="talk-top"><span class="talk-type"><i class="fas fa-microphone"></i> Talk + Poster</span><span class="talk-date">Oct 2026</span></div>
+                    <h4>Feature Election</h4>
+                    <p class="talk-venue"><i class="fas fa-location-dot"></i> Federate AI Summit 2026, Boston</p>
+                    <a class="talk-action" href="#news"><i class="fas fa-images"></i> Photos</a>
+                </article>
+                <article class="talk reveal">
+                    <div class="talk-top"><span class="talk-type"><i class="fas fa-microphone"></i> Talk</span><span class="talk-date">Sep 2026</span></div>
+                    <h4>Feature Election: Private Feature Selection for Tabular Data</h4>
+                    <p class="talk-venue"><i class="fas fa-location-dot"></i> NVIDIA FLARE Day 2026</p>
+                    <a class="talk-action" href="https://www.nvidia.com/en-us/on-demand/session/flareday2026-flare26a09/" target="_blank" rel="noopener"><i class="fas fa-play"></i> Watch on NVIDIA On-Demand</a>
+                </article>
+                <article class="talk reveal">
+                    <div class="talk-top"><span class="talk-type poster"><i class="fas fa-image"></i> Poster</span><span class="talk-date">2026</span></div>
+                    <h4>Feature Election in Flower</h4>
+                    <p class="talk-venue"><i class="fas fa-location-dot"></i> Flower AI Summit 2026</p>
+                    <a class="talk-action" href="https://flower.ai/apps/christofilojohn/feature-election" target="_blank" rel="noopener"><i class="fas fa-seedling"></i> Flower Hub app</a>
+                </article>
+                <article class="talk reveal">
+                    <div class="talk-top"><span class="talk-type"><i class="fas fa-microphone"></i> Paper talk</span><span class="talk-date">Sep 2025</span></div>
+                    <h4>FLASH</h4>
+                    <p class="talk-venue"><i class="fas fa-location-dot"></i> IEEE FLTA 2025, Dubrovnik</p>
+                    <p class="talk-award"><i class="fas fa-trophy"></i> Best Student Paper</p>
+                    <a class="talk-action" href="https://ieeexplore.ieee.org/document/11336571" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i> Read the paper</a>
+                </article>
             </div>
         </section>
 
         <!-- Projects -->
         <section id="projects" class="section">
             <div class="section-header reveal">
-                <span class="section-num">05</span>
+                <span class="section-num">06</span>
                 <h2 class="section-title">Featured Projects</h2>
             </div>
             <div class="projects-grid">
@@ -297,13 +484,120 @@
                     <div class="project-body">
                         <div class="project-tags">
                             <span class="project-tag">Federated Learning</span>
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">C++</span>
-                            <span class="project-tag">Docker</span>
+                            <span class="project-tag">NVIDIA FLARE</span>
+                            <span class="project-tag">Flower</span>
                         </div>
-                        <h3>FLASH</h3>
-                        <p>A framework for Federated Learning with Attribute Selection. In proceedings of FLTA IEEE 2025. We developed Feature Election — a method to use conventional ML feature selection algorithms in FL — and a federated hyperparameter optimization method.</p>
+                        <h3>FLASH / Feature Election</h3>
+                        <p>A distributed algorithm that coordinates many independent data holders to find the most informative features without pooling their data, on heterogeneous (non-IID) data. Merged upstream into NVIDIA FLARE and launched on Flower Hub.</p>
                         <a href="https://github.com/parasecurity/FLASH" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Give us a <i class="fas fa-star"></i> on GitHub <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://flower.ai/apps/christofilojohn/feature-election" target="_blank" rel="noopener" class="project-link"><i class="fas fa-seedling"></i> Flower Hub <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/NVIDIA/NVFlare/tree/main/examples/advanced/feature_election" target="_blank" rel="noopener" class="project-link"><i class="fas fa-microchip"></i> NVIDIA FLARE example <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb thumb-art thumb-green"><i class="fas fa-music"></i><span>Irish Tunes</span></div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">RAG</span>
+                            <span class="project-tag">LLM serving</span>
+                            <span class="project-tag">Low-resource language</span>
+                        </div>
+                        <h3>Irish Tunes <span class="award-pill"><i class="fas fa-trophy"></i> AI Quest Top Award</span></h3>
+                        <p>Teaches Irish (Gaeilge) through traditional songs. Retrieval over a curated corpus with an Irish-specialist 24B LLM, behind an LLM serving layer with automatic model fallback. €1.6k prize + €32k in compute.</p>
+                        <a href="https://irish-tunes.vercel.app" target="_blank" rel="noopener" class="project-link"><i class="fas fa-up-right-from-square"></i> Try it live <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/architecture_dark.png" alt="Hybrid search architecture" loading="lazy"></div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">Information Retrieval</span>
+                            <span class="project-tag">Apache Lucene</span>
+                            <span class="project-tag">FastAPI</span>
+                        </div>
+                        <h3>Hybrid Search Engine</h3>
+                        <p>BM25 lexical retrieval fused with SentenceTransformer dense retrieval via Reciprocal Rank Fusion — +27% MAP over BM25 on Cranfield (trec_eval), with parameter sweeps.</p>
+                        <a href="https://github.com/christofilojohn/A-poor-mans-hybrid-search" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb thumb-art thumb-amber"><i class="fas fa-rss"></i><span>Agent Feed</span></div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">Local LLM</span>
+                            <span class="project-tag">RAG</span>
+                            <span class="project-tag">FastAPI</span>
+                        </div>
+                        <h3>Agent Feed</h3>
+                        <p>An AI-assisted RSS reader on a local, open LLM. Files articles into your topics by meaning, summarises and translates them, and answers questions with citations to its sources.</p>
+                        <a href="https://github.com/christofilojohn/AgentFeed" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb thumb-art thumb-blue"><i class="fas fa-dna"></i><span>FedGen · Cross-TRE</span></div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">NVIDIA FLARE</span>
+                            <span class="project-tag">AWS</span>
+                            <span class="project-tag">Biobanks</span>
+                        </div>
+                        <h3>Federated Biobank Analysis</h3>
+                        <p>Team FedGen: end-to-end FL prototype on NVIDIA FLARE + AWS for biobank-scale disease subtyping and genetic analysis (CMU × NVIDIA). Plus cross-TRE federated analytics that run where sensitive data lives (Nordic Biobank × NVIDIA).</p>
+                        <a href="https://osf.io/preprints/biohackrxiv/5psfj_v1" target="_blank" rel="noopener" class="project-link"><i class="fas fa-file-lines"></i> Read the preprint <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb thumb-art thumb-violet"><i class="fas fa-users-rays"></i><span>PearArena</span></div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">P2P</span>
+                            <span class="project-tag">Hyperswarm</span>
+                            <span class="project-tag">HackUPC 2026</span>
+                        </div>
+                        <h3>PearArena</h3>
+                        <p>Serverless peer-to-peer live-engagement platform (Q&amp;A wall, trivia, party game) on Pear runtime, Hypercore and Hyperswarm. Built in a team of 4 at HackUPC, Barcelona.</p>
+                        <a href="https://github.com/christofilojohn/PearArena" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://devpost.com/software/pearwall" target="_blank" rel="noopener" class="project-link"><i class="fas fa-trophy"></i> Devpost <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb thumb-art thumb-teal"><i class="fas fa-road"></i><span>sumoMacGUI</span></div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">SwiftUI</span>
+                            <span class="project-tag">Metal</span>
+                            <span class="project-tag">Traffic simulation</span>
+                        </div>
+                        <h3>sumoMacGUI</h3>
+                        <p>Native macOS GUI for Eclipse SUMO traffic simulations, built with SwiftUI, Metal and TraCI — the simulator front-end behind my multi-agent RL dissertation.</p>
+                        <a href="https://sumo-mac-gui.jchr2001.workers.dev/" target="_blank" rel="noopener" class="project-link"><i class="fas fa-up-right-from-square"></i> Website <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/christofilojohn/sumoMacGUI" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb thumb-art thumb-rose"><i class="fas fa-cube"></i><span>GroundSense</span></div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">3D segmentation</span>
+                            <span class="project-tag">ARKit · LiDAR</span>
+                            <span class="project-tag">Accessibility</span>
+                        </div>
+                        <h3>GroundSense</h3>
+                        <p>Open-vocabulary 3D scene segmentation and querying for visually impaired users: an iPhone streams RGB + LiDAR depth to a YOLO-Seg and depth-fusion backend that answers by voice and warns of obstacles.</p>
+                        <a href="https://github.com/christofilojohn/GroundSense" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb"><img src="images/projects/MacVision.png" alt="Mac Vision Tools menu bar app" loading="lazy"></div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">On-device ML</span>
+                            <span class="project-tag">macOS</span>
+                            <span class="project-tag">Swift</span>
+                        </div>
+                        <h3>Mac Vision Tools</h3>
+                        <p>A macOS menu bar utility that runs on-device computer vision models in real time.</p>
+                        <a href="https://macvisiontools.pages.dev/" target="_blank" rel="noopener" class="project-link"><i class="fas fa-up-right-from-square"></i> Website <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
                 <article class="project-card reveal">
@@ -313,39 +607,10 @@
                             <span class="project-tag">YOLO</span>
                             <span class="project-tag">Computer Vision</span>
                             <span class="project-tag">Aquaculture</span>
-                            <span class="project-tag">Python GUI</span>
                         </div>
                         <h3>YOLO AI-Assisted Annotation Tool</h3>
-                        <p>Simple, AI-assisted annotation tool with YOLO model integration. Originally designed for classifying Mediterranean fish fin quality, this tool is highly adaptable for any binary classification annotation project.</p>
+                        <p>AI-assisted annotation tool with YOLO model integration, built for classifying Mediterranean fish fin quality at HCMR and adaptable to any binary classification project.</p>
                         <a href="https://github.com/christofilojohn/YOLO-Annotation-Tool" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Give us a <i class="fas fa-star"></i> on GitHub <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                <article class="project-card reveal">
-                    <div class="project-thumb"><img src="images/projects/MacVision.png" alt="Mac Vision Tools menu bar app" loading="lazy"></div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="project-tag">YOLO</span>
-                            <span class="project-tag">Computer Vision</span>
-                            <span class="project-tag">macOS</span>
-                            <span class="project-tag">Real-time ML</span>
-                        </div>
-                        <h3>Mac Vision Tools</h3>
-                        <p>A macOS menu bar app for real-time ML-powered detection with multiple modes.</p>
-                        <a href="https://github.com/christofilojohn/MacVisionTools" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Give a <i class="fas fa-star"></i> on GitHub <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                <article class="project-card reveal">
-                    <div class="project-thumb"><img src="images/projects/architecture_dark.png" alt="Hybrid search architecture" loading="lazy"></div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="project-tag">Information Retrieval</span>
-                            <span class="project-tag">Hybrid Search</span>
-                            <span class="project-tag">Apache Lucene</span>
-                            <span class="project-tag">Sentence Transformers</span>
-                        </div>
-                        <h3>A Poor Man's Hybrid Search</h3>
-                        <p>A lightweight hybrid search system combining classical BM25 lexical retrieval with neural semantic search using Reciprocal Rank Fusion (RRF). Achieves +27% MAP improvement over baseline BM25 on the Cranfield collection.</p>
-                        <a href="https://github.com/christofilojohn/A-poor-mans-hybrid-search" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Give a <i class="fas fa-star"></i> on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
                 <article class="project-card reveal">
@@ -357,59 +622,139 @@
                             <span class="project-tag">3D Graphics</span>
                         </div>
                         <h3>3D Puzzle-Adventure Game</h3>
-                        <p>Custom Unity game featuring original artwork and innovative puzzle mechanics. Implemented advanced 3D graphics techniques and game physics.</p>
+                        <p>Custom Unity game featuring original artwork and puzzle mechanics, with 3D graphics techniques and game physics.</p>
                         <a href="https://github.com/christofilojohn/graphics_tuc_project" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
-                <article class="project-card reveal">
-                    <div class="project-thumb"><img src="images/projects/negotiator.jpg" alt="The Negotiator agent" loading="lazy"></div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="project-tag">Machine Learning</span>
-                            <span class="project-tag">Game Theory</span>
-                            <span class="project-tag">Python</span>
-                        </div>
-                        <h3>The Negotiator</h3>
-                        <p>Neural network-based negotiation agent that learns optimal strategies. Implemented research paper algorithms for multiagent systems.</p>
-                        <a href="https://github.com/petrosmp/the_negotiator" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <details class="more-projects reveal">
+                <summary>More projects</summary>
+                <ul class="bullets">
+                    <li><a class="link" href="https://github.com/petrosmp/the_negotiator" target="_blank" rel="noopener">The Negotiator</a> — neural-network negotiation agent for multi-agent systems</li>
+                    <li><a class="link" href="https://github.com/petrosmp/distsys_mapreduce" target="_blank" rel="noopener">Map-Reduce on Kubernetes</a> — Longhorn storage and real-time cluster monitoring</li>
+                    <li><a class="link" href="https://github.com/christofilojohn/LargeAndSocialNetworks" target="_blank" rel="noopener">Network Queueing Simulator</a> — FCFS vs SITA for large-scale networks</li>
+                </ul>
+            </details>
+        </section>
+
+        <!-- Awards -->
+        <section id="awards" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">07</span>
+                <h2 class="section-title">Awards &amp; Hackathons</h2>
+            </div>
+            <div class="awards-grid">
+                <div class="award reveal">
+                    <i class="fas fa-trophy"></i>
+                    <div>
+                        <h3>Best Student Paper</h3>
+                        <p>IEEE FLTA 2025, Dubrovnik · Sep 2025</p>
                     </div>
-                </article>
-                <article class="project-card reveal">
-                    <div class="project-thumb"><img src="images/projects/DS_project.png" alt="Map-Reduce distributed systems project" loading="lazy"></div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="project-tag">Kubernetes</span>
-                            <span class="project-tag">Distributed Systems</span>
-                            <span class="project-tag">Flask</span>
-                        </div>
-                        <h3>Map-Reduce Implementation</h3>
-                        <p>Scalable distributed computing solution using Kubernetes. Features Longhorn storage integration and real-time cluster monitoring.</p>
-                        <a href="https://github.com/petrosmp/distsys_mapreduce" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="award reveal">
+                    <i class="fas fa-medal"></i>
+                    <div>
+                        <h3>Best Documentation, Most Productive &amp; Most Innovative Team</h3>
+                        <p>CMU × NVIDIA Federated Learning Hackathon · Jan 2026</p>
                     </div>
-                </article>
-                <article class="project-card reveal">
-                    <div class="project-thumb"><img src="images/projects/large_and_social.png" alt="Network queueing simulation" loading="lazy"></div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="project-tag">Networks</span>
-                            <span class="project-tag">Simulation</span>
-                            <span class="project-tag">Python</span>
-                        </div>
-                        <h3>Network Queueing Simulator</h3>
-                        <p>Performance analysis of FCFS and SITA queueing methods for large-scale network systems.</p>
-                        <a href="https://github.com/christofilojohn/LargeAndSocialNetworks" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="award reveal">
+                    <i class="fas fa-award"></i>
+                    <div>
+                        <h3>Implementation Top Award</h3>
+                        <p>AI Quest for Ireland 2026 · Irish Tunes · €1.6k + €32k compute</p>
                     </div>
-                </article>
+                </div>
+                <div class="award reveal">
+                    <i class="fas fa-laptop-code"></i>
+                    <div>
+                        <h3>HackUPC 2026</h3>
+                        <p>Universitat Politècnica de Catalunya, Barcelona · Apr 2026</p>
+                    </div>
+                </div>
+                <div class="award reveal">
+                    <i class="fas fa-flag-checkered"></i>
+                    <div>
+                        <h3>TUC CTF 2023 Winner · <a class="link" href="https://edgeless-project.eu/edgeless-1st-code-camp/" target="_blank" rel="noopener">EDGELESS Code Camp</a></h3>
+                        <p>Technical University of Crete</p>
+                    </div>
+                </div>
+                <div class="award reveal">
+                    <i class="fas fa-code"></i>
+                    <div>
+                        <h3>ICPC SEERC 2023 finalist</h3>
+                        <p>Advanced past the Greek qualifier (GRPC) to the regional</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="section">
+            <div class="section-header reveal">
+                <span class="section-num">08</span>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="edu-grid">
+                <div class="card edu-card reveal">
+                    <div class="edu-head">
+                        <div>
+                            <h3>Trinity College Dublin</h3>
+                            <p class="degree">MSc Computer Science — Intelligent Systems</p>
+                        </div>
+                        <span class="grade">Distinction · 75%</span>
+                    </div>
+                    <span class="date">2025 – 2026</span>
+                    <ul class="bullets">
+                        <li>Dissertation: multi-agent RL for motorway traffic management — Distinction (76%)</li>
+                        <li>Information Retrieval — Distinction (94%)</li>
+                        <li>Coursework 90%+ incl. Reinforcement Learning, Multi-agent Systems</li>
+                        <li>Winning team at the <a class="link" href="https://guides.library.cmu.edu/hackathon/2026" target="_blank" rel="noopener">CMU × NVIDIA Federated Learning Hackathon</a></li>
+                    </ul>
+                </div>
+                <div class="card edu-card reveal">
+                    <div class="edu-head">
+                        <div>
+                            <h3>Technical University of Crete</h3>
+                            <p class="degree">MEng Electrical &amp; Computer Engineering (5-year integrated)</p>
+                        </div>
+                        <span class="grade">8.13 / 10</span>
+                    </div>
+                    <span class="date">2019 – 2025</span>
+                    <ul class="bullets">
+                        <li>Thesis: <a class="link" href="https://dias.library.tuc.gr/view/103131?locale=en" target="_blank" rel="noopener">Feature Selection in the Federated Learning setting</a></li>
+                        <li>10/10 in Distributed Systems, Computer Security, and Computer Organization (pipelined processor built from scratch in VHDL); 9/10 in Reinforcement Learning</li>
+                    </ul>
+                </div>
+                <div class="card edu-card reveal">
+                    <h3>Training</h3>
+                    <ul class="bullets">
+                        <li><a class="link" href="https://flta.org" target="_blank" rel="noopener">FLTA Federated Learning Summer School 2025</a> — hands-on with Flower, Scaleout, NVIDIA FLARE and P2PFL</li>
+                        <li>PIERCE — The American College of Greece, High School 2016–2019 · Student Board member (3 years), maths competition distinctions</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- Gallery -->
         <section id="gallery" class="section">
             <div class="section-header reveal">
-                <span class="section-num">06</span>
+                <span class="section-num">09</span>
                 <h2 class="section-title">Life &amp; Adventures</h2>
             </div>
             <div class="gallery reveal">
+                <figure class="gallery-item" data-title="Federate AI Summit 2026, Boston">
+                    <img src="images/federate_summit_talk.jpg" alt="Federate AI Summit 2026, Boston" loading="lazy">
+                    <figcaption class="gallery-caption">Federate AI Summit 2026, Boston</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="Federate AI Summit 2026 — Interview">
+                    <img src="images/federate_summit_interview.jpg" alt="Federate AI Summit 2026 — Interview" loading="lazy">
+                    <figcaption class="gallery-caption">Federate AI Summit — Interview</figcaption>
+                </figure>
+                <figure class="gallery-item" data-title="MIT, Cambridge MA">
+                    <img src="images/mit_boston.jpg" alt="MIT, Cambridge MA" loading="lazy">
+                    <figcaption class="gallery-caption">MIT, Cambridge MA</figcaption>
+                </figure>
                 <figure class="gallery-item" data-title="FLTA Conference 2025">
                     <img src="images/FLTA1.jpeg" alt="FLTA Conference 2025" loading="lazy">
                     <figcaption class="gallery-caption">FLTA Conference 2025</figcaption>
@@ -464,10 +809,11 @@
         <!-- Contact -->
         <section id="contact" class="section">
             <div class="contact-card reveal">
+                <canvas class="contact-net" id="contactNet" aria-hidden="true"></canvas>
                 <div class="contact-inner">
-                    <p class="hero-eyebrow">07 — Contact</p>
+                    <p class="hero-eyebrow">10 — Contact</p>
                     <h2>Let's Connect</h2>
-                    <p>Interested in federated learning, computer vision, or just want to say hi? My inbox is always open.</p>
+                    <p>Working on federated learning, privacy-preserving ML or computer vision? I'd love to hear about it.</p>
                     <div class="contact-links">
                         <a href="mailto:jchr2001@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Say Hello</a>
                         <a href="https://www.linkedin.com/in/christofilogiannis/" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
@@ -528,7 +874,7 @@
 
         // ---------- Typewriter ----------
         const typeTarget = document.getElementById('typewriter');
-        const typeText = 'Electrical & Computer Engineer | MSc Computer Science — Intelligent Systems, Trinity College Dublin (2026)';
+        const typeText = 'Electrical & Computer Engineer and federated learning researcher: I build models that learn across data silos without moving the data.';
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (reduceMotion) {
             typeTarget.textContent = typeText;
@@ -537,9 +883,27 @@
             setTimeout(function type() {
                 if (i < typeText.length) {
                     typeTarget.textContent += typeText.charAt(i++);
-                    setTimeout(type, 32);
+                    setTimeout(type, 28);
                 }
             }, 600);
+        }
+
+        // ---------- Hero: federated round ticker (matches the 4s SVG cycle) ----------
+        if (!reduceMotion) {
+            const roundEl = document.getElementById('flRound');
+            const phaseEl = document.getElementById('flPhase');
+            const phases = [[0, 'local training'], [480, 'sending updates'], [1700, 'aggregating'], [2200, 'sharing global model']];
+            const flSvg = document.querySelector('.fl-links');
+            let round = 1;
+            (function tick() {
+                const t = flSvg.getCurrentTime() * 1000;  // SVG animation clock, so labels match the packets
+                const r = Math.floor(t / 4000) + 1, inRound = t % 4000;
+                if (r !== round) { round = r; roundEl.textContent = r; }
+                let label = phases[0][1];
+                for (const [at, name] of phases) if (inRound >= at) label = name;
+                if (phaseEl.textContent !== label) phaseEl.textContent = label;
+                requestAnimationFrame(tick);
+            })();
         }
 
         // ---------- Reveal on scroll ----------
@@ -571,6 +935,97 @@
         lightbox.addEventListener('click', closeLightbox);
         document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+        // ---------- Contact background: a drifting federated network ----------
+        // Nodes drift and link up when close; "model updates" travel along the links.
+        (function () {
+            const canvas = document.getElementById('contactNet');
+            const card = canvas.parentElement;
+            const ctx = canvas.getContext('2d');
+            let w, h, dpr, nodes = [], packets = [], running = false, mouse = null;
+
+            function colors() {
+                const cs = getComputedStyle(document.documentElement);
+                return { a: cs.getPropertyValue('--accent').trim(), b: cs.getPropertyValue('--accent-2').trim() };
+            }
+            function resize() {
+                dpr = Math.min(window.devicePixelRatio || 1, 2);
+                w = card.clientWidth; h = card.clientHeight;
+                canvas.width = w * dpr; canvas.height = h * dpr;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                const count = Math.round(Math.min(46, Math.max(18, w * h / 9000)));
+                nodes = Array.from({ length: count }, () => ({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
+                    r: 1.6 + Math.random() * 2.2, alt: Math.random() < 0.35
+                }));
+                packets = [];
+            }
+            const linkDist = () => Math.min(170, w / 5);
+
+            function frame() {
+                if (!running) return;
+                const c = colors(), L = linkDist();
+                ctx.clearRect(0, 0, w, h);
+                for (const n of nodes) {
+                    n.x += n.vx; n.y += n.vy;
+                    if (n.x < 0 || n.x > w) n.vx *= -1;
+                    if (n.y < 0 || n.y > h) n.vy *= -1;
+                }
+                ctx.lineWidth = 1;
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const p = nodes[i], q = nodes[j];
+                        const d = Math.hypot(p.x - q.x, p.y - q.y);
+                        if (d < L) {
+                            ctx.globalAlpha = (1 - d / L) * 0.45;
+                            ctx.strokeStyle = p.alt ? c.b : c.a;
+                            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+                            if (Math.random() < 0.0016 && packets.length < 14) packets.push({ p, q, t: 0 });
+                        }
+                    }
+                    if (mouse) {
+                        const p = nodes[i], d = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+                        if (d < L * 1.3) {
+                            ctx.globalAlpha = (1 - d / (L * 1.3)) * 0.7;
+                            ctx.strokeStyle = c.a;
+                            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+                        }
+                    }
+                }
+                for (const n of nodes) {
+                    ctx.globalAlpha = 0.85;
+                    ctx.fillStyle = n.alt ? c.b : c.a;
+                    ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+                }
+                packets = packets.filter(k => k.t <= 1);
+                for (const k of packets) {
+                    k.t += 0.012;
+                    const x = k.p.x + (k.q.x - k.p.x) * k.t, y = k.p.y + (k.q.y - k.p.y) * k.t;
+                    ctx.globalAlpha = 1;
+                    ctx.fillStyle = c.a;
+                    ctx.shadowColor = c.a; ctx.shadowBlur = 10;
+                    ctx.beginPath(); ctx.arc(x, y, 2.4, 0, Math.PI * 2); ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(frame);
+            }
+
+            resize();
+            new ResizeObserver(resize).observe(card);
+            card.addEventListener('pointermove', e => {
+                const r = card.getBoundingClientRect();
+                mouse = { x: e.clientX - r.left, y: e.clientY - r.top };
+            });
+            card.addEventListener('pointerleave', () => { mouse = null; });
+
+            if (reduceMotion) { running = true; frame(); running = false; return; }
+            new IntersectionObserver(([e]) => {
+                const was = running; running = e.isIntersecting;
+                if (running && !was) requestAnimationFrame(frame);
+            }).observe(card);
+        })();
 
         // ---------- Scroll to top ----------
         const toTop = document.getElementById('toTop');
